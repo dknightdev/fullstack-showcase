@@ -1,0 +1,6 @@
+{
+	"name": "fullstack-showcase",
+	"private": true,
+	"version": "1.0.0",
+	"packageManager": "pnpm@12.4.2"
+}
