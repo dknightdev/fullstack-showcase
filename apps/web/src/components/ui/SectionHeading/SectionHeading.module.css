@@ -1,0 +1,32 @@
+.heading {
+	max-width: 850px;
+}
+
+.eyebrow {
+	margin-bottom: var(--spacing-md);
+	color: var(--color-primary);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-bold);
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+.heading h2 {
+	font-size: clamp(2.5rem, 5vw, 4.5rem);
+	font-weight: var(--font-weight-bold);
+	line-height: var(--line-height-tight);
+	letter-spacing: -0.04em;
+}
+
+.heading h2 span {
+	display: block;
+	color: var(--color-primary);
+}
+
+.description {
+	max-width: 700px;
+	margin-top: var(--spacing-xl);
+	color: var(--color-text-soft);
+	font-size: clamp(1rem, 1.5vw, 1.2rem);
+	line-height: var(--line-height-relaxed);
+}

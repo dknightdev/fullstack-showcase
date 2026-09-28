@@ -1,0 +1,139 @@
+.timeline {
+	position: relative;
+	margin-top: clamp(4rem, 8vw, 7rem);
+}
+
+.timeline::before {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 24px;
+	width: 1px;
+	background-color: var(--color-border);
+	content: '';
+}
+
+.experience {
+	position: relative;
+	display: grid;
+	grid-template-columns: 48px 1fr;
+	gap: var(--spacing-xl);
+}
+
+.experience + .experience {
+	margin-top: var(--spacing-3xl);
+}
+
+.marker {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
+	border: 1px solid var(--color-border);
+	border-radius: var(--border-radius-full);
+	background-color: var(--color-background);
+}
+
+.marker span {
+	color: var(--color-primary);
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-bold);
+}
+
+.content {
+	padding-bottom: var(--spacing-xl);
+}
+
+.header {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: var(--spacing-xl);
+}
+
+.type {
+	color: var(--color-primary);
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-bold);
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+.header h3 {
+	margin-top: var(--spacing-sm);
+	font-size: clamp(1.75rem, 3vw, 2.5rem);
+	font-weight: var(--font-weight-bold);
+	line-height: 1.1;
+}
+
+.period {
+	flex-shrink: 0;
+	padding-top: 4px;
+	color: var(--color-text-soft);
+	font-size: var(--font-size-sm);
+}
+
+.content h4 {
+	margin-top: var(--spacing-md);
+	color: var(--color-text-soft);
+	font-size: var(--font-size-md);
+	font-weight: var(--font-weight-bold);
+}
+
+.description {
+	max-width: 800px;
+	margin-top: var(--spacing-xl);
+	color: var(--color-text-soft);
+	font-size: var(--font-size-md);
+	line-height: var(--line-height-relaxed);
+}
+
+.technologies {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--spacing-sm);
+	margin-top: var(--spacing-xl);
+}
+
+@media (max-width: 768px) {
+	.header {
+		align-items: flex-start;
+		flex-direction: column;
+		gap: var(--spacing-sm);
+	}
+
+	.period {
+		padding-top: 0;
+	}
+
+	.description {
+		margin-top: var(--spacing-lg);
+	}
+}
+
+@media (max-width: 480px) {
+	.timeline::before {
+		left: 19px;
+	}
+
+	.experience {
+		grid-template-columns: 40px 1fr;
+		gap: var(--spacing-md);
+	}
+
+	.marker {
+		width: 40px;
+		height: 40px;
+	}
+
+	.content {
+		min-width: 0;
+	}
+
+	.technologies {
+		gap: 6px;
+	}
+}

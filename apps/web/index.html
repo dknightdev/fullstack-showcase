@@ -1,13 +1,56 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>web</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<meta name="description" content="Portafolio de Edinson Duban Caballero Rincón, Desarrollador Full Stack especializado en aplicaciones web, móviles, APIs y soluciones backend." />
+		<meta name="author" content="Edinson Duban Caballero Rincón" />
+		<meta name="theme-color" content="#0f172a" />
+
+		<link rel="manifest" href="/manifest.json" />
+
+		<link rel="icon" href="/logo.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="/logo.ico" type="image/x-icon" />
+
+        <link rel="apple-touch-icon" href="/logox512.png" type="image/png">
+        <link rel="apple-touch-startup-image" href="/logox512.png" type="image/png">
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+		<title>Edinson Duban Caballero | Desarrollador Full Stack</title>
+
+		<script>
+			(() => {
+				const preferences = localStorage.getItem('portfolio-preferences')
+
+				if (!preferences) {
+					return
+				}
+
+				try {
+					const { state } = JSON.parse(preferences)
+
+					if (state?.theme) {
+						document.documentElement.dataset.theme = state.theme
+					}
+
+					if (state?.accent) {
+						document.documentElement.dataset.accent = state.accent
+					}
+				} catch {
+					localStorage.removeItem('portfolio-preferences')
+				}
+			})()
+		</script>
+	</head>
+
+	<body>
+		<noscript>Se requiere JavaScript para ejecutar esta aplicación.</noscript>
+
+		<div id="root"></div>
+
+		<script type="module" src="/src/main.tsx"></script>
+	</body>
 </html>

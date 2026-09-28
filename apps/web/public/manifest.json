@@ -1,0 +1,35 @@
+{
+    "name": "Edinson Duban Caballero | Desarrollador Full Stack",
+	"short_name": "Duban Caballero",
+	"description": "Portafolio de Edinson Duban Caballero, Desarrollador Full Stack.",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#0f172a",
+	"theme_color": "#0f172a",
+	"orientation": "portrait-primary",
+	"icons": [
+        {
+            "src": "logo.ico",
+            "sizes": "64x64 32x32 24x24 16x16",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "logox192.png",
+            "type": "image/png",
+            "sizes": "192x192",
+            "purpose": "any"
+        },
+        {
+            "src": "logox192.png",
+            "type": "image/png",
+            "sizes": "192x192",
+            "purpose": "maskable"
+        },
+        {
+            "src": "logox512.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "any"
+        }
+    ]
+}

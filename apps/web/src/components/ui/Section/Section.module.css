@@ -1,0 +1,9 @@
+.section {
+	padding: var(--section-padding) var(--page-padding);
+	scroll-margin-top: var(--navbar-height);
+}
+
+.container {
+	width: min(100%, var(--content-width));
+	margin: 0 auto;
+}

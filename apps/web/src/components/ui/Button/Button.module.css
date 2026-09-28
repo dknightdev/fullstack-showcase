@@ -1,0 +1,80 @@
+.button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--spacing-sm);
+	font-family: inherit;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.primary,
+.secondary {
+	padding: 0.75rem 1.25rem;
+	border: 1px solid var(--color-primary);
+	border-radius: var(--border-radius-md);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-bold);
+	transition:
+		background-color var(--transition-normal),
+		color var(--transition-normal),
+		border-color var(--transition-normal);
+}
+
+.primary {
+	background-color: var(--color-primary);
+	color: var(--color-background);
+}
+
+.primary:hover {
+	background-color: var(--color-primary-hover);
+	border-color: var(--color-primary-hover);
+}
+
+.secondary {
+	background-color: transparent;
+	color: var(--color-text);
+}
+
+.secondary:hover {
+	background-color: var(--color-surface);
+	color: var(--color-primary);
+}
+
+.tertiary {
+	padding: 0;
+	border: 0;
+	background-color: transparent;
+	color: var(--color-text);
+	font: inherit;
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-bold);
+	transition: color var(--transition-fast);
+}
+
+.tertiary svg {
+	color: var(--color-primary);
+}
+
+.tertiary:hover {
+	color: var(--color-primary);
+}
+
+.icon {
+	width: 40px;
+	height: 40px;
+	padding: 0;
+	border: 0;
+	border-radius: var(--border-radius-md);
+	background-color: transparent;
+	color: var(--color-text);
+	transition:
+		background-color var(--transition-fast),
+		border-color var(--transition-fast),
+		color var(--transition-fast);
+}
+
+.icon:hover {
+	background-color: var(--color-border);
+	color: var(--color-primary);
+}

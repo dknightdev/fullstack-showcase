@@ -1,0 +1,86 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+}
+
+.label {
+	color: var(--color-text-soft);
+	font-size: var(--font-size-sm);
+}
+
+.themeButton,
+.languageButton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 36px;
+	height: 36px;
+
+	border: 0;
+	border-radius: 10px;
+
+	background-color: transparent;
+	color: var(--color-text-soft);
+	font-size: 1.05rem;
+
+	transition:
+		background-color 0.2s ease,
+		color 0.2s ease;
+}
+
+.themeButton:hover,
+.languageButton:hover {
+	background-color: var(--color-border);
+	color: var(--color-text);
+}
+
+.accents {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.accent {
+	width: 14px;
+	height: 14px;
+
+	border: 2px solid transparent;
+	border-radius: 50%;
+
+	cursor: pointer;
+
+	transition:
+		transform 0.2s ease,
+		border-color 0.2s ease;
+}
+
+.accent:hover {
+	transform: scale(1.15);
+}
+
+.accent.active {
+	border-color: var(--color-text);
+	transform: scale(1.15);
+}
+
+.blue {
+	background-color: #3b82f6;
+}
+
+.green {
+	background-color: #22c55e;
+}
+
+.purple {
+	background-color: #a855f7;
+}
+

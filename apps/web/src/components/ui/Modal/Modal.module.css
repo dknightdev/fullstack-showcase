@@ -1,0 +1,125 @@
+.overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 2000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: var(--page-padding);
+	background-color: rgb(0 0 0 / 60%);
+	backdrop-filter: blur(6px);
+
+	overflow: hidden;
+	overscroll-behavior: contain;
+}
+
+.modal {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: min(100%, 800px);
+	max-height: min(800px, calc(100dvh - 48px));
+	overflow: hidden;
+	border: 1px solid var(--color-border);
+	border-radius: var(--border-radius-lg);
+	background-color: var(--color-surface);
+	box-shadow: var(--shadow-lg);
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--spacing-lg);
+	flex-shrink: 0;
+	padding: var(--spacing-lg) var(--spacing-xl);
+	border-bottom: 1px solid var(--color-border);
+}
+
+.header h2 {
+	font-size: var(--font-size-xl);
+	font-weight: var(--font-weight-bold);
+	line-height: 1.2;
+}
+
+.close {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: 40px;
+	height: 40px;
+	border: 1px solid var(--color-border);
+	border-radius: var(--border-radius-full);
+	background-color: transparent;
+	color: var(--color-text-soft);
+	transition:
+		border-color var(--transition-fast),
+		background-color var(--transition-fast),
+		color var(--transition-fast);
+}
+
+.close:hover {
+	border-color: var(--color-primary);
+	background-color: var(--color-primary);
+	color: var(--color-background);
+}
+
+.close span {
+	position: absolute;
+	width: 16px;
+	height: 1px;
+	background-color: currentColor;
+	transition: transform var(--transition-fast);
+}
+
+.close span:first-child {
+	transform: rotate(45deg);
+}
+
+.close span:last-child {
+	transform: rotate(-45deg);
+}
+
+.close:hover span:first-child {
+	transform: rotate(135deg);
+}
+
+.close:hover span:last-child {
+	transform: rotate(45deg);
+}
+
+.content {
+	overflow-y: auto;
+	padding: var(--spacing-xl);
+	scrollbar-width: thin;
+	scrollbar-color: var(--color-border) transparent;
+}
+
+@media (max-width: 600px) {
+	.overlay {
+		align-items: flex-end;
+		padding: 12px;
+	}
+
+	.modal {
+		width: 100%;
+		max-height: calc(100dvh - 24px);
+	}
+
+	.header {
+		padding: var(--spacing-md) var(--spacing-lg);
+	}
+
+	.content {
+		padding: var(--spacing-lg);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.modal,
+	.overlay {
+		transition: none;
+	}
+}
