@@ -7,13 +7,15 @@ type ModalProps = {
 	onClose: () => void
 	title?: string
 	children: ReactNode
+	size?: 'default' | 'fullscreen'
 }
 
 const Modal = ({
 	isOpen,
 	onClose,
 	title,
-	children
+	children,
+	size = 'default'
 }: ModalProps) => {
 	const closeButtonRef = useRef<HTMLButtonElement | null>(null)
 
@@ -47,7 +49,7 @@ const Modal = ({
 		<AnimatePresence>
 			{isOpen && (
 				<motion.div
-					className={styles.overlay}
+					className={`${styles.overlay} ${size === 'fullscreen' ? styles.fullscreenOverlay : ''}`}
 					onMouseDown={handleBackdropClick}
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
@@ -58,7 +60,7 @@ const Modal = ({
 					}}
 				>
 					<motion.div
-						className={styles.modal}
+						className={`${styles.modal} ${size === 'fullscreen' ? styles.fullscreenModal : ''}`}
 						role='dialog'
 						aria-modal='true'
 						aria-labelledby={
@@ -94,7 +96,9 @@ const Modal = ({
 							ease: [0.22, 1, 0.36, 1]
 						}}
 					>
-						<header className={styles.header}>
+						<header
+							className={`${styles.header} ${size === 'fullscreen' ? styles.fullscreenHeader : ''}`}
+						>
 							{title && (
 								<h2 id='modal-title'>
 									{title}
@@ -113,7 +117,9 @@ const Modal = ({
 							</button>
 						</header>
 
-						<div className={styles.content}>
+						<div
+							className={`${styles.content} ${size === 'fullscreen' ? styles.fullscreenContent : ''}`}
+						>
 							{children}
 						</div>
 					</motion.div>

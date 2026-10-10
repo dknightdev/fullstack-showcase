@@ -122,11 +122,11 @@
 .preferencesMenu {
 	position: absolute;
 	top: calc(100% + 10px);
-	right: 12px;
+	right: 0px;
 	z-index: 1100;
 
 	border: 1px solid var(--color-border);
-	border-radius: var(--border-radius-md);
+	border-radius: var(--border-radius-lg);
 	background-color: var(--color-surface);
 	box-shadow: var(--shadow-md);
 
@@ -185,7 +185,6 @@
 	}
 
 	.preferencesMenu {
-		right: 8px;
 		max-width: calc(100vw - 32px);
 	}
 

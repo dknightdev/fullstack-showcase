@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap');
 
 :root {
 	/* Layout */
@@ -6,7 +6,6 @@
 	--page-padding: clamp(.5rem, 2vw, 1rem);
 	--page-padding-vertical: clamp(1rem, 4vw, 3rem);
 	--section-padding: clamp(5rem, 10vw, 8rem);
-	/* --section-padding: clamp(4rem, 8vw, 6rem); */
 	--navbar-height: 52px;
 
 	/* Spacing */
@@ -20,6 +19,7 @@
 
 	/* Typography */
 	--font-family: Helvetica, Arial, sans-serif;
+	--font-family-heading: 'Quantico', Helvetica, Arial, sans-serif;
 
 	--font-size-xs: 0.75rem;
 	--font-size-sm: 0.875rem;

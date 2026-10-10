@@ -6,6 +6,7 @@ import AppIcon from '@/components/ui/AppIcon/AppIcon'
 import Section from '@/components/ui/Section/Section'
 import SectionHeading from '@/components/ui/SectionHeading/SectionHeading'
 import Chip from '@/components/ui/Chip/Chip'
+import ImageGallery from '@/components/ui/ImageGallery/ImageGallery'
 import styles from './Projects.module.css'
 
 type ProjectLink = {
@@ -25,7 +26,7 @@ type ProjectItem = {
 	category?: string
 	context: string
 	description: string
-	image: string
+	images: string[]
 	technologies: string[]
 	details: ProjectDetails
 	links?: ProjectLink[]
@@ -38,7 +39,12 @@ const projects: ProjectItem[] = [
 		context: 'Asistencia Móvil',
 		description:
 			'Aplicación enfocada en tenderos para la solicitud de pedidos de productos, con versiones móvil y web.',
-		image: '/projects/orders-app.jpg',
+		images: [
+			'/project1/preview1.png',
+			'/project1/preview2.png',
+			'/project1/preview3.png',
+			'/project1/preview4.png'
+		],
 		technologies: [
 			'React Native',
 			'React',
@@ -63,11 +69,7 @@ const projects: ProjectItem[] = [
 		links: [
 			{
 				label: 'Google Play',
-				href: '#'
-			},
-			{
-				label: 'Versión web',
-				href: '#'
+				href: 'https://play.google.com/store/apps/details?id=com.amovil.latienda'
 			}
 		]
 	},
@@ -77,7 +79,13 @@ const projects: ProjectItem[] = [
 		context: 'Proyecto freelance',
 		description:
 			'Plataforma personalizada para gestionar programas de apoyo empresarial y mentoría desde un panel centralizado.',
-		image: '/projects/business-platform.jpg',
+		images: [
+			'/project2/preview1.png',
+			'/project2/preview2.png',
+			'/project2/preview3.png',
+			'/project2/preview4.png',
+			'/project2/preview5.png'
+		],
 		technologies: [
 			'React',
 			'NestJS',
@@ -110,12 +118,16 @@ const projects: ProjectItem[] = [
 		]
 	},
 	{
-		title: 'Identificación de especies de peces',
+		title: 'RayShark',
 		category: 'Aplicación móvil',
-		context: 'Proyecto universitario',
+		context: 'Proyecto desarrollado por encargo',
 		description:
-			'Aplicación móvil para la identificación de especies de peces del Caribe colombiano, desarrollada con funcionamiento offline.',
-		image: '/projects/fish-app.jpg',
+			'Aplicación móvil para la identificación de especies de peces del Caribe colombiano, diseñada para funcionar completamente offline.',
+		images: [
+			'/project3/preview1.png',
+			'/project3/preview2.png',
+			'/project3/preview3.png'
+		],
 		technologies: [
 			'React Native',
 			'Realm',
@@ -123,23 +135,24 @@ const projects: ProjectItem[] = [
 		],
 		details: {
 			description:
-				'Aplicación móvil desarrollada para identificar especies de peces del Caribe colombiano. Cuenta con información de 136 especies y fue diseñada para funcionar sin conexión a Internet mediante una base de datos local.',
+				'RayShark es una aplicación móvil desarrollada para facilitar la identificación y consulta de información sobre especies de peces del Caribe colombiano. Incluye información de 136 especies y fue diseñada para funcionar sin conexión a Internet mediante una base de datos local.',
 			context:
-				'Proyecto desarrollado durante la etapa universitaria como una solución solicitada y remunerada.',
+				'Proyecto desarrollado por encargo durante la etapa universitaria de mi hermana, estudiante de Biología. La aplicación fue presentada como parte de un concurso académico en el que resultó ganadora.',
 			role:
-				'Desarrollo de la aplicación móvil, implementación de la base de datos local y construcción de la experiencia de consulta offline.',
+				'Desarrollo integral de la aplicación móvil, implementación de la base de datos local con Realm y construcción de la experiencia de consulta offline.',
 			highlights: [
-				'136 especies',
-				'Funcionamiento offline',
-				'Base de datos local',
+				'136 especies registradas',
+				'Funcionamiento completamente offline',
+				'Base de datos local con Realm',
 				'Consulta de información de especies',
-				'Aplicación para Android'
+				'Aplicación para Android',
+				'Proyecto presentado en concurso académico'
 			]
 		},
 		links: [
 			{
 				label: 'Google Play',
-				href: '#'
+				href: 'https://play.google.com/store/apps/details?id=com.dknightdev.ray_shark'
 			}
 		]
 	}
@@ -147,11 +160,18 @@ const projects: ProjectItem[] = [
 
 const websites: ProjectItem[] = [
 	{
-		title: 'Sitio web corporativo',
-		context: 'Proyecto freelance',
+		title: 'Agencia de branding y productos promocionales',
+		category: 'Sitio web',
+		context: 'Proyecto de sitio web corporativo',
 		description:
-			'Página informativa desarrollada para presentar los servicios y propuesta de valor del cliente.',
-		image: '/projects/website-01.jpg',
+			'Sitio web corporativo para una agencia integral de branding, marketing, impresión y productos promocionales, desarrollado para presentar sus diferentes servicios y facilitar el contacto con potenciales clientes.',
+		images: [
+			'/project4/preview1.png',
+			'/project4/preview2.png',
+			'/project4/preview3.png',
+			'/project4/preview4.png',
+			'/project4/preview5.png'
+		],
 		technologies: [
 			'React',
 			'CSS',
@@ -159,82 +179,112 @@ const websites: ProjectItem[] = [
 		],
 		details: {
 			description:
-				'Sitio web desarrollado para mejorar la presencia digital del cliente y presentar de forma clara sus servicios y propuesta de valor.',
+				'Sitio web desarrollado para una agencia de branding y marketing que reúne diferentes líneas de servicio, incluyendo construcción de marca, impresión, señalética, decoración de prendas y productos promocionales. El sitio fue estructurado para presentar los servicios de forma clara y dirigir al visitante hacia el contacto con la empresa.',
 			context:
-				'Proyecto desarrollado como trabajo freelance.',
+				'Proyecto desarrollado para fortalecer la presencia digital de la empresa y presentar su portafolio de servicios a clientes potenciales.',
 			role:
-				'Desarrollo frontend y adaptación de la interfaz para diferentes tamaños de pantalla.'
+				'Desarrollo frontend de la landing page, maquetación de las diferentes secciones, implementación del diseño responsive y construcción de los llamados a la acción.',
+			highlights: [
+				'Presentación de múltiples líneas de servicio',
+				'Diseño responsive',
+				'Secciones orientadas a conversión',
+				'Presentación del portafolio de servicios',
+				'Integración de llamadas a la acción'
+			]
 		},
-		links: [
-			{
-				label: 'Visitar sitio',
-				href: '#'
-			}
-		]
+		links: []
 	},
 	{
-		title: 'Landing page',
+		title: 'Sitio web para negocio de belleza',
+		category: 'Landing page',
 		context: 'Proyecto freelance',
 		description:
-			'Landing page enfocada en presentar un servicio de forma clara y orientada a conversión.',
-		image: '/projects/website-02.jpg',
+			'Landing page para un negocio de extensiones de pestañas, enfocada en presentar sus servicios, precios y facilitar las reservas.',
+		images: [
+			'/project5/preview1.png',
+			'/project5/preview2.png',
+			'/project5/preview3.png'
+		],
 		technologies: [
-			'React',
-			'CSS',
+			'HTML5',
+			'CSS3',
+			'JavaScript',
 			'Responsive Design'
 		],
 		details: {
 			description:
-				'Landing page desarrollada para presentar un servicio específico mediante una interfaz clara, responsive y enfocada en la comunicación del producto.',
+				'Landing page para un negocio de extensiones de pestañas, con información sobre sus servicios, precios, políticas y datos de contacto.',
 			context:
-				'Proyecto desarrollado como trabajo freelance.',
+				'Página promocional desarrollada para uno de los clientes de la empresa que contrató el desarrollo de los sitios.',
 			role:
-				'Desarrollo completo del frontend y adaptación responsive.'
+				'Desarrollo frontend, maquetación responsive e implementación de las diferentes secciones informativas y llamadas a la acción.',
+			highlights: [
+				'Catálogo de servicios y precios',
+				'Información de contacto',
+				'Integración de reservas',
+				'Diseño responsive'
+			]
 		},
-		links: [
-			{
-				label: 'Visitar sitio',
-				href: '#'
-			}
-		]
+		links: []
 	},
 	{
-		title: 'Sitio informativo',
+		title: 'Sitio web para centro ecuestre',
+		category: 'Landing page',
 		context: 'Proyecto freelance',
 		description:
-			'Sitio web desarrollado para presentar información, servicios y canales de contacto.',
-		image: '/projects/website-03.jpg',
+			'Landing page para un centro ecuestre en Florida, enfocada en presentar sus servicios y facilitar el contacto con potenciales clientes.',
+		images: [
+			'/project6/preview1.png',
+			'/project6/preview2.png',
+			'/project6/preview3.png'
+		],
 		technologies: [
-			'React',
+			'HTML',
 			'CSS',
+			'JavaScript',
 			'Responsive Design'
 		],
 		details: {
 			description:
-				'Sitio web informativo desarrollado para organizar y presentar los servicios y canales de contacto del cliente.',
+				'Landing page para un centro ecuestre, con información sobre sus servicios, instalaciones, actividades y opciones de contacto.',
 			context:
-				'Proyecto desarrollado como trabajo freelance.',
+				'Página promocional desarrollada para uno de los clientes de la empresa que contrató el desarrollo de los sitios.',
 			role:
-				'Desarrollo frontend, implementación de componentes y adaptación responsive.'
+				'Desarrollo frontend, maquetación responsive e implementación de las diferentes secciones de la landing page.',
+			highlights: [
+				'Presentación de servicios',
+				'Información del negocio',
+				'Formulario de contacto',
+				'Diseño responsive'
+			]
 		},
-		links: [
-			{
-				label: 'Visitar sitio',
-				href: '#'
-			}
-		]
+		links: []
 	}
 ]
 
 const Projects = () => {
 	const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null)
+	const [selectedGallery, setSelectedGallery] = useState<{
+		project: ProjectItem
+		imageIndex: number
+	} | null>(null)
 
 	const openProject = (project: ProjectItem) => {
+		setSelectedGallery(null)
 		setSelectedProject(project)
 	}
 
 	const closeProject = () => {
 		setSelectedProject(null)
+	}
+
+	const openGallery = (project: ProjectItem, imageIndex: number) => {
+		setSelectedProject(null)
+		setSelectedGallery({ project, imageIndex })
+	}
+
+	const closeGallery = () => {
+		setSelectedGallery(null)
 	}
 
 	return (
@@ -254,9 +304,13 @@ const Projects = () => {
 							className={styles.project}
 						>
 							<div className={styles.imageWrapper}>
-								<img
-									src={project.image}
+								<ImageGallery
+									images={project.images}
 									alt={project.title}
+									mode='preview'
+									onOpen={(imageIndex) =>
+										openGallery(project, imageIndex)
+									}
 								/>
 
 								<span className={styles.projectNumber}>
@@ -328,9 +382,13 @@ const Projects = () => {
 								className={styles.website}
 							>
 								<div className={styles.websiteImage}>
-									<img
-										src={website.image}
+									<ImageGallery
+										images={website.images}
 										alt={website.title}
+										mode='preview'
+										onOpen={(imageIndex) =>
+											openGallery(website, imageIndex)
+										}
 									/>
 								</div>
 
@@ -358,6 +416,7 @@ const Projects = () => {
 									</div>
 
 									<Button
+										className={styles.viewProjectButton}
 										variant='tertiary'
 										onClick={() =>
 											openProject(website)
@@ -381,9 +440,10 @@ const Projects = () => {
 				{selectedProject && (
 					<div className={styles.modalContent}>
 						<div className={styles.modalImage}>
-							<img
-								src={selectedProject.image}
+							<ImageGallery
+								images={selectedProject.images}
 								alt={selectedProject.title}
+								mode='carousel'
 							/>
 						</div>
 
@@ -478,6 +538,22 @@ const Projects = () => {
 							</div>
 						)}
 					</div>
+				)}
+			</Modal>
+
+			<Modal
+				isOpen={Boolean(selectedGallery)}
+				onClose={closeGallery}
+				title={selectedGallery?.project.title}
+				size='fullscreen'
+			>
+				{selectedGallery && (
+					<ImageGallery
+						images={selectedGallery.project.images}
+						alt={selectedGallery.project.title}
+						mode='fullscreen'
+						initialIndex={selectedGallery.imageIndex}
+					/>
 				)}
 			</Modal>
 		</>
