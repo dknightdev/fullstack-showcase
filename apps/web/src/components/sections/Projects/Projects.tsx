@@ -49,7 +49,9 @@ const projects: ProjectItem[] = [
 			'React Native',
 			'React',
 			'Node.js',
-			'SQL'
+			'MySQL',
+			'PostgreSQL',
+			'TypeScript'
 		],
 		details: {
 			description:
@@ -88,8 +90,9 @@ const projects: ProjectItem[] = [
 		],
 		technologies: [
 			'React',
-			'NestJS',
-			'MySQL'
+			'Nest.js',
+			'MySQL',
+			'TypeScript'
 		],
 		details: {
 			description:
@@ -131,7 +134,7 @@ const projects: ProjectItem[] = [
 		technologies: [
 			'React Native',
 			'Realm',
-			'JavaScript'
+			'TypeScript'
 		],
 		details: {
 			description:
@@ -174,6 +177,7 @@ const websites: ProjectItem[] = [
 		],
 		technologies: [
 			'React',
+			'HTML',
 			'CSS',
 			'Responsive Design'
 		],
@@ -206,8 +210,8 @@ const websites: ProjectItem[] = [
 			'/project5/preview3.png'
 		],
 		technologies: [
-			'HTML5',
-			'CSS3',
+			'HTML',
+			'CSS',
 			'JavaScript',
 			'Responsive Design'
 		],
@@ -215,7 +219,7 @@ const websites: ProjectItem[] = [
 			description:
 				'Landing page para un negocio de extensiones de pestañas, con información sobre sus servicios, precios, políticas y datos de contacto.',
 			context:
-				'Página promocional desarrollada para uno de los clientes de la empresa que contrató el desarrollo de los sitios.',
+				'Página promocional desarrollada para uno de los clientes de la empresa que contrató el desarrollo de este sitio.',
 			role:
 				'Desarrollo frontend, maquetación responsive e implementación de las diferentes secciones informativas y llamadas a la acción.',
 			highlights: [
@@ -248,7 +252,7 @@ const websites: ProjectItem[] = [
 			description:
 				'Landing page para un centro ecuestre, con información sobre sus servicios, instalaciones, actividades y opciones de contacto.',
 			context:
-				'Página promocional desarrollada para uno de los clientes de la empresa que contrató el desarrollo de los sitios.',
+				'Página promocional desarrollada para uno de los clientes de la empresa que contrató el desarrollo de este sitio.',
 			role:
 				'Desarrollo frontend, maquetación responsive e implementación de las diferentes secciones de la landing page.',
 			highlights: [

@@ -20,7 +20,7 @@ const skillCategories = [
 		description: 'Desarrollo de APIs, servicios y lógica de negocio.',
 		skills: [
 			'Node.js',
-			'Express',
+			'Express.js',
 			'Nest.js',
 			'.NET',
 			'Laravel',
@@ -41,10 +41,10 @@ const skillCategories = [
 		skills: [
 			'JavaScript',
 			'TypeScript',
-			'PHP',
 			'Python',
 			'C#',
-			'Go'
+			'Go',
+			'PHP'
 		]
 	},
 	{
@@ -54,7 +54,10 @@ const skillCategories = [
 			'Git',
 			'Docker',
 			'Firebase',
-			'Agile / Scrum'
+			'Agile / Scrum',
+			'Redis',
+			'Clean Architecture',
+			'Hexagonal Architecture'
 		]
 	}
 ]

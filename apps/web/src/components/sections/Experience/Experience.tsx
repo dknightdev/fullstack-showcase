@@ -15,10 +15,19 @@ const experiences = [
 		technologies: [
 			'React',
 			'React Native',
+			'Angular',
 			'Node.js',
-			'Express',
-			'NestJS',
-			'SQL'
+			'Express.js',
+			'Nest.js',
+			'Laravel',
+			'.NET',
+			'MySQL',
+			'PostgreSQL',
+			'JavaScript',
+			'TypeScript',
+			'Php',
+			'Python',
+			'Go'
 		]
 	},
 	{
@@ -31,8 +40,10 @@ const experiences = [
 			'Desarrollo de soluciones web para clientes independientes, participando en el análisis de requerimientos, diseño de funcionalidades, desarrollo, pruebas y entrega de proyectos.',
 		technologies: [
 			'React',
-			'NestJS',
-			'MySQL'
+			'Nest.js',
+			'MySQL',
+			'JavaScript',
+			'TypeScript'
 		]
 	}
 ]
