@@ -15,6 +15,9 @@
 
 	font-size: clamp(1rem, 1.5vw, 1.2rem);
 	line-height: var(--line-height-relaxed);
+
+	transition:
+		color var(--transition-normal);
 }
 
 .description p + p {
@@ -40,7 +43,8 @@
 	background-color: var(--color-surface);
 
 	transition:
-		border-color var(--transition-fast),
+		background-color var(--transition-normal),
+		border-color var(--transition-normal),
 		transform var(--transition-fast);
 }
 
@@ -54,6 +58,9 @@
 
 	font-size: var(--font-size-sm);
 	font-weight: var(--font-weight-bold);
+
+	transition:
+		color var(--transition-normal);
 }
 
 .principle h3 {
@@ -68,6 +75,9 @@
 
 	font-size: var(--font-size-sm);
 	line-height: var(--line-height-relaxed);
+
+	transition:
+		color var(--transition-normal);
 }
 
 @media (max-width: 768px) {

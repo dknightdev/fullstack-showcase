@@ -21,7 +21,8 @@
 	background-color: var(--color-surface);
 
 	transition:
-		border-color var(--transition-fast);
+		background-color var(--transition-normal),
+		border-color var(--transition-normal);
 }
 
 .card:hover {
@@ -44,6 +45,9 @@
 
 	font-size: var(--font-size-sm);
 	overflow-wrap: anywhere;
+
+	transition:
+		color var(--transition-normal);
 }
 
 .actions {
@@ -55,6 +59,9 @@
 .actions a,
 .actions button {
 	border: 1px solid var(--color-border);
+
+	transition:
+		border-color var(--transition-normal);
 }
 
 
@@ -71,12 +78,19 @@
 	border-radius: var(--border-radius-lg);
 
 	background-color: var(--color-surface);
+
+	transition:
+		background-color var(--transition-normal),
+		border-color var(--transition-normal);
 }
 
 .cvLabel {
 	color: var(--color-text-soft);
 
 	font-size: var(--font-size-sm);
+
+	transition:
+		color var(--transition-normal);
 }
 
 .cv h3 {

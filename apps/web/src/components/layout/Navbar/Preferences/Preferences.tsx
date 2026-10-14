@@ -1,6 +1,7 @@
 import { usePreferencesStore } from '@/stores/preferencesStore'
 import { TbLanguage, TbMoon, TbSunHigh } from 'react-icons/tb'
 import AppIcon from '@/components/ui/AppIcon/AppIcon'
+import Button from '@/components/ui/Button/Button'
 
 import styles from './Preferences.module.css'
 
@@ -15,14 +16,13 @@ const Preferences = () => {
 		<div className={styles.container}>
 			<div className={styles.row}>
 				<span className={styles.label}>Tema</span>
-				<button
-					type='button'
-					className={styles.themeButton}
+				<Button
+					variant='icon'
 					onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
 					aria-label={theme === 'dark' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'}
 				>
 					{theme === 'dark' ? <AppIcon icon={TbSunHigh} size={18} /> : <AppIcon icon={TbMoon} size={18} />}
-				</button>
+				</Button>
 			</div>
 
 			<div className={styles.row}>
@@ -53,13 +53,12 @@ const Preferences = () => {
 
 			<div className={styles.row}>
 				<span className={styles.label}>Idioma</span>
-				<button
-					type='button'
-					className={styles.languageButton}
+				<Button
+					variant='icon'
 					aria-label='Cambiar idioma'
 				>
 					<AppIcon icon={TbLanguage} size={18} />
-				</button>
+				</Button>
 			</div>
 		</div>
 	)

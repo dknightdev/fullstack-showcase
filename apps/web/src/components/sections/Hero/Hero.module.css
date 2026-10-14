@@ -34,6 +34,9 @@
 	font-weight: var(--font-weight-bold);
 	text-transform: uppercase;
 	letter-spacing: 0.08em;
+
+	transition:
+		color var(--transition-normal);
 }
 
 h1 {
@@ -49,6 +52,9 @@ h1 span {
 	display: block;
 
 	color: var(--color-primary);
+
+	transition:
+		color var(--transition-normal);
 }
 
 .description {
@@ -72,8 +78,6 @@ h1 span {
 
 	margin-top: var(--spacing-xl);
 	max-width: 600px;
-
-	color: var(--color-text-soft);
 }
 
 
@@ -106,6 +110,9 @@ h1 span {
 	opacity: 0.2;
 
 	content: '';
+
+	transition:
+		background var(--transition-normal);
 }
 
 .imageWrapper img {
@@ -131,7 +138,8 @@ h1 span {
 
 	transition:
 		opacity var(--transition-normal),
-		transform var(--transition-normal);
+		transform var(--transition-normal),
+		color var(--transition-normal);
 }
 
 .scrollText {
@@ -147,6 +155,9 @@ h1 span {
 	line-height: 1;
 
 	animation: scrollPulse 2s ease-in-out infinite;
+
+	transition:
+		color var(--transition-normal);
 }
 
 .hidden {

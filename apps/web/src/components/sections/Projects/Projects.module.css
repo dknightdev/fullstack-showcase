@@ -31,6 +31,10 @@
 	border: 1px solid var(--color-border);
 	border-radius: var(--border-radius-lg);
 	background-color: var(--color-surface);
+
+	transition:
+		background-color var(--transition-normal),
+		border-color var(--transition-normal);
 }
 
 .project:hover {
@@ -44,14 +48,19 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 44px;
-	height: 44px;
+	width: 40px;
+	height: 40px;
+
 	border-radius: var(--border-radius-full);
-	background-color: rgb(0 0 0 / 60%);
-	color: var(--color-text-soft);
+	background-color: var(--color-surface);
+	color: var(--color-primary);
 	font-size: var(--font-size-xs);
 	font-weight: var(--font-weight-bold);
 	backdrop-filter: blur(6px);
+
+	transition:
+		background-color var(--transition-normal),
+		color var(--transition-normal);
 }
 
 .projectContent {
@@ -64,6 +73,9 @@
 	font-weight: var(--font-weight-bold);
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
+
+	transition:
+		color var(--transition-normal);
 }
 
 .projectContent h3 {
@@ -78,6 +90,9 @@
 	color: var(--color-text);
 	font-size: var(--font-size-sm);
 	font-weight: var(--font-weight-bold);
+
+	transition:
+		color var(--transition-normal);
 }
 
 .description {
@@ -85,6 +100,9 @@
 	color: var(--color-text-soft);
 	font-size: var(--font-size-md);
 	line-height: var(--line-height-relaxed);
+
+	transition:
+		color var(--transition-normal);
 }
 
 .technologies {
@@ -105,6 +123,9 @@
 	gap: var(--spacing-xl);
 	padding-bottom: var(--spacing-lg);
 	border-bottom: 1px solid var(--color-border);
+
+	transition:
+		border-color var(--transition-normal);
 }
 
 .subheading h3 {
@@ -119,6 +140,9 @@
 	font-size: var(--font-size-sm);
 	line-height: var(--line-height-relaxed);
 	text-align: right;
+
+	transition:
+		color var(--transition-normal);
 }
 
 .websiteGrid {
@@ -135,12 +159,19 @@
 	border: 1px solid var(--color-border);
 	border-radius: var(--border-radius-lg);
 	background-color: var(--color-surface);
+
+	transition:
+		background-color var(--transition-normal),
+		border-color var(--transition-normal);
 }
 
 .websiteImage {
 	overflow: hidden;
 	aspect-ratio: 16 / 10;
 	background-color: var(--color-background);
+
+	transition:
+		background-color var(--transition-normal);
 }
 
 .project:hover,
@@ -172,6 +203,9 @@
 	color: var(--color-text-soft);
 	font-size: var(--font-size-sm);
 	line-height: var(--line-height-relaxed);
+
+	transition:
+		color var(--transition-normal);
 }
 
 .viewProjectButton {
@@ -191,6 +225,9 @@
 	aspect-ratio: 16 / 10;
 	border-radius: var(--border-radius-lg);
 	background-color: var(--color-background);
+
+	transition:
+		background-color var(--transition-normal);
 }
 
 .modalSection h3 {
@@ -209,6 +246,9 @@
 	color: var(--color-text-soft);
 	font-size: var(--font-size-sm);
 	line-height: var(--line-height-relaxed);
+
+	transition:
+		color var(--transition-normal);
 }
 
 .highlights {
@@ -226,6 +266,9 @@
 	color: var(--color-text-soft);
 	font-size: var(--font-size-sm);
 	line-height: var(--line-height-relaxed);
+
+	transition:
+		color var(--transition-normal);
 }
 
 .highlights li::before {
@@ -237,6 +280,9 @@
 	border-radius: var(--border-radius-full);
 	background-color: var(--color-primary);
 	content: '';
+
+	transition:
+		background-color var(--transition-normal);
 }
 
 .modalLinks {
@@ -245,6 +291,9 @@
 	gap: var(--spacing-md);
 	padding-top: var(--spacing-lg);
 	border-top: 1px solid var(--color-border);
+
+	transition:
+		border-color var(--transition-normal);
 }
 
 @media (max-width: 900px) {

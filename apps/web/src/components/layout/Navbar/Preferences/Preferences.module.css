@@ -14,33 +14,9 @@
 .label {
 	color: var(--color-text-soft);
 	font-size: var(--font-size-sm);
-}
-
-.themeButton,
-.languageButton {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-	width: 36px;
-	height: 36px;
-
-	border: 0;
-	border-radius: 10px;
-
-	background-color: transparent;
-	color: var(--color-text-soft);
-	font-size: 1.05rem;
 
 	transition:
-		background-color 0.2s ease,
-		color 0.2s ease;
-}
-
-.themeButton:hover,
-.languageButton:hover {
-	background-color: var(--color-border);
-	color: var(--color-text);
+		color var(--transition-normal);
 }
 
 .accents {
@@ -59,8 +35,8 @@
 	cursor: pointer;
 
 	transition:
-		transform 0.2s ease,
-		border-color 0.2s ease;
+		transform var(--transition-fast),
+		border-color var(--transition-fast);
 }
 
 .accent:hover {

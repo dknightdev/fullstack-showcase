@@ -15,7 +15,8 @@
 	background-color: var(--color-surface);
 
 	transition:
-		border-color var(--transition-fast);
+		background-color var(--transition-normal),
+		border-color var(--transition-normal);
 }
 
 .card:hover {
@@ -37,6 +38,9 @@
 
 	font-size: var(--font-size-sm);
 	font-weight: var(--font-weight-bold);
+
+	transition:
+		color var(--transition-normal);
 }
 
 .card h3 {
@@ -52,6 +56,9 @@
 
 	font-size: var(--font-size-sm);
 	line-height: var(--line-height-relaxed);
+
+	transition:
+		color var(--transition-normal);
 }
 
 .skills {

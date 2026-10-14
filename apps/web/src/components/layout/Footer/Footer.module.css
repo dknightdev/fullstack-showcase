@@ -1,6 +1,9 @@
 .footer {
 	padding: var(--spacing-3xl) calc(var(--page-padding) * 2) var(--spacing-xl);
 	border-top: 1px solid var(--color-border);
+
+	transition:
+		border-color var(--transition-normal);
 }
 
 .container {
@@ -29,6 +32,9 @@
 .identity h2 span {
 	display: block;
 	color: var(--color-primary);
+
+	transition:
+		color var(--transition-normal);
 }
 
 .role {
@@ -36,6 +42,9 @@
 	color: var(--color-text);
 	font-size: var(--font-size-lg);
 	font-weight: var(--font-weight-bold);
+
+	transition:
+		color var(--transition-normal);
 }
 
 .description {
@@ -44,6 +53,9 @@
 	color: var(--color-text-soft);
 	font-size: var(--font-size-md);
 	line-height: var(--line-height-relaxed);
+
+	transition:
+		color var(--transition-normal);
 }
 
 .navigation {
@@ -57,7 +69,9 @@
 .navigation a {
 	color: var(--color-text-soft);
 	font-size: var(--font-size-sm);
-	transition: color var(--transition-fast);
+
+	transition:
+		color var(--transition-normal);
 }
 
 .navigation a:hover {
@@ -68,12 +82,18 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+
 	gap: var(--spacing-lg);
 	margin-top: var(--spacing-3xl);
 	padding-top: var(--spacing-lg);
+
 	border-top: 1px solid var(--color-border);
 	color: var(--color-text-soft);
 	font-size: var(--font-size-xs);
+
+	transition:
+		color var(--transition-normal),
+		border-color var(--transition-normal);
 }
 
 @media (max-width: 768px) {

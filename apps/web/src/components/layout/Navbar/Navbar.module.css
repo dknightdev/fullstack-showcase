@@ -21,7 +21,6 @@
 
 	transition:
 		background-color var(--transition-normal),
-		color var(--transition-normal),
 		border-color var(--transition-normal);
 }
 
@@ -39,7 +38,8 @@
 	font-weight: var(--font-weight-bold);
 	color: var(--color-primary);
 
-	transition: color var(--transition-fast);
+	transition:
+		color var(--transition-normal);
 }
 
 .logo:hover {
@@ -63,7 +63,8 @@
 
 	font-size: var(--font-size-sm);
 
-	transition: color var(--transition-normal);
+	transition:
+		color var(--transition-normal);
 }
 
 .links a::before,
@@ -241,7 +242,8 @@
 
 		font-size: var(--font-size-md);
 
-		transition: color var(--transition-normal);
+		transition:
+			color var(--transition-normal);
 	}
 
 	.menu a::before,

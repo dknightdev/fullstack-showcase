@@ -11,6 +11,9 @@
 	width: 1px;
 	background-color: var(--color-border);
 	content: '';
+
+	transition:
+		background-color var(--transition-normal);
 }
 
 .experience {
@@ -35,12 +38,19 @@
 	border: 1px solid var(--color-border);
 	border-radius: var(--border-radius-full);
 	background-color: var(--color-background);
+
+	transition:
+		background-color var(--transition-normal),
+		border-color var(--transition-normal);
 }
 
 .marker span {
 	color: var(--color-primary);
 	font-size: var(--font-size-xs);
 	font-weight: var(--font-weight-bold);
+
+	transition:
+		color var(--transition-normal);
 }
 
 .content {
@@ -60,6 +70,9 @@
 	font-weight: var(--font-weight-bold);
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
+
+	transition:
+		color var(--transition-normal);
 }
 
 .header h3 {
@@ -74,6 +87,9 @@
 	padding-top: 4px;
 	color: var(--color-text-soft);
 	font-size: var(--font-size-sm);
+
+	transition:
+		color var(--transition-normal);
 }
 
 .content h4 {
@@ -81,6 +97,9 @@
 	color: var(--color-text-soft);
 	font-size: var(--font-size-md);
 	font-weight: var(--font-weight-bold);
+
+	transition:
+		color var(--transition-normal);
 }
 
 .description {
@@ -89,6 +108,9 @@
 	color: var(--color-text-soft);
 	font-size: var(--font-size-md);
 	line-height: var(--line-height-relaxed);
+
+	transition:
+		color var(--transition-normal);
 }
 
 .technologies {

@@ -9,6 +9,9 @@
 	font-weight: var(--font-weight-bold);
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
+
+	transition:
+		color var(--transition-normal);
 }
 
 .heading h2 {
@@ -21,6 +24,9 @@
 .heading h2 span {
 	display: block;
 	color: var(--color-primary);
+
+	transition:
+		color var(--transition-normal);
 }
 
 .description {
@@ -29,4 +35,7 @@
 	color: var(--color-text-soft);
 	font-size: clamp(1rem, 1.5vw, 1.2rem);
 	line-height: var(--line-height-relaxed);
+
+	transition:
+		color var(--transition-normal);
 }
