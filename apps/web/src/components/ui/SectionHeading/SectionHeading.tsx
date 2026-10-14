@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import styles from './SectionHeading.module.css'
 
 type SectionHeadingProps = {
@@ -5,9 +6,16 @@ type SectionHeadingProps = {
 	title: string
 	highlight: string
 	description?: string
+	action?: ReactNode
 }
 
-const SectionHeading = ({ eyebrow, title, highlight, description }: SectionHeadingProps) => {
+const SectionHeading = ({
+	eyebrow,
+	title,
+	highlight,
+	description,
+	action
+}: SectionHeadingProps) => {
 	return (
 		<div className={styles.heading}>
 			<p className={styles.eyebrow}>
@@ -23,6 +31,12 @@ const SectionHeading = ({ eyebrow, title, highlight, description }: SectionHeadi
 				<p className={styles.description}>
 					{description}
 				</p>
+			)}
+
+			{action && (
+				<div className={styles.action}>
+					{action}
+				</div>
 			)}
 		</div>
 	)

@@ -59,9 +59,6 @@
 .actions a,
 .actions button {
 	border: 1px solid var(--color-border);
-
-	transition:
-		border-color var(--transition-normal);
 }
 
 

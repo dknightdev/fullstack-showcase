@@ -1,5 +1,8 @@
-import { useEffect, useRef, type MouseEvent, type ReactNode } from 'react'
+import { useEffect, type MouseEvent, type ReactNode } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
+import { TbX } from 'react-icons/tb'
+import AppIcon from '@/components/ui/AppIcon/AppIcon'
+import Button from '@/components/ui/Button/Button'
 import styles from './Modal.module.css'
 
 type ModalProps = {
@@ -17,8 +20,6 @@ const Modal = ({
 	children,
 	size = 'default'
 }: ModalProps) => {
-	const closeButtonRef = useRef<HTMLButtonElement | null>(null)
-
 	useEffect(() => {
 		if (!isOpen) return
 
@@ -29,10 +30,6 @@ const Modal = ({
 		}
 
 		document.addEventListener('keydown', handleKeyDown)
-
-		requestAnimationFrame(() => {
-			closeButtonRef.current?.focus()
-		})
 
 		return () => {
 			document.removeEventListener('keydown', handleKeyDown)
@@ -105,16 +102,16 @@ const Modal = ({
 								</h2>
 							)}
 
-							<button
-								ref={closeButtonRef}
-								type='button'
-								className={styles.close}
+							<Button
+								variant='icon'
+								className={size === 'fullscreen' ? styles.fullscreenClose : undefined}
 								onClick={onClose}
 								aria-label='Cerrar ventana'
+								title='Cerrar ventana'
+								autoFocus
 							>
-								<span></span>
-								<span></span>
-							</button>
+								<AppIcon icon={TbX} />
+							</Button>
 						</header>
 
 						<div

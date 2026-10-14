@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { TbArrowUpRight } from 'react-icons/tb'
+import { TbArrowUpRight, TbInfoCircle } from 'react-icons/tb'
 import Modal from '@/components/ui/Modal/Modal'
 import Button from '@/components/ui/Button/Button'
 import AppIcon from '@/components/ui/AppIcon/AppIcon'
@@ -272,6 +272,7 @@ const Projects = () => {
 		project: ProjectItem
 		imageIndex: number
 	} | null>(null)
+	const [isPrivacyInfoOpen, setIsPrivacyInfoOpen] = useState(false)
 
 	const openProject = (project: ProjectItem) => {
 		setSelectedGallery(null)
@@ -291,6 +292,10 @@ const Projects = () => {
 		setSelectedGallery(null)
 	}
 
+	const closePrivacyInfo = () => {
+		setIsPrivacyInfoOpen(false)
+	}
+
 	return (
 		<>
 			<Section id='projects'>
@@ -299,6 +304,16 @@ const Projects = () => {
 					title='Lo que he construido'
 					highlight='en diferentes contextos.'
 					description='Una selección de aplicaciones web, móviles y soluciones digitales desarrolladas en contextos profesionales, freelance y académicos.'
+					action={
+						<Button
+							variant='tertiary'
+							onClick={() => setIsPrivacyInfoOpen(true)}
+							aria-label='Más información sobre los proyectos mostrados'
+						>
+							Sobre los proyectos
+							<AppIcon icon={TbInfoCircle} size={16} />
+						</Button>
+					}
 				/>
 
 				<div className={styles.featured}>
@@ -559,6 +574,22 @@ const Projects = () => {
 						initialIndex={selectedGallery.imageIndex}
 					/>
 				)}
+			</Modal>
+
+			<Modal
+				isOpen={isPrivacyInfoOpen}
+				onClose={closePrivacyInfo}
+				title='Sobre los proyectos'
+			>
+				<div className={styles.modalContent}>
+					<div className={styles.modalSection}>
+						<p>He participado en diversos proyectos profesionales que, por compromisos de confidencialidad con las empresas y clientes, no puedo mostrar públicamente.</p>
+
+						<p>Por esa misma razón, los proyectos presentados en este portafolio contienen únicamente información, imágenes y detalles que puedo compartir de forma pública, respetando la privacidad de las empresas y la confidencialidad de sus productos y servicios.</p>
+
+						<p>Aunque esta selección no representa la totalidad de mi experiencia, refleja parte de mi trabajo y las soluciones en las que he participado.</p>
+					</div>
+				</div>
 			</Modal>
 		</>
 	)

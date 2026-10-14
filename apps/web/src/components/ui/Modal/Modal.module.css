@@ -43,62 +43,14 @@
 		border-color var(--transition-normal);
 }
 
+.header button {
+	border: 1px solid var(--color-border);
+}
+
 .header h2 {
 	font-size: var(--font-size-xl);
 	font-weight: var(--font-weight-bold);
 	line-height: 1.2;
-}
-
-.close {
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-shrink: 0;
-	width: 40px;
-	height: 40px;
-	border: 1px solid var(--color-border);
-	border-radius: var(--border-radius-full);
-	background-color: transparent;
-	color: var(--color-text-soft);
-
-	transition:
-		border-color var(--transition-fast),
-		background-color var(--transition-fast),
-		color var(--transition-fast);
-}
-
-.close:hover {
-	border-color: var(--color-primary);
-	background-color: var(--color-primary);
-	color: var(--color-background);
-}
-
-.close span {
-	position: absolute;
-	width: 16px;
-	height: 1px;
-	background-color: currentColor;
-
-	transition:
-		background-color var(--transition-normal),
-		transform var(--transition-fast);
-}
-
-.close span:first-child {
-	transform: rotate(45deg);
-}
-
-.close span:last-child {
-	transform: rotate(-45deg);
-}
-
-.close:hover span:first-child {
-	transform: rotate(135deg);
-}
-
-.close:hover span:last-child {
-	transform: rotate(45deg);
 }
 
 .content {
@@ -135,12 +87,17 @@
 	z-index: 3;
 	border: 0;
 	background-color: rgb(0 0 0 / 40%);
-	color: white;
+	color: #f8fafc;
 }
 
-.fullscreenHeader .close {
-	border-color: rgb(255 255 255 / 40%);
-	color: white;
+.fullscreenClose {
+	border: 1px solid #334155 !important;
+	background-color: transparent !important;
+	color: #f8fafc;
+}
+
+.fullscreenClose:hover {
+	background-color: #334155 !important;
 }
 
 .fullscreenContent {

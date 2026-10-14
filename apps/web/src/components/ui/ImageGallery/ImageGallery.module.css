@@ -138,11 +138,11 @@
 }
 
 .navigation:hover {
-	background-color: var(--color-primary);
+	background-color: var(--color-border);
 }
 
 .navigation:hover svg {
-	color: var(--color-background);
+	color: var(--color-primary);
 }
 
 .previous {
@@ -151,6 +151,19 @@
 
 .next {
 	right: var(--spacing-md);
+}
+
+.fullscreen .navigation {
+	width: 50px;
+	height: 50px;
+}
+
+.fullscreen .previous {
+	left: var(--spacing-lg);
+}
+
+.fullscreen .next {
+	right: var(--spacing-lg);
 }
 
 @media (max-width: 600px) {
@@ -170,5 +183,20 @@
 	.counter {
 		right: var(--spacing-sm);
 		bottom: var(--spacing-sm);
+	}
+}
+
+@media (max-width: 400px) {
+	.fullscreen .navigation {
+		width: 35px;
+		height: 35px;
+	}
+
+	.fullscreen .previous {
+		left: var(--spacing-sm);
+	}
+
+	.fullscreen .next {
+		right: var(--spacing-sm);
 	}
 }

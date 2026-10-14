@@ -1,5 +1,9 @@
 .heading {
-	max-width: 850px;
+	width: 100%;
+	
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
 }
 
 .eyebrow {
@@ -38,4 +42,11 @@
 
 	transition:
 		color var(--transition-normal);
+}
+
+.action {
+	margin-top: var(--spacing-lg);
+
+	align-self: flex-end;
+	
 }
