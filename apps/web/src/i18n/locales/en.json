@@ -1,0 +1,302 @@
+{
+	"navbar": {
+		"about": "About me",
+		"experience": "Experience",
+		"projects": "Projects",
+		"skills": "Skills",
+		"contact": "Contact",
+		"openPreferences": "Open preferences",
+		"closePreferences": "Close preferences",
+		"openMenu": "Open navigation menu",
+		"closeMenu": "Close navigation menu"
+	},
+	"preferences": {
+		"theme": "Theme",
+		"switchToLight": "Switch to light theme",
+		"switchToDark": "Switch to dark theme",
+		"color": "Color",
+		"blueAccent": "Blue accent",
+		"greenAccent": "Green accent",
+		"purpleAccent": "Purple accent",
+		"language": "Language",
+		"switchToEnglish": "Switch to English",
+		"switchToSpanish": "Switch to Spanish"
+	},
+	"footer": {
+		"role": "Full Stack Developer",
+		"description": "Building web and mobile solutions that turn ideas into real products.",
+		"email": "Email",
+		"backToTop": "Back to top"
+	},
+	"ui": {
+		"modal": {
+			"dialog": "Modal dialog",
+			"close": "Close dialog"
+		},
+		"imageGallery": {
+			"openImages": "View images of {{alt}}",
+			"imageAlt": "{{alt}} - image {{index}}",
+			"previousImage": "Previous image",
+			"nextImage": "Next image"
+		}
+	},
+	"hero": {
+		"greeting": "Hi, I'm",
+		"role": "Full Stack Developer",
+		"description": "I build web and mobile applications, APIs, and digital solutions focused on performance and user experience.",
+		"viewProjects": "View projects",
+		"contactMe": "Contact me",
+		"profileAlt": "Duban Caballero",
+		"scrollInstruction": "Scroll to explore"
+	},
+	"about": {
+		"eyebrow": "About me",
+		"title": "Building software",
+		"highlight": "with purpose.",
+		"description": {
+			"first": "I'm a Full Stack Developer with more than five years of experience building web and mobile applications.",
+			"second": "I've participated in different stages of the development lifecycle, from requirements analysis and implementation to functional testing, deployment, support, and maintenance.",
+			"third": "I enjoy solving problems through software and building reliable, maintainable solutions that are ready to evolve over time."
+		},
+		"principles": {
+			"endToEnd": {
+				"title": "End-to-end",
+				"description": "I work across the full development lifecycle, from requirements to deployment and support."
+			},
+			"quality": {
+				"title": "Quality",
+				"description": "I focus on functional testing, stability, maintenance, and continuous improvement."
+			},
+			"problemSolving": {
+				"title": "Problem solving",
+				"description": "I analyze requirements and translate them into practical, maintainable solutions."
+			},
+			"collaboration": {
+				"title": "Collaboration",
+				"description": "I work closely with development teams and contribute to planning, technical support, and delivery."
+			}
+		}
+	},
+	"experience": {
+		"eyebrow": "Experience",
+		"title": "Professional experience",
+		"highlight": "and freelance work.",
+		"description": "Experience developing web and mobile applications, APIs, and digital solutions, both within development teams and directly with clients.",
+		"items": {
+			"asistenciaMovil": {
+				"company": "Asistencia Móvil",
+				"role": "Full Stack Developer",
+				"type": "Professional experience",
+				"description": "Development and maintenance of web and mobile applications, APIs, and integrations, contributing across the development lifecycle from requirements analysis to testing, deployment, support, and maintenance."
+			},
+			"freelance": {
+				"company": "Freelance work",
+				"role": "Full Stack Developer",
+				"type": "Freelance",
+				"description": "Development of web solutions for independent clients, participating in requirements analysis, feature design, development, testing, and project delivery."
+			}
+		}
+	},
+	"projects": {
+		"eyebrow": "Projects",
+		"title": "What I've built",
+		"highlight": "across different contexts.",
+		"description": "A selection of web and mobile applications and digital solutions developed in professional, freelance, and academic contexts.",
+		"openPrivacyInfo": "More information about the projects shown",
+		"privacyInfoButton": "About the projects",
+		"viewProject": "View project",
+		"otherProjects": {
+			"eyebrow": "Other projects",
+			"title": "Websites",
+			"description": "Three websites developed for the same client as part of different freelance projects."
+		},
+		"modal": {
+			"description": "Description",
+			"context": "Context",
+			"role": "My contribution",
+			"highlights": "Highlights",
+			"technologies": "Technologies"
+		},
+		"links": {
+			"googlePlay": "Google Play",
+			"viewDemo": "View demo"
+		},
+		"privacyInfo": {
+			"title": "About the projects",
+			"first": "I've contributed to several professional projects that I cannot show publicly because of confidentiality commitments with companies and clients.",
+			"second": "For the same reason, the projects presented in this portfolio contain only information, images, and details that I can share publicly, while respecting the privacy of the companies and the confidentiality of their products and services.",
+			"third": "Although this selection does not represent all of my experience, it reflects part of my work and the solutions I have contributed to."
+		},
+		"items": {
+			"storeOrders": {
+				"title": "Ordering app for shopkeepers",
+				"category": "Web and mobile application",
+				"context": "Asistencia Móvil",
+				"description": "An app focused on shopkeepers for placing product orders, with mobile and web versions.",
+				"details": {
+					"description": "An app for placing product orders focused on shopkeepers. Users can access a catalog, select the products and quantities they need, choose when they want to receive their order, and pay on delivery.",
+					"context": "Project developed as part of Asistencia Móvil's solutions.",
+					"role": "Contributed to the development and maintenance of the mobile app, web version, and services related to the order flow."
+				},
+				"highlights": {
+					"productCatalog": "Product catalog",
+					"orderManagement": "Order creation and management",
+					"deliveryScheduling": "Delivery scheduling",
+					"cashOnDelivery": "Cash on delivery",
+					"mobileAndWebApp": "Mobile app and web version"
+				}
+			},
+			"businessSupport": {
+				"title": "Business support platform",
+				"category": "Web application",
+				"context": "Freelance project",
+				"description": "A custom platform for managing business support and mentoring programs from a centralized dashboard.",
+				"details": {
+					"description": "A custom web platform designed to manage business support and mentoring programs, enabling organizations to manage companies, experts, assigned hours, sessions, follow-ups, and performance metrics from a centralized dashboard.",
+					"context": "Project developed as freelance work for an independent client.",
+					"role": "End-to-end development of the platform, collaborating directly with the client to define, refine, and implement business requirements and features."
+				},
+				"highlights": {
+					"companyAndExpertManagement": "Company and expert management",
+					"mentoringPrograms": "Mentoring programs",
+					"sessionTracking": "Session tracking",
+					"assignedHours": "Assigned hours tracking",
+					"dashboardsAndMetrics": "Dashboards and metrics",
+					"pdfReports": "PDF reports",
+					"emailNotifications": "Email notifications",
+					"calendarFiles": ".ics files for sessions",
+					"userAndAccessManagement": "User and access management"
+				}
+			},
+			"rayShark": {
+				"title": "RayShark",
+				"category": "Mobile application",
+				"context": "Commissioned project",
+				"description": "A mobile app for identifying fish species from the Colombian Caribbean, designed to work completely offline.",
+				"details": {
+					"description": "RayShark is a mobile app developed to make it easier to identify and consult information about fish species from the Colombian Caribbean. It includes information on 136 species and was designed to work without an internet connection through a local database.",
+					"context": "A commissioned project developed during my sister's undergraduate studies in Biology. The app was submitted to an academic competition, where it won.",
+					"role": "End-to-end development of the mobile app, implementation of the local Realm database, and development of the offline browsing experience."
+				},
+				"highlights": {
+					"registeredSpecies": "136 registered species",
+					"fullyOffline": "Fully offline operation",
+					"localRealmDatabase": "Local Realm database",
+					"speciesInformation": "Species information lookup",
+					"androidApp": "Android app",
+					"academicCompetition": "Project presented in an academic competition"
+				}
+			},
+			"brandingAgency": {
+				"title": "Branding and promotional products agency",
+				"category": "Website",
+				"context": "Corporate website project",
+				"description": "A corporate website for a full-service branding, marketing, printing, and promotional products agency, developed to showcase its services and make it easy for potential clients to get in touch.",
+				"details": {
+					"description": "A website developed for a branding and marketing agency that brings together several service lines, including brand building, printing, signage, garment decoration, and promotional products. The site was structured to present services clearly and guide visitors toward contacting the company.",
+					"context": "Project developed to strengthen the company's digital presence and present its service portfolio to potential clients.",
+					"role": "Frontend development of the landing page, layout of its sections, responsive design implementation, and development of calls to action."
+				},
+				"highlights": {
+					"multipleServiceLines": "Multiple service lines presentation",
+					"responsiveDesign": "Responsive design",
+					"conversionFocusedSections": "Conversion-focused sections",
+					"servicePortfolio": "Service portfolio presentation",
+					"callToActionIntegration": "Call-to-action integration"
+				}
+			},
+			"beautyBusiness": {
+				"title": "Beauty business website",
+				"category": "Landing page",
+				"context": "Freelance project",
+				"description": "A landing page for a lash extension business, focused on presenting its services and prices and making it easier to book appointments.",
+				"details": {
+					"description": "A landing page for a lash extension business with information about its services, prices, policies, and contact details.",
+					"context": "Promotional page developed for one of the clients of the company that contracted the development of this site.",
+					"role": "Frontend development, responsive layout, and implementation of informational sections and calls to action."
+				},
+				"highlights": {
+					"serviceAndPriceCatalog": "Service and price catalog",
+					"contactInformation": "Contact information",
+					"bookingIntegration": "Booking integration",
+					"responsiveDesign": "Responsive design"
+				}
+			},
+			"equestrianCenter": {
+				"title": "Equestrian center website",
+				"category": "Landing page",
+				"context": "Freelance project",
+				"description": "A landing page for an equestrian center in Florida, focused on presenting its services and making it easy for potential clients to get in touch.",
+				"details": {
+					"description": "A landing page for an equestrian center with information about its services, facilities, activities, and contact options.",
+					"context": "Promotional page developed for one of the clients of the company that contracted the development of this site.",
+					"role": "Frontend development, responsive layout, and implementation of the landing page sections."
+				},
+				"highlights": {
+					"servicePresentation": "Service presentation",
+					"businessInformation": "Business information",
+					"contactForm": "Contact form",
+					"responsiveDesign": "Responsive design"
+				}
+			}
+		}
+	},
+	"skills": {
+		"eyebrow": "Skills",
+		"title": "Technologies I use",
+		"highlight": "to build.",
+		"description": "A stack focused on developing end-to-end solutions, from interfaces and mobile applications to APIs, databases, and integrations.",
+		"categories": {
+			"frontend": {
+				"title": "Frontend",
+				"description": "Development of web interfaces and mobile applications."
+			},
+			"backend": {
+				"title": "Backend",
+				"description": "Development of APIs, services, and business logic."
+			},
+			"databases": {
+				"title": "Databases",
+				"description": "Design and development of data structures and processes."
+			},
+			"languages": {
+				"title": "Languages",
+				"description": "Languages used across different projects."
+			},
+			"toolsAndPractices": {
+				"title": "Tools and practices",
+				"description": "Tools and methodologies used in development."
+			}
+		}
+	},
+	"contact": {
+		"eyebrow": "Contact",
+		"title": "Shall we talk?",
+		"highlight": "I'm available.",
+		"description": "If you'd like to discuss a project, a professional opportunity, or simply connect, you can find me through any of the following channels.",
+		"openItem": "Open {{item}}",
+		"copyItem": "Copy {{item}}",
+		"copyToClipboard": "Copy to clipboard",
+		"items": {
+			"linkedin": {
+				"title": "LinkedIn",
+				"description": "Connect with me professionally"
+			},
+			"github": {
+				"title": "GitHub",
+				"description": "Explore my projects and code"
+			},
+			"email": {
+				"title": "Email"
+			},
+			"whatsapp": {
+				"title": "WhatsApp"
+			}
+		},
+		"cv": {
+			"eyebrow": "Would you like to learn more about my experience?",
+			"title": "Download my CV",
+			"download": "Download CV"
+		}
+	}
+}

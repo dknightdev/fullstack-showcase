@@ -1,0 +1,302 @@
+{
+	"navbar": {
+		"about": "Sobre mí",
+		"experience": "Experiencia",
+		"projects": "Proyectos",
+		"skills": "Habilidades",
+		"contact": "Contacto",
+		"openPreferences": "Abrir preferencias",
+		"closePreferences": "Cerrar preferencias",
+		"openMenu": "Abrir menú de navegación",
+		"closeMenu": "Cerrar menú de navegación"
+	},
+	"preferences": {
+		"theme": "Tema",
+		"switchToLight": "Cambiar a tema claro",
+		"switchToDark": "Cambiar a tema oscuro",
+		"color": "Color",
+		"blueAccent": "Acento azul",
+		"greenAccent": "Acento verde",
+		"purpleAccent": "Acento morado",
+		"language": "Idioma",
+		"switchToEnglish": "Cambiar a inglés",
+		"switchToSpanish": "Cambiar a español"
+	},
+	"footer": {
+		"role": "Desarrollador Full Stack",
+		"description": "Construyendo soluciones web y móviles que convierten ideas en productos reales.",
+		"email": "Correo",
+		"backToTop": "Volver arriba"
+	},
+	"ui": {
+		"modal": {
+			"dialog": "Ventana modal",
+			"close": "Cerrar ventana"
+		},
+		"imageGallery": {
+			"openImages": "Ver imágenes de {{alt}}",
+			"imageAlt": "{{alt}} - imagen {{index}}",
+			"previousImage": "Imagen anterior",
+			"nextImage": "Imagen siguiente"
+		}
+	},
+	"hero": {
+		"greeting": "Hola, soy",
+		"role": "Desarrollador Full Stack",
+		"description": "Construyo aplicaciones web y móviles, APIs y soluciones digitales enfocadas en rendimiento y experiencia de usuario.",
+		"viewProjects": "Ver proyectos",
+		"contactMe": "Contáctame",
+		"profileAlt": "Duban Caballero",
+		"scrollInstruction": "Desplaza para explorar"
+	},
+	"about": {
+		"eyebrow": "Sobre mí",
+		"title": "Construyendo software",
+		"highlight": "con propósito.",
+		"description": {
+			"first": "Soy Full Stack Developer con más de cinco años de experiencia construyendo aplicaciones web y móviles.",
+			"second": "He participado en distintas etapas del ciclo de desarrollo, desde el análisis de requerimientos y la implementación hasta las pruebas funcionales, el despliegue, el soporte y el mantenimiento.",
+			"third": "Disfruto resolver problemas a través del software y construir soluciones confiables, mantenibles y preparadas para evolucionar con el tiempo."
+		},
+		"principles": {
+			"endToEnd": {
+				"title": "End-to-end",
+				"description": "Trabajo en todo el ciclo de desarrollo, desde requerimientos hasta despliegue y soporte en producción."
+			},
+			"quality": {
+				"title": "Calidad",
+				"description": "Me enfoco en pruebas funcionales, estabilidad, mantenimiento y mejora continua."
+			},
+			"problemSolving": {
+				"title": "Resolución de problemas",
+				"description": "Analizo requerimientos y los traduzco en soluciones prácticas y mantenibles."
+			},
+			"collaboration": {
+				"title": "Colaboración",
+				"description": "Trabajo de cerca con equipos de desarrollo y aporto en planificación, soporte técnico y entrega."
+			}
+		}
+	},
+	"experience": {
+		"eyebrow": "Experiencia",
+		"title": "Experiencia profesional",
+		"highlight": "y trabajo independiente.",
+		"description": "Experiencia desarrollando aplicaciones web y móviles, APIs y soluciones digitales, tanto dentro de equipos de desarrollo como trabajando directamente con clientes.",
+		"items": {
+			"asistenciaMovil": {
+				"company": "Asistencia Móvil",
+				"role": "Full Stack Developer",
+				"type": "Experiencia profesional",
+				"description": "Desarrollo y mantenimiento de aplicaciones web y móviles, APIs e integraciones, participando en diferentes etapas del ciclo de desarrollo, desde el análisis de requerimientos hasta las pruebas, despliegues, soporte y mantenimiento."
+			},
+			"freelance": {
+				"company": "Trabajo independiente",
+				"role": "Full Stack Developer",
+				"type": "Freelance",
+				"description": "Desarrollo de soluciones web para clientes independientes, participando en el análisis de requerimientos, diseño de funcionalidades, desarrollo, pruebas y entrega de proyectos."
+			}
+		}
+	},
+	"projects": {
+		"eyebrow": "Proyectos",
+		"title": "Lo que he construido",
+		"highlight": "en diferentes contextos.",
+		"description": "Una selección de aplicaciones web, móviles y soluciones digitales desarrolladas en contextos profesionales, freelance y académicos.",
+		"openPrivacyInfo": "Más información sobre los proyectos mostrados",
+		"privacyInfoButton": "Sobre los proyectos",
+		"viewProject": "Ver proyecto",
+		"otherProjects": {
+			"eyebrow": "Otros proyectos",
+			"title": "Sitios web",
+			"description": "Tres sitios web desarrollados para un mismo cliente como parte de diferentes proyectos freelance."
+		},
+		"modal": {
+			"description": "Descripción",
+			"context": "Contexto",
+			"role": "Mi participación",
+			"highlights": "Características",
+			"technologies": "Tecnologías"
+		},
+		"links": {
+			"googlePlay": "Google Play",
+			"viewDemo": "Ver demo"
+		},
+		"privacyInfo": {
+			"title": "Sobre los proyectos",
+			"first": "He participado en diversos proyectos profesionales que, por compromisos de confidencialidad con las empresas y clientes, no puedo mostrar públicamente.",
+			"second": "Por esa misma razón, los proyectos presentados en este portafolio contienen únicamente información, imágenes y detalles que puedo compartir de forma pública, respetando la privacidad de las empresas y la confidencialidad de sus productos y servicios.",
+			"third": "Aunque esta selección no representa la totalidad de mi experiencia, refleja parte de mi trabajo y las soluciones en las que he participado."
+		},
+		"items": {
+			"storeOrders": {
+				"title": "Aplicación de pedidos para tenderos",
+				"category": "Aplicación web y móvil",
+				"context": "Asistencia Móvil",
+				"description": "Aplicación enfocada en tenderos para la solicitud de pedidos de productos, con versiones móvil y web.",
+				"details": {
+					"description": "Aplicación para la solicitud de pedidos de productos, enfocada en tenderos. Los usuarios pueden ingresar a un catálogo, seleccionar los productos y cantidades que necesitan, definir cuándo desean recibir el pedido y realizar el pago contraentrega.",
+					"context": "Proyecto desarrollado como parte de las soluciones de Asistencia Móvil.",
+					"role": "Participación en el desarrollo y mantenimiento de la aplicación móvil, versión web y servicios relacionados con el flujo de pedidos."
+				},
+				"highlights": {
+					"productCatalog": "Catálogo de productos",
+					"orderManagement": "Creación y gestión de pedidos",
+					"deliveryScheduling": "Programación de entregas",
+					"cashOnDelivery": "Pago contraentrega",
+					"mobileAndWebApp": "Aplicación móvil y versión web"
+				}
+			},
+			"businessSupport": {
+				"title": "Plataforma de acompañamiento empresarial",
+				"category": "Aplicación web",
+				"context": "Proyecto freelance",
+				"description": "Plataforma personalizada para gestionar programas de apoyo empresarial y mentoría desde un panel centralizado.",
+				"details": {
+					"description": "Plataforma web personalizada diseñada para gestionar programas de apoyo empresarial y mentoría, permitiendo a las organizaciones administrar empresas, expertos, horas asignadas, sesiones, seguimientos y métricas de rendimiento desde un panel centralizado.",
+					"context": "Proyecto desarrollado como trabajo freelance para un cliente independiente.",
+					"role": "Desarrollo integral de la plataforma, colaborando directamente con el cliente para definir, refinar e implementar los requisitos de negocio y las funcionalidades."
+				},
+				"highlights": {
+					"companyAndExpertManagement": "Gestión de empresas y expertos",
+					"mentoringPrograms": "Programas de mentoría",
+					"sessionTracking": "Seguimiento de sesiones",
+					"assignedHours": "Control de horas asignadas",
+					"dashboardsAndMetrics": "Paneles y métricas",
+					"pdfReports": "Reportes PDF",
+					"emailNotifications": "Notificaciones por correo",
+					"calendarFiles": "Archivos .ics para sesiones",
+					"userAndAccessManagement": "Gestión de usuarios y acceso"
+				}
+			},
+			"rayShark": {
+				"title": "RayShark",
+				"category": "Aplicación móvil",
+				"context": "Proyecto desarrollado por encargo",
+				"description": "Aplicación móvil para la identificación de especies de peces del Caribe colombiano, diseñada para funcionar completamente offline.",
+				"details": {
+					"description": "RayShark es una aplicación móvil desarrollada para facilitar la identificación y consulta de información sobre especies de peces del Caribe colombiano. Incluye información de 136 especies y fue diseñada para funcionar sin conexión a Internet mediante una base de datos local.",
+					"context": "Proyecto desarrollado por encargo durante la etapa universitaria de mi hermana, estudiante de Biología. La aplicación fue presentada como parte de un concurso académico en el que resultó ganadora.",
+					"role": "Desarrollo integral de la aplicación móvil, implementación de la base de datos local con Realm y construcción de la experiencia de consulta offline."
+				},
+				"highlights": {
+					"registeredSpecies": "136 especies registradas",
+					"fullyOffline": "Funcionamiento completamente offline",
+					"localRealmDatabase": "Base de datos local con Realm",
+					"speciesInformation": "Consulta de información de especies",
+					"androidApp": "Aplicación para Android",
+					"academicCompetition": "Proyecto presentado en concurso académico"
+				}
+			},
+			"brandingAgency": {
+				"title": "Agencia de branding y productos promocionales",
+				"category": "Sitio web",
+				"context": "Proyecto de sitio web corporativo",
+				"description": "Sitio web corporativo para una agencia integral de branding, marketing, impresión y productos promocionales, desarrollado para presentar sus diferentes servicios y facilitar el contacto con potenciales clientes.",
+				"details": {
+					"description": "Sitio web desarrollado para una agencia de branding y marketing que reúne diferentes líneas de servicio, incluyendo construcción de marca, impresión, señalética, decoración de prendas y productos promocionales. El sitio fue estructurado para presentar los servicios de forma clara y dirigir al visitante hacia el contacto con la empresa.",
+					"context": "Proyecto desarrollado para fortalecer la presencia digital de la empresa y presentar su portafolio de servicios a clientes potenciales.",
+					"role": "Desarrollo frontend de la landing page, maquetación de las diferentes secciones, implementación del diseño responsive y construcción de los llamados a la acción."
+				},
+				"highlights": {
+					"multipleServiceLines": "Presentación de múltiples líneas de servicio",
+					"responsiveDesign": "Diseño responsive",
+					"conversionFocusedSections": "Secciones orientadas a conversión",
+					"servicePortfolio": "Presentación del portafolio de servicios",
+					"callToActionIntegration": "Integración de llamadas a la acción"
+				}
+			},
+			"beautyBusiness": {
+				"title": "Sitio web para negocio de belleza",
+				"category": "Landing page",
+				"context": "Proyecto freelance",
+				"description": "Landing page para un negocio de extensiones de pestañas, enfocada en presentar sus servicios, precios y facilitar las reservas.",
+				"details": {
+					"description": "Landing page para un negocio de extensiones de pestañas, con información sobre sus servicios, precios, políticas y datos de contacto.",
+					"context": "Página promocional desarrollada para uno de los clientes de la empresa que contrató el desarrollo de este sitio.",
+					"role": "Desarrollo frontend, maquetación responsive e implementación de las diferentes secciones informativas y llamadas a la acción."
+				},
+				"highlights": {
+					"serviceAndPriceCatalog": "Catálogo de servicios y precios",
+					"contactInformation": "Información de contacto",
+					"bookingIntegration": "Integración de reservas",
+					"responsiveDesign": "Diseño responsive"
+				}
+			},
+			"equestrianCenter": {
+				"title": "Sitio web para centro ecuestre",
+				"category": "Landing page",
+				"context": "Proyecto freelance",
+				"description": "Landing page para un centro ecuestre en Florida, enfocada en presentar sus servicios y facilitar el contacto con potenciales clientes.",
+				"details": {
+					"description": "Landing page para un centro ecuestre, con información sobre sus servicios, instalaciones, actividades y opciones de contacto.",
+					"context": "Página promocional desarrollada para uno de los clientes de la empresa que contrató el desarrollo de este sitio.",
+					"role": "Desarrollo frontend, maquetación responsive e implementación de las diferentes secciones de la landing page."
+				},
+				"highlights": {
+					"servicePresentation": "Presentación de servicios",
+					"businessInformation": "Información del negocio",
+					"contactForm": "Formulario de contacto",
+					"responsiveDesign": "Diseño responsive"
+				}
+			}
+		}
+	},
+	"skills": {
+		"eyebrow": "Habilidades",
+		"title": "Tecnologías que utilizo",
+		"highlight": "para construir.",
+		"description": "Un stack orientado al desarrollo de soluciones completas, desde interfaces y aplicaciones móviles hasta APIs, bases de datos e integraciones.",
+		"categories": {
+			"frontend": {
+				"title": "Frontend",
+				"description": "Desarrollo de interfaces web y aplicaciones móviles."
+			},
+			"backend": {
+				"title": "Backend",
+				"description": "Desarrollo de APIs, servicios y lógica de negocio."
+			},
+			"databases": {
+				"title": "Bases de datos",
+				"description": "Diseño y desarrollo de estructuras y procesos de datos."
+			},
+			"languages": {
+				"title": "Lenguajes",
+				"description": "Lenguajes utilizados a lo largo de diferentes proyectos."
+			},
+			"toolsAndPractices": {
+				"title": "Herramientas y prácticas",
+				"description": "Herramientas y metodologías utilizadas en el desarrollo."
+			}
+		}
+	},
+	"contact": {
+		"eyebrow": "Contacto",
+		"title": "¿Hablamos?",
+		"highlight": "Estoy disponible.",
+		"description": "Si quieres hablar sobre un proyecto, una oportunidad profesional o simplemente conectar, puedes encontrarme en cualquiera de los siguientes medios.",
+		"openItem": "Abrir {{item}}",
+		"copyItem": "Copiar {{item}}",
+		"copyToClipboard": "Copiar al portapapeles",
+		"items": {
+			"linkedin": {
+				"title": "LinkedIn",
+				"description": "Conecta conmigo profesionalmente"
+			},
+			"github": {
+				"title": "GitHub",
+				"description": "Explora mis proyectos y código"
+			},
+			"email": {
+				"title": "Correo"
+			},
+			"whatsapp": {
+				"title": "WhatsApp"
+			}
+		},
+		"cv": {
+			"eyebrow": "¿Quieres conocer más sobre mi experiencia?",
+			"title": "Descarga mi CV",
+			"download": "Descargar CV"
+		}
+	}
+}

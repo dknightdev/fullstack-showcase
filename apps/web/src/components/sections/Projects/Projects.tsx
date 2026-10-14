@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { TbArrowUpRight, TbInfoCircle } from 'react-icons/tb'
 import Modal from '@/components/ui/Modal/Modal'
 import Button from '@/components/ui/Button/Button'
@@ -10,35 +11,21 @@ import ImageGallery from '@/components/ui/ImageGallery/ImageGallery'
 import styles from './Projects.module.css'
 
 type ProjectLink = {
-	label: string
+	labelKey: 'googlePlay' | 'viewDemo'
 	href: string
 }
 
-type ProjectDetails = {
-	description: string
-	context: string
-	role: string
-	highlights?: string[]
-}
-
 type ProjectItem = {
-	title: string
-	category?: string
-	context: string
-	description: string
+	key: string
 	images: string[]
 	technologies: string[]
-	details: ProjectDetails
+	highlights: string[]
 	links?: ProjectLink[]
 }
 
 const projects: ProjectItem[] = [
 	{
-		title: 'Aplicación de pedidos para tenderos',
-		category: 'Aplicación web y móvil',
-		context: 'Asistencia Móvil',
-		description:
-			'Aplicación enfocada en tenderos para la solicitud de pedidos de productos, con versiones móvil y web.',
+		key: 'storeOrders',
 		images: [
 			'/project1/preview1.png',
 			'/project1/preview2.png',
@@ -53,34 +40,22 @@ const projects: ProjectItem[] = [
 			'PostgreSQL',
 			'TypeScript'
 		],
-		details: {
-			description:
-				'Aplicación para la solicitud de pedidos de productos, enfocada en tenderos. Los usuarios pueden ingresar a un catálogo, seleccionar los productos y cantidades que necesitan, definir cuándo desean recibir el pedido y realizar el pago contraentrega.',
-			context:
-				'Proyecto desarrollado como parte de las soluciones de Asistencia Móvil.',
-			role:
-				'Participación en el desarrollo y mantenimiento de la aplicación móvil, versión web y servicios relacionados con el flujo de pedidos.',
-			highlights: [
-				'Catálogo de productos',
-				'Creación y gestión de pedidos',
-				'Programación de entregas',
-				'Pago contraentrega',
-				'Aplicación móvil y versión web'
-			]
-		},
+		highlights: [
+			'productCatalog',
+			'orderManagement',
+			'deliveryScheduling',
+			'cashOnDelivery',
+			'mobileAndWebApp'
+		],
 		links: [
 			{
-				label: 'Google Play',
+				labelKey: 'googlePlay',
 				href: 'https://play.google.com/store/apps/details?id=com.amovil.latienda'
 			}
 		]
 	},
 	{
-		title: 'Plataforma de acompañamiento empresarial',
-		category: 'Aplicación web',
-		context: 'Proyecto freelance',
-		description:
-			'Plataforma personalizada para gestionar programas de apoyo empresarial y mentoría desde un panel centralizado.',
+		key: 'businessSupport',
 		images: [
 			'/project2/preview1.png',
 			'/project2/preview2.png',
@@ -94,38 +69,26 @@ const projects: ProjectItem[] = [
 			'MySQL',
 			'TypeScript'
 		],
-		details: {
-			description:
-				'Plataforma web personalizada diseñada para gestionar programas de apoyo empresarial y mentoría, permitiendo a las organizaciones administrar empresas, expertos, horas asignadas, sesiones, seguimientos y métricas de rendimiento desde un panel centralizado.',
-			context:
-				'Proyecto desarrollado como trabajo freelance para un cliente independiente.',
-			role:
-				'Desarrollo integral de la plataforma, colaborando directamente con el cliente para definir, refinar e implementar los requisitos de negocio y las funcionalidades.',
-			highlights: [
-				'Gestión de empresas y expertos',
-				'Programas de mentoría',
-				'Seguimiento de sesiones',
-				'Control de horas asignadas',
-				'Paneles y métricas',
-				'Reportes PDF',
-				'Notificaciones por correo',
-				'Archivos .ics para sesiones',
-				'Gestión de usuarios y acceso'
-			]
-		},
+		highlights: [
+			'companyAndExpertManagement',
+			'mentoringPrograms',
+			'sessionTracking',
+			'assignedHours',
+			'dashboardsAndMetrics',
+			'pdfReports',
+			'emailNotifications',
+			'calendarFiles',
+			'userAndAccessManagement'
+		],
 		links: [
 			{
-				label: 'Ver demo',
+				labelKey: 'viewDemo',
 				href: '#'
 			}
 		]
 	},
 	{
-		title: 'RayShark',
-		category: 'Aplicación móvil',
-		context: 'Proyecto desarrollado por encargo',
-		description:
-			'Aplicación móvil para la identificación de especies de peces del Caribe colombiano, diseñada para funcionar completamente offline.',
+		key: 'rayShark',
 		images: [
 			'/project3/preview1.png',
 			'/project3/preview2.png',
@@ -136,25 +99,17 @@ const projects: ProjectItem[] = [
 			'Realm',
 			'TypeScript'
 		],
-		details: {
-			description:
-				'RayShark es una aplicación móvil desarrollada para facilitar la identificación y consulta de información sobre especies de peces del Caribe colombiano. Incluye información de 136 especies y fue diseñada para funcionar sin conexión a Internet mediante una base de datos local.',
-			context:
-				'Proyecto desarrollado por encargo durante la etapa universitaria de mi hermana, estudiante de Biología. La aplicación fue presentada como parte de un concurso académico en el que resultó ganadora.',
-			role:
-				'Desarrollo integral de la aplicación móvil, implementación de la base de datos local con Realm y construcción de la experiencia de consulta offline.',
-			highlights: [
-				'136 especies registradas',
-				'Funcionamiento completamente offline',
-				'Base de datos local con Realm',
-				'Consulta de información de especies',
-				'Aplicación para Android',
-				'Proyecto presentado en concurso académico'
-			]
-		},
+		highlights: [
+			'registeredSpecies',
+			'fullyOffline',
+			'localRealmDatabase',
+			'speciesInformation',
+			'androidApp',
+			'academicCompetition'
+		],
 		links: [
 			{
-				label: 'Google Play',
+				labelKey: 'googlePlay',
 				href: 'https://play.google.com/store/apps/details?id=com.dknightdev.ray_shark'
 			}
 		]
@@ -163,11 +118,7 @@ const projects: ProjectItem[] = [
 
 const websites: ProjectItem[] = [
 	{
-		title: 'Agencia de branding y productos promocionales',
-		category: 'Sitio web',
-		context: 'Proyecto de sitio web corporativo',
-		description:
-			'Sitio web corporativo para una agencia integral de branding, marketing, impresión y productos promocionales, desarrollado para presentar sus diferentes servicios y facilitar el contacto con potenciales clientes.',
+		key: 'brandingAgency',
 		images: [
 			'/project4/preview1.png',
 			'/project4/preview2.png',
@@ -181,29 +132,17 @@ const websites: ProjectItem[] = [
 			'CSS',
 			'Responsive Design'
 		],
-		details: {
-			description:
-				'Sitio web desarrollado para una agencia de branding y marketing que reúne diferentes líneas de servicio, incluyendo construcción de marca, impresión, señalética, decoración de prendas y productos promocionales. El sitio fue estructurado para presentar los servicios de forma clara y dirigir al visitante hacia el contacto con la empresa.',
-			context:
-				'Proyecto desarrollado para fortalecer la presencia digital de la empresa y presentar su portafolio de servicios a clientes potenciales.',
-			role:
-				'Desarrollo frontend de la landing page, maquetación de las diferentes secciones, implementación del diseño responsive y construcción de los llamados a la acción.',
-			highlights: [
-				'Presentación de múltiples líneas de servicio',
-				'Diseño responsive',
-				'Secciones orientadas a conversión',
-				'Presentación del portafolio de servicios',
-				'Integración de llamadas a la acción'
-			]
-		},
+		highlights: [
+			'multipleServiceLines',
+			'responsiveDesign',
+			'conversionFocusedSections',
+			'servicePortfolio',
+			'callToActionIntegration'
+		],
 		links: []
 	},
 	{
-		title: 'Sitio web para negocio de belleza',
-		category: 'Landing page',
-		context: 'Proyecto freelance',
-		description:
-			'Landing page para un negocio de extensiones de pestañas, enfocada en presentar sus servicios, precios y facilitar las reservas.',
+		key: 'beautyBusiness',
 		images: [
 			'/project5/preview1.png',
 			'/project5/preview2.png',
@@ -215,28 +154,16 @@ const websites: ProjectItem[] = [
 			'JavaScript',
 			'Responsive Design'
 		],
-		details: {
-			description:
-				'Landing page para un negocio de extensiones de pestañas, con información sobre sus servicios, precios, políticas y datos de contacto.',
-			context:
-				'Página promocional desarrollada para uno de los clientes de la empresa que contrató el desarrollo de este sitio.',
-			role:
-				'Desarrollo frontend, maquetación responsive e implementación de las diferentes secciones informativas y llamadas a la acción.',
-			highlights: [
-				'Catálogo de servicios y precios',
-				'Información de contacto',
-				'Integración de reservas',
-				'Diseño responsive'
-			]
-		},
+		highlights: [
+			'serviceAndPriceCatalog',
+			'contactInformation',
+			'bookingIntegration',
+			'responsiveDesign'
+		],
 		links: []
 	},
 	{
-		title: 'Sitio web para centro ecuestre',
-		category: 'Landing page',
-		context: 'Proyecto freelance',
-		description:
-			'Landing page para un centro ecuestre en Florida, enfocada en presentar sus servicios y facilitar el contacto con potenciales clientes.',
+		key: 'equestrianCenter',
 		images: [
 			'/project6/preview1.png',
 			'/project6/preview2.png',
@@ -248,25 +175,21 @@ const websites: ProjectItem[] = [
 			'JavaScript',
 			'Responsive Design'
 		],
-		details: {
-			description:
-				'Landing page para un centro ecuestre, con información sobre sus servicios, instalaciones, actividades y opciones de contacto.',
-			context:
-				'Página promocional desarrollada para uno de los clientes de la empresa que contrató el desarrollo de este sitio.',
-			role:
-				'Desarrollo frontend, maquetación responsive e implementación de las diferentes secciones de la landing page.',
-			highlights: [
-				'Presentación de servicios',
-				'Información del negocio',
-				'Formulario de contacto',
-				'Diseño responsive'
-			]
-		},
+		highlights: [
+			'servicePresentation',
+			'businessInformation',
+			'contactForm',
+			'responsiveDesign'
+		],
 		links: []
 	}
 ]
 
+const projectTranslationKey = (project: ProjectItem, field: string) =>
+	`projects.items.${project.key}.${field}`
+
 const Projects = () => {
+	const { t } = useTranslation()
 	const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null)
 	const [selectedGallery, setSelectedGallery] = useState<{
 		project: ProjectItem
@@ -300,17 +223,17 @@ const Projects = () => {
 		<>
 			<Section id='projects'>
 				<SectionHeading
-					eyebrow='Proyectos'
-					title='Lo que he construido'
-					highlight='en diferentes contextos.'
-					description='Una selección de aplicaciones web, móviles y soluciones digitales desarrolladas en contextos profesionales, freelance y académicos.'
+					eyebrow={t('projects.eyebrow')}
+					title={t('projects.title')}
+					highlight={t('projects.highlight')}
+					description={t('projects.description')}
 					action={
 						<Button
 							variant='tertiary'
 							onClick={() => setIsPrivacyInfoOpen(true)}
-							aria-label='Más información sobre los proyectos mostrados'
+							aria-label={t('projects.openPrivacyInfo')}
 						>
-							Sobre los proyectos
+							{t('projects.privacyInfoButton')}
 							<AppIcon icon={TbInfoCircle} size={16} />
 						</Button>
 					}
@@ -319,13 +242,13 @@ const Projects = () => {
 				<div className={styles.featured}>
 					{projects.map((project, index) => (
 						<article
-							key={project.title}
+							key={project.key}
 							className={styles.project}
 						>
 							<div className={styles.imageWrapper}>
 								<ImageGallery
 									images={project.images}
-									alt={project.title}
+									alt={t(projectTranslationKey(project, 'title'))}
 									mode='preview'
 									onOpen={(imageIndex) =>
 										openGallery(project, imageIndex)
@@ -339,19 +262,19 @@ const Projects = () => {
 
 							<div className={styles.projectContent}>
 								<p className={styles.category}>
-									{project.category}
+									{t(projectTranslationKey(project, 'category'))}
 								</p>
 
 								<h3>
-									{project.title}
+									{t(projectTranslationKey(project, 'title'))}
 								</h3>
 
 								<p className={styles.context}>
-									{project.context}
+									{t(projectTranslationKey(project, 'context'))}
 								</p>
 
 								<p className={styles.description}>
-									{project.description}
+									{t(projectTranslationKey(project, 'description'))}
 								</p>
 
 								<div className={styles.technologies}>
@@ -368,7 +291,7 @@ const Projects = () => {
 									variant='tertiary'
 									onClick={() => openProject(project)}
 								>
-									Ver proyecto
+									{t('projects.viewProject')}
 									<AppIcon icon={TbArrowUpRight} size={16} />
 								</Button>
 							</div>
@@ -380,30 +303,29 @@ const Projects = () => {
 					<div className={styles.subheading}>
 						<div>
 							<p className={styles.category}>
-								Otros proyectos
+								{t('projects.otherProjects.eyebrow')}
 							</p>
 
 							<h3>
-								Sitios web
+								{t('projects.otherProjects.title')}
 							</h3>
 						</div>
 
 						<p>
-							Tres sitios web desarrollados para un mismo cliente
-							como parte de diferentes proyectos freelance.
+							{t('projects.otherProjects.description')}
 						</p>
 					</div>
 
 					<div className={styles.websiteGrid}>
 						{websites.map((website) => (
 							<article
-								key={website.title}
+								key={website.key}
 								className={styles.website}
 							>
 								<div className={styles.websiteImage}>
 									<ImageGallery
 										images={website.images}
-										alt={website.title}
+										alt={t(projectTranslationKey(website, 'title'))}
 										mode='preview'
 										onOpen={(imageIndex) =>
 											openGallery(website, imageIndex)
@@ -413,15 +335,15 @@ const Projects = () => {
 
 								<div className={styles.websiteContent}>
 									<p className={styles.context}>
-										{website.context}
+										{t(projectTranslationKey(website, 'context'))}
 									</p>
 
 									<h4>
-										{website.title}
+										{t(projectTranslationKey(website, 'title'))}
 									</h4>
 
 									<p>
-										{website.description}
+										{t(projectTranslationKey(website, 'description'))}
 									</p>
 
 									<div className={styles.technologies}>
@@ -441,7 +363,7 @@ const Projects = () => {
 											openProject(website)
 										}
 									>
-										Ver proyecto
+										{t('projects.viewProject')}
 										<AppIcon icon={TbArrowUpRight} size={16} />
 									</Button>
 								</div>
@@ -454,69 +376,71 @@ const Projects = () => {
 			<Modal
 				isOpen={Boolean(selectedProject)}
 				onClose={closeProject}
-				title={selectedProject?.title}
+				title={selectedProject
+					? t(projectTranslationKey(selectedProject, 'title'))
+					: undefined}
 			>
 				{selectedProject && (
 					<div className={styles.modalContent}>
 						<div className={styles.modalImage}>
 							<ImageGallery
 								images={selectedProject.images}
-								alt={selectedProject.title}
+								alt={t(projectTranslationKey(selectedProject, 'title'))}
 								mode='carousel'
 							/>
 						</div>
 
 						<div className={styles.modalSection}>
 							<p className={styles.category}>
-								{selectedProject.category}
+								{t(projectTranslationKey(selectedProject, 'category'))}
 							</p>
 
 							<h3>
-								{selectedProject.context}
+								{t(projectTranslationKey(selectedProject, 'context'))}
 							</h3>
 						</div>
 
 						<div className={styles.modalSection}>
 							<h4>
-								Descripción
+								{t('projects.modal.description')}
 							</h4>
 
 							<p>
-								{selectedProject.details.description}
+								{t(projectTranslationKey(selectedProject, 'details.description'))}
 							</p>
 						</div>
 
 						<div className={styles.modalSection}>
 							<h4>
-								Contexto
+								{t('projects.modal.context')}
 							</h4>
 
 							<p>
-								{selectedProject.details.context}
+								{t(projectTranslationKey(selectedProject, 'details.context'))}
 							</p>
 						</div>
 
 						<div className={styles.modalSection}>
 							<h4>
-								Mi participación
+								{t('projects.modal.role')}
 							</h4>
 
 							<p>
-								{selectedProject.details.role}
+								{t(projectTranslationKey(selectedProject, 'details.role'))}
 							</p>
 						</div>
 
-						{selectedProject.details.highlights && (
+						{selectedProject.highlights.length > 0 && (
 							<div className={styles.modalSection}>
 								<h4>
-									Características
+									{t('projects.modal.highlights')}
 								</h4>
 
 								<ul className={styles.highlights}>
-									{selectedProject.details.highlights.map(
+									{selectedProject.highlights.map(
 										(highlight) => (
 											<li key={highlight}>
-												{highlight}
+												{t(projectTranslationKey(selectedProject, `highlights.${highlight}`))}
 											</li>
 										)
 									)}
@@ -526,7 +450,7 @@ const Projects = () => {
 
 						<div className={styles.modalSection}>
 							<h4>
-								Tecnologías
+								{t('projects.modal.technologies')}
 							</h4>
 
 							<div className={styles.technologies}>
@@ -544,13 +468,13 @@ const Projects = () => {
 							<div className={styles.modalLinks}>
 								{selectedProject.links.map((link) => (
 									<Button
-										key={link.label}
+										key={link.labelKey}
 										variant='secondary'
 										href={link.href}
 										target='_blank'
 										rel='noreferrer'
 									>
-										{link.label}
+										{t(`projects.links.${link.labelKey}`)}
 										<AppIcon icon={TbArrowUpRight} size={16} />
 									</Button>
 								))}
@@ -563,13 +487,15 @@ const Projects = () => {
 			<Modal
 				isOpen={Boolean(selectedGallery)}
 				onClose={closeGallery}
-				title={selectedGallery?.project.title}
+				title={selectedGallery
+					? t(projectTranslationKey(selectedGallery.project, 'title'))
+					: undefined}
 				size='fullscreen'
 			>
 				{selectedGallery && (
 					<ImageGallery
 						images={selectedGallery.project.images}
-						alt={selectedGallery.project.title}
+						alt={t(projectTranslationKey(selectedGallery.project, 'title'))}
 						mode='fullscreen'
 						initialIndex={selectedGallery.imageIndex}
 					/>
@@ -579,15 +505,15 @@ const Projects = () => {
 			<Modal
 				isOpen={isPrivacyInfoOpen}
 				onClose={closePrivacyInfo}
-				title='Sobre los proyectos'
+				title={t('projects.privacyInfo.title')}
 			>
 				<div className={styles.modalContent}>
 					<div className={styles.modalSection}>
-						<p>He participado en diversos proyectos profesionales que, por compromisos de confidencialidad con las empresas y clientes, no puedo mostrar públicamente.</p>
+						<p>{t('projects.privacyInfo.first')}</p>
 
-						<p>Por esa misma razón, los proyectos presentados en este portafolio contienen únicamente información, imágenes y detalles que puedo compartir de forma pública, respetando la privacidad de las empresas y la confidencialidad de sus productos y servicios.</p>
+						<p>{t('projects.privacyInfo.second')}</p>
 
-						<p>Aunque esta selección no representa la totalidad de mi experiencia, refleja parte de mi trabajo y las soluciones en las que he participado.</p>
+						<p>{t('projects.privacyInfo.third')}</p>
 					</div>
 				</div>
 			</Modal>

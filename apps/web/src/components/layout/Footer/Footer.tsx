@@ -1,9 +1,12 @@
+import { useTranslation } from 'react-i18next'
 import styles from './Footer.module.css'
 import { TbArrowUp } from 'react-icons/tb'
 import AppIcon from '@/components/ui/AppIcon/AppIcon'
 import Button from '@/components/ui/Button/Button'
 
 const Footer = () => {
+	const { t } = useTranslation()
+
 	return (
 		<footer className={styles.footer}>
 			<div className={styles.container}>
@@ -15,12 +18,11 @@ const Footer = () => {
 						</h2>
 
 						<p className={styles.role}>
-							Full Stack Developer
+							{t('footer.role')}
 						</p>
 
 						<p className={styles.description}>
-							Construyendo soluciones web y móviles que
-							convierten ideas en productos reales.
+							{t('footer.description')}
 						</p>
 					</div>
 
@@ -34,11 +36,11 @@ const Footer = () => {
 						</Button>
 
 						<Button variant='tertiary' href='mailto:duedi707@gmail.com'>
-							Email
+							{t('footer.email')}
 						</Button>
 
 						<Button variant='tertiary' href='#hero'>
-							Volver arriba
+							{t('footer.backToTop')}
 							<AppIcon icon={TbArrowUp} size={16} />
 						</Button>
 					</nav>

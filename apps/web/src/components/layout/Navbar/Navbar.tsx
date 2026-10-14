@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { TbAdjustmentsHorizontal, TbMenu2, TbX } from 'react-icons/tb'
 
 import useActiveSection from '@/hooks/useActiveSection'
@@ -10,34 +11,20 @@ import Preferences from './Preferences/Preferences'
 import styles from './Navbar.module.css'
 
 const navigationItems = [
-	{
-		id: 'about',
-		label: 'Sobre mi'
-	},
-	{
-		id: 'experience',
-		label: 'Experiencia'
-	},
-	{
-		id: 'projects',
-		label: 'Proyectos'
-	},
-	{
-		id: 'skills',
-		label: 'Habilidades'
-	},
-	{
-		id: 'contact',
-		label: 'Contacto'
-	}
+	'about',
+	'experience',
+	'projects',
+	'skills',
+	'contact'
 ]
 
 const Navbar = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
 	const [isPreferencesOpen, setIsPreferencesOpen] = useState(false)
 	const headerRef = useRef<HTMLElement | null>(null)
+	const { t } = useTranslation()
 
-	const sectionIds = navigationItems.map((item) => item.id)
+	const sectionIds = navigationItems
 	const activeSection = useActiveSection(sectionIds)
 
 	useEffect(() => {
@@ -80,13 +67,13 @@ const Navbar = () => {
 					</a>
 
 					<div className={styles.links}>
-						{navigationItems.map((item) => (
+						{navigationItems.map((sectionId) => (
 							<a
-								key={item.id}
-								href={`#${item.id}`}
-								className={activeSection === item.id ? styles.active : ''}
+								key={sectionId}
+								href={`#${sectionId}`}
+								className={activeSection === sectionId ? styles.active : ''}
 							>
-								{item.label}
+								{t(`navbar.${sectionId}`)}
 							</a>
 						))}
 					</div>
@@ -98,9 +85,9 @@ const Navbar = () => {
 								setIsPreferencesOpen((isOpen) => !isOpen)
 								setIsMenuOpen(false)
 							}}
-							aria-label={isPreferencesOpen ? 'Cerrar preferencias' : 'Abrir preferencias'}
+							aria-label={t(isPreferencesOpen ? 'navbar.closePreferences' : 'navbar.openPreferences')}
 							aria-expanded={isPreferencesOpen}
-							title={isPreferencesOpen ? 'Cerrar preferencias' : 'Abrir preferencias'}
+							title={t(isPreferencesOpen ? 'navbar.closePreferences' : 'navbar.openPreferences')}
 						>
 							{isPreferencesOpen
 								? <AppIcon icon={TbX} size={18} />
@@ -114,9 +101,9 @@ const Navbar = () => {
 								setIsMenuOpen((isOpen) => !isOpen)
 								setIsPreferencesOpen(false)
 							}}
-							aria-label={isMenuOpen ? 'Cerrar menu de navegacion' : 'Abrir menu de navegacion'}
+							aria-label={t(isMenuOpen ? 'navbar.closeMenu' : 'navbar.openMenu')}
 							aria-expanded={isMenuOpen}
-							title={isMenuOpen ? 'Cerrar menu de navegacion' : 'Abrir menu de navegacion'}
+							title={t(isMenuOpen ? 'navbar.closeMenu' : 'navbar.openMenu')}
 						>
 							{isMenuOpen ? <AppIcon icon={TbX} size={18} /> : <AppIcon icon={TbMenu2} size={18} />}
 						</Button>
@@ -128,14 +115,14 @@ const Navbar = () => {
 					aria-hidden={!isMenuOpen}
 				>
 					<div className={styles.menuContent}>
-						{navigationItems.map((item) => (
+						{navigationItems.map((sectionId) => (
 							<a
-								key={item.id}
-								href={`#${item.id}`}
-								className={activeSection === item.id ? styles.active : ''}
+								key={sectionId}
+								href={`#${sectionId}`}
+								className={activeSection === sectionId ? styles.active : ''}
 								onClick={() => setIsMenuOpen(false)}
 							>
-								{item.label}
+								{t(`navbar.${sectionId}`)}
 							</a>
 						))}
 					</div>

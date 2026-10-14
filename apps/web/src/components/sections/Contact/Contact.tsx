@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import styles from './Contact.module.css'
 import { TbCopy, TbDownload, TbExternalLink } from 'react-icons/tb'
 import AppIcon from '@/components/ui/AppIcon/AppIcon'
@@ -7,30 +8,30 @@ import Button from '@/components/ui/Button/Button'
 
 const contactItems = [
 	{
-		title: 'LinkedIn',
-		description: 'Conecta conmigo profesionalmente',
+		key: 'linkedin',
 		href: 'https://www.linkedin.com/in/dubancaballero'
 	},
 	{
-		title: 'GitHub',
-		description: 'Explora mis proyectos y código',
+		key: 'github',
 		href: 'https://github.com/dknightdev'
 	},
 	{
-		title: 'Correo',
-		description: 'duedi707@gmail.com',
+		key: 'email',
+		value: 'duedi707@gmail.com',
 		href: 'mailto:duedi707@gmail.com',
 		copyValue: 'duedi707@gmail.com'
 	},
 	{
-		title: 'WhatsApp',
-		description: '+57 322 572 9427',
+		key: 'whatsapp',
+		value: '+57 322 572 9427',
 		href: 'https://wa.me/573225729427',
 		copyValue: '+57 322 572 9427'
 	}
 ]
 
 const Contact = () => {
+	const { t } = useTranslation()
+
 	const handleCopy = async (value: string) => {
 		await navigator.clipboard.writeText(value)
 	}
@@ -38,22 +39,22 @@ const Contact = () => {
 	return (
 		<Section id='contact'>
 			<SectionHeading
-				eyebrow='Contacto'
-				title='¿Hablamos?'
-				highlight='Estoy disponible.'
-				description='Si quieres hablar sobre un proyecto, una oportunidad profesional o simplemente conectar, puedes encontrarme en cualquiera de los siguientes medios.'
+				eyebrow={t('contact.eyebrow')}
+				title={t('contact.title')}
+				highlight={t('contact.highlight')}
+				description={t('contact.description')}
 			/>
 
 				<div className={styles.contacts}>
 					{contactItems.map((item) => (
 						<article
-							key={item.title}
+							key={item.key}
 							className={styles.card}
 						>
 							<div className={styles.cardContent}>
-								<h3>{item.title}</h3>
+								<h3>{t(`contact.items.${item.key}.title`)}</h3>
 
-								<p>{item.description}</p>
+								<p>{item.value ?? t(`contact.items.${item.key}.description`)}</p>
 							</div>
 
 							<div className={styles.actions}>
@@ -62,8 +63,12 @@ const Contact = () => {
 									href={item.href}
 									target={item.href.startsWith('mailto:') ? undefined : '_blank'}
 									rel={item.href.startsWith('mailto:') ? undefined : 'noreferrer'}
-									aria-label={`Abrir ${item.title}`}
-									title={`Abrir ${item.title}`}
+									aria-label={t('contact.openItem', {
+										item: t(`contact.items.${item.key}.title`)
+									})}
+									title={t('contact.openItem', {
+										item: t(`contact.items.${item.key}.title`)
+									})}
 								>
 									<AppIcon icon={TbExternalLink} size={18} />
 								</Button>
@@ -72,8 +77,10 @@ const Contact = () => {
 									<Button
 										variant='icon'
 										onClick={() => handleCopy(item.copyValue)}
-										aria-label={`Copiar ${item.title}`}
-										title='Copiar al portapapeles'
+										aria-label={t('contact.copyItem', {
+											item: t(`contact.items.${item.key}.title`)
+										})}
+										title={t('contact.copyToClipboard')}
 									>
 										<AppIcon icon={TbCopy} size={18} />
 									</Button>
@@ -86,11 +93,11 @@ const Contact = () => {
 				<div className={styles.cv}>
 					<div>
 						<p className={styles.cvLabel}>
-							¿Quieres conocer más sobre mi experiencia?
+							{t('contact.cv.eyebrow')}
 						</p>
 
 						<h3>
-							Descarga mi CV
+							{t('contact.cv.title')}
 						</h3>
 					</div>
 
@@ -100,7 +107,7 @@ const Contact = () => {
 						download='CV-Duban_Caballero.pdf'
 						className={styles.cvButton}
 					>
-						Descargar CV
+						{t('contact.cv.download')}
 						<AppIcon icon={TbDownload} size={18} />
 					</Button>
 				</div>

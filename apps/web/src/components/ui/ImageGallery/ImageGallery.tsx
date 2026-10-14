@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type MouseEvent, type UIEvent } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import {
 	TbChevronLeft,
@@ -24,6 +25,7 @@ const ImageGallery = ({
 	initialIndex = 0,
 	onOpen
 }: ImageGalleryProps) => {
+	const { t } = useTranslation()
 	const [currentIndex, setCurrentIndex] = useState(initialIndex)
 	const imageViewportRef = useRef<HTMLDivElement>(null)
 
@@ -119,11 +121,14 @@ const ImageGallery = ({
 							type='button'
 							className={styles.slide}
 							onClick={handleImageClick}
-							aria-label={`Ver imágenes de ${alt}`}
+							aria-label={t('ui.imageGallery.openImages', { alt })}
 						>
 							<img
 								src={image}
-								alt={`${alt} - imagen ${index + 1}`}
+								alt={t('ui.imageGallery.imageAlt', {
+									alt,
+									index: index + 1
+								})}
 							/>
 						</button>
 					))}
@@ -141,7 +146,10 @@ const ImageGallery = ({
 						>
 							<img
 								src={image}
-								alt={`${alt} - imagen ${index + 1}`}
+								alt={t('ui.imageGallery.imageAlt', {
+									alt,
+									index: index + 1
+								})}
 							/>
 						</div>
 					))}
@@ -154,7 +162,7 @@ const ImageGallery = ({
 						type='button'
 						className={`${styles.navigation} ${styles.previous}`}
 						onClick={previousImage}
-						aria-label='Imagen anterior'
+						aria-label={t('ui.imageGallery.previousImage')}
 					>
 						<AppIcon
 							icon={TbChevronLeft}
@@ -166,7 +174,7 @@ const ImageGallery = ({
 						type='button'
 						className={`${styles.navigation} ${styles.next}`}
 						onClick={nextImage}
-						aria-label='Imagen siguiente'
+						aria-label={t('ui.imageGallery.nextImage')}
 					>
 						<AppIcon
 							icon={TbChevronRight}

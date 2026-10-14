@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import styles from './Experience.module.css'
 import Section from '@/components/ui/Section/Section'
 import SectionHeading from '@/components/ui/SectionHeading/SectionHeading'
@@ -6,12 +7,8 @@ import Chip from '@/components/ui/Chip/Chip'
 const experiences = [
 	{
 		number: '01',
-		company: 'Asistencia Móvil',
-		role: 'Full Stack Developer',
+		key: 'asistenciaMovil',
 		period: '2021 — 2026',
-		type: 'Experiencia profesional',
-		description:
-			'Desarrollo y mantenimiento de aplicaciones web y móviles, APIs e integraciones, participando en diferentes etapas del ciclo de desarrollo, desde el análisis de requerimientos hasta las pruebas, despliegues, soporte y mantenimiento.',
 		technologies: [
 			'React',
 			'React Native',
@@ -32,12 +29,8 @@ const experiences = [
 	},
 	{
 		number: '02',
-		company: 'Trabajo independiente',
-		role: 'Full Stack Developer',
+		key: 'freelance',
 		period: '2023 — 2025',
-		type: 'Freelance',
-		description:
-			'Desarrollo de soluciones web para clientes independientes, participando en el análisis de requerimientos, diseño de funcionalidades, desarrollo, pruebas y entrega de proyectos.',
 		technologies: [
 			'React',
 			'Nest.js',
@@ -49,13 +42,15 @@ const experiences = [
 ]
 
 const Experience = () => {
+	const { t } = useTranslation()
+
 	return (
 		<Section id='experience'>
 			<SectionHeading
-				eyebrow='Experiencia'
-				title='Experiencia profesional'
-				highlight='y trabajo independiente.'
-				description='Experiencia desarrollando aplicaciones web y móviles, APIs y soluciones digitales, tanto dentro de equipos de desarrollo como trabajando directamente con clientes.'
+				eyebrow={t('experience.eyebrow')}
+				title={t('experience.title')}
+				highlight={t('experience.highlight')}
+				description={t('experience.description')}
 			/>
 
 				<div className={styles.timeline}>
@@ -74,11 +69,11 @@ const Experience = () => {
 								<div className={styles.header}>
 									<div>
 										<p className={styles.type}>
-											{experience.type}
+											{t(`experience.items.${experience.key}.type`)}
 										</p>
 
 										<h3>
-											{experience.company}
+											{t(`experience.items.${experience.key}.company`)}
 										</h3>
 									</div>
 
@@ -88,11 +83,11 @@ const Experience = () => {
 								</div>
 
 								<h4>
-									{experience.role}
+									{t(`experience.items.${experience.key}.role`)}
 								</h4>
 
 								<p className={styles.description}>
-									{experience.description}
+									{t(`experience.items.${experience.key}.description`)}
 								</p>
 
 								<div className={styles.technologies}>

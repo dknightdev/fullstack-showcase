@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { TbChevronDown, TbCode, TbDeviceMobile, TbFolderOpen, TbMail, TbServer } from 'react-icons/tb'
 
 import styles from './Hero.module.css'
@@ -10,6 +11,7 @@ import perfilSilueta from '../../../assets/img/perfil_silueta2.png'
 
 const Hero = () => {
 	const [isScrollIndicatorVisible, setIsScrollIndicatorVisible] = useState(true)
+	const { t } = useTranslation()
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -30,7 +32,7 @@ const Hero = () => {
 			<div className={styles.content}>
 				<div className={styles.info}>
 					<p className={styles.eyebrow}>
-						Desarrollador Full Stack
+						{t('hero.role')}
 					</p>
 
 					<h1>
@@ -39,8 +41,7 @@ const Hero = () => {
 					</h1>
 
 					<p className={styles.description}>
-						Construyo aplicaciones web y moviles, APIs y soluciones
-						digitales enfocadas en rendimiento y experiencia de usuario.
+						{t('hero.description')}
 					</p>
 
 					<div className={styles.skillsSnippet}>
@@ -58,12 +59,12 @@ const Hero = () => {
 					<div className={styles.actions}>
 						<Button variant='primary' href='#projects'>
 							<AppIcon icon={TbFolderOpen} size={18} />
-							Ver proyectos
+							{t('hero.viewProjects')}
 						</Button>
 
 						<Button variant='secondary' href='#contact'>
 							<AppIcon icon={TbMail} size={18} />
-							Contactame
+							{t('hero.contactMe')}
 						</Button>
 					</div>
 				</div>
@@ -71,13 +72,13 @@ const Hero = () => {
 				<div className={styles.imageWrapper}>
 					<img
 						src={perfilSilueta}
-						alt='Duban Caballero'
+						alt={t('hero.profileAlt')}
 					/>
 				</div>
 			</div>
 
 			<div className={`${styles.scrollIndicator} ${!isScrollIndicatorVisible ? styles.hidden : ''}`}>
-				<span className={styles.scrollText}>Desplaza para explorar</span>
+				<span className={styles.scrollText}>{t('hero.scrollInstruction')}</span>
 				<span className={styles.scrollIcon} aria-hidden='true'>
 					<AppIcon icon={TbChevronDown} size={18} />
 				</span>

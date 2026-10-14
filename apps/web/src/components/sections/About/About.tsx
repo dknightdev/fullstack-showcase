@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import styles from './About.module.css'
 import Section from '@/components/ui/Section/Section'
 import SectionHeading from '@/components/ui/SectionHeading/SectionHeading'
@@ -5,53 +6,45 @@ import SectionHeading from '@/components/ui/SectionHeading/SectionHeading'
 const principles = [
 	{
 		number: '01',
-		title: 'End-to-end',
-		description: 'Trabajo en todo el ciclo de desarrollo, desde requerimientos hasta despliegue y soporte en produccion.'
+		key: 'endToEnd'
 	},
 	{
 		number: '02',
-		title: 'Calidad',
-		description: 'Me enfoco en pruebas funcionales, estabilidad, mantenimiento y mejora continua.'
+		key: 'quality'
 	},
 	{
 		number: '03',
-		title: 'Resolucion de problemas',
-		description: 'Analizo requerimientos y los traduzco en soluciones practicas y mantenibles.'
+		key: 'problemSolving'
 	},
 	{
 		number: '04',
-		title: 'Colaboracion',
-		description: 'Trabajo de cerca con equipos de desarrollo y aporto en planificacion, soporte tecnico y entrega.'
+		key: 'collaboration'
 	}
 ]
 
 const About = () => {
+	const { t } = useTranslation()
+
 	return (
 		<Section id='about'>
 			<SectionHeading
-				eyebrow='Sobre mi'
-				title='Construyendo software'
-				highlight='con proposito.'
+				eyebrow={t('about.eyebrow')}
+				title={t('about.title')}
+				highlight={t('about.highlight')}
 			/>
 
 				<div className={styles.content}>
 					<div className={styles.description}>
 						<p>
-							Soy Full Stack Developer con mas de cinco años de
-							experiencia construyendo aplicaciones web y moviles.
+							{t('about.description.first')}
 						</p>
 
 						<p>
-							He participado en distintas etapas del ciclo de
-							desarrollo, desde el analisis de requerimientos y la
-							implementacion hasta las pruebas funcionales, el
-							despliegue, el soporte y el mantenimiento.
+							{t('about.description.second')}
 						</p>
 
 						<p>
-							Disfruto resolver problemas a traves del software y
-							construir soluciones confiables, mantenibles y
-							preparadas para evolucionar con el tiempo.
+							{t('about.description.third')}
 						</p>
 					</div>
 
@@ -66,9 +59,9 @@ const About = () => {
 								</span>
 
 								<div>
-									<h3>{principle.title}</h3>
+									<h3>{t(`about.principles.${principle.key}.title`)}</h3>
 
-									<p>{principle.description}</p>
+									<p>{t(`about.principles.${principle.key}.description`)}</p>
 								</div>
 							</article>
 						))}

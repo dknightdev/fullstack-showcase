@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import styles from './Skills.module.css'
 import Section from '@/components/ui/Section/Section'
 import SectionHeading from '@/components/ui/SectionHeading/SectionHeading'
@@ -5,8 +6,7 @@ import Chip from '@/components/ui/Chip/Chip'
 
 const skillCategories = [
 	{
-		title: 'Frontend',
-		description: 'Desarrollo de interfaces web y aplicaciones móviles.',
+		key: 'frontend',
 		skills: [
 			'React',
 			'React Native',
@@ -16,8 +16,7 @@ const skillCategories = [
 		]
 	},
 	{
-		title: 'Backend',
-		description: 'Desarrollo de APIs, servicios y lógica de negocio.',
+		key: 'backend',
 		skills: [
 			'Node.js',
 			'Express.js',
@@ -28,16 +27,14 @@ const skillCategories = [
 		]
 	},
 	{
-		title: 'Bases de datos',
-		description: 'Diseño y desarrollo de estructuras y procesos de datos.',
+		key: 'databases',
 		skills: [
 			'MySQL',
 			'PostgreSQL'
 		]
 	},
 	{
-		title: 'Lenguajes',
-		description: 'Lenguajes utilizados a lo largo de diferentes proyectos.',
+		key: 'languages',
 		skills: [
 			'JavaScript',
 			'TypeScript',
@@ -48,8 +45,7 @@ const skillCategories = [
 		]
 	},
 	{
-		title: 'Herramientas y prácticas',
-		description: 'Herramientas y metodologías utilizadas en el desarrollo.',
+		key: 'toolsAndPractices',
 		skills: [
 			'Git',
 			'Docker',
@@ -63,31 +59,33 @@ const skillCategories = [
 ]
 
 const Skills = () => {
+	const { t } = useTranslation()
+
 	return (
 		<Section id='skills'>
 			<SectionHeading
-				eyebrow='Habilidades'
-				title='Tecnologías que utilizo'
-				highlight='para construir.'
-				description='Un stack orientado al desarrollo de soluciones completas, desde interfaces y aplicaciones móviles hasta APIs, bases de datos e integraciones.'
+				eyebrow={t('skills.eyebrow')}
+				title={t('skills.title')}
+				highlight={t('skills.highlight')}
+				description={t('skills.description')}
 			/>
 
 				<div className={styles.grid}>
-					{skillCategories.map((category) => (
+					{skillCategories.map((category, index) => (
 						<article
-							key={category.title}
+							key={category.key}
 							className={styles.card}
 						>
 							<div className={styles.cardHeader}>
 								<span className={styles.number}>
-									{String(skillCategories.indexOf(category) + 1).padStart(2, '0')}
+									{String(index + 1).padStart(2, '0')}
 								</span>
 
-								<h3>{category.title}</h3>
+								<h3>{t(`skills.categories.${category.key}.title`)}</h3>
 							</div>
 
 							<p className={styles.description}>
-								{category.description}
+								{t(`skills.categories.${category.key}.description`)}
 							</p>
 
 							<div className={styles.skills}>

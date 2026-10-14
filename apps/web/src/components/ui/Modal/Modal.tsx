@@ -1,6 +1,7 @@
 import { useEffect, type MouseEvent, type ReactNode } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { TbX } from 'react-icons/tb'
+import { useTranslation } from 'react-i18next'
 import AppIcon from '@/components/ui/AppIcon/AppIcon'
 import Button from '@/components/ui/Button/Button'
 import styles from './Modal.module.css'
@@ -20,6 +21,8 @@ const Modal = ({
 	children,
 	size = 'default'
 }: ModalProps) => {
+	const { t } = useTranslation()
+
 	useEffect(() => {
 		if (!isOpen) return
 
@@ -68,7 +71,7 @@ const Modal = ({
 						aria-label={
 							title
 								? undefined
-								: 'Ventana modal'
+							: t('ui.modal.dialog')
 						}
 						onMouseDown={(event) => {
 							event.stopPropagation()
@@ -106,8 +109,8 @@ const Modal = ({
 								variant='icon'
 								className={size === 'fullscreen' ? styles.fullscreenClose : undefined}
 								onClick={onClose}
-								aria-label='Cerrar ventana'
-								title='Cerrar ventana'
+								aria-label={t('ui.modal.close')}
+								title={t('ui.modal.close')}
 								autoFocus
 							>
 								<AppIcon icon={TbX} />
