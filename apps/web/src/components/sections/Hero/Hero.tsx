@@ -68,6 +68,20 @@ const Hero = () => {
 	const shouldReduceMotion = useReducedMotion()
 
 	useEffect(() => {
+		const previousRestoration = window.history.scrollRestoration
+
+		window.history.scrollRestoration = 'manual'
+
+		if (!window.location.hash) {
+			window.scrollTo(0, 0)
+		}
+
+		return () => {
+			window.history.scrollRestoration = previousRestoration
+		}
+	}, [])
+
+	useEffect(() => {
 		const handleScroll = () => {
 			const hideThreshold = window.innerHeight * 0.2
 			setIsScrollIndicatorVisible(window.scrollY < hideThreshold)
@@ -96,7 +110,7 @@ const Hero = () => {
 						className={styles.eyebrow}
 						variants={itemVariants}
 					>
-						{t('hero.role')}
+						[ {t('hero.role')} ]
 					</motion.p>
 
 					<motion.h1 variants={itemVariants}>
@@ -152,6 +166,8 @@ const Hero = () => {
 				>
 					<img
 						src={perfilSilueta}
+						width={893}
+						height={934}
 						alt={t('hero.profileAlt')}
 					/>
 				</motion.div>

@@ -21,7 +21,7 @@ const SectionHeading = ({
 		<Reveal direction='left'>
 			<div className={styles.heading}>
 				<p className={styles.eyebrow}>
-					{eyebrow}
+					# {eyebrow}
 				</p>
 
 				<h2>

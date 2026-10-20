@@ -8,11 +8,12 @@
 
 .eyebrow {
 	margin-bottom: var(--spacing-md);
-	color: var(--color-primary);
+
 	font-size: var(--font-size-sm);
 	font-weight: var(--font-weight-bold);
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
+	color: var(--color-primary);
 
 	transition:
 		color var(--transition-normal);

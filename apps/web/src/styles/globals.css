@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;700&display=swap');
 
 :root {
 	/** Layout */
@@ -19,8 +19,7 @@
 	--spacing-section: clamp(3rem, 7vw, 6rem);
 
 	/** Typography */
-	--font-family: Helvetica, Arial, sans-serif;
-	--font-family-heading: 'Quantico', Helvetica, Arial, sans-serif;
+	--font-family: 'Geist', Helvetica, Arial, sans-serif;
 
 	--font-size-xs: 0.75rem;
 	--font-size-sm: 0.875rem;

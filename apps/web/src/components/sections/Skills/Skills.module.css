@@ -74,6 +74,10 @@
 		grid-template-columns: 1fr;
 	}
 
+	.card {
+		padding: var(--spacing-lg);
+	}
+
 	.card:last-child {
 		grid-column: auto;
 	}
@@ -81,6 +85,10 @@
 
 @media (max-width: 425px) {
 	.card {
-		padding: var(--spacing-lg);
+		padding: var(--spacing-md);
+	}
+
+	.skills {
+		margin-top: var(--spacing-lg);
 	}
 }

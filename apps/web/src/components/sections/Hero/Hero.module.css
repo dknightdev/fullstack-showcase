@@ -28,12 +28,11 @@
 .eyebrow {
 	margin-bottom: var(--spacing-md);
 
-	color: var(--color-primary);
-
 	font-size: var(--font-size-sm);
 	font-weight: var(--font-weight-bold);
 	text-transform: uppercase;
-	letter-spacing: 0.08em;
+	letter-spacing: 0.1em;
+	color: var(--color-primary);
 
 	transition:
 		color var(--transition-normal);
@@ -118,6 +117,7 @@ h1 span {
 .imageWrapper img {
 	position: relative;
 	z-index: 1;
+	height: auto;
 	border-radius: var(--border-radius-md);
 }
 
@@ -145,7 +145,7 @@ h1 span {
 .scrollText {
 	font-size: var(--font-size-xs);
 	font-weight: var(--font-weight-regular);
-	letter-spacing: 0.08em;
+	letter-spacing: 0.1em;
 	text-transform: uppercase;
 }
 
@@ -218,5 +218,17 @@ h1 span {
 		position: fixed;
 		z-index: 1;
 		bottom: calc(16px + env(safe-area-inset-bottom));
+	}
+}
+
+@media (max-width: 425px) {
+	.section {
+		padding-top: calc(var(--navbar-height) + var(--spacing-lg));
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.scrollIcon {
+		animation: none;
 	}
 }

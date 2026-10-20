@@ -93,4 +93,9 @@
 	.principles {
 		grid-template-columns: 1fr;
 	}
+
+	.principle {
+		gap: var(--spacing-md);
+		padding: var(--spacing-md);
+	}
 }
