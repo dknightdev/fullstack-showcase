@@ -82,9 +82,10 @@
 		"title": "Professional experience",
 		"highlight": "and freelance work.",
 		"description": "Experience developing web and mobile applications, APIs, and digital solutions, both within development teams and directly with clients.",
+		"visitWebsite": "Visit {{company}} website",
 		"items": {
 			"asistenciaMovil": {
-				"company": "Asistencia Móvil S.A.S",
+				"company": "Asistencia Móvil S.A.S.",
 				"role": "Full Stack Developer",
 				"type": "Professional experience",
 				"description": "Development and maintenance of web and mobile applications, APIs, and integrations, contributing across the development lifecycle from requirements analysis to testing, deployment, support, and maintenance."

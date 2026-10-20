@@ -5,10 +5,19 @@ import SectionHeading from '@/components/ui/SectionHeading/SectionHeading'
 import Chip from '@/components/ui/Chip/Chip'
 import Reveal from '@/components/ui/Reveal/Reveal'
 
-const experiences = [
+type ExperienceItem = {
+	number: string
+	key: string
+	period: string
+	url?: string
+	technologies: string[]
+}
+
+const experiences: ExperienceItem[] = [
 	{
 		number: '01',
 		key: 'asistenciaMovil',
+		url: 'https://amovil.co/',
 		period: '2021 — 2026',
 		technologies: [
 			'React',
@@ -45,6 +54,8 @@ const experiences = [
 const Experience = () => {
 	const { t } = useTranslation()
 
+	const companyName = (key: string) => t(`experience.items.${key}.company`)
+
 	return (
 		<Section id='experience'>
 			<SectionHeading
@@ -74,8 +85,21 @@ const Experience = () => {
 											{t(`experience.items.${experience.key}.type`)}
 										</p>
 
-										<h3>
-											{t(`experience.items.${experience.key}.company`)}
+										<h3 className={styles.company}>
+											{experience.url ? (
+												<a
+													href={experience.url}
+													target='_blank'
+													rel='noopener noreferrer'
+													title={t('experience.visitWebsite', {
+														company: companyName(experience.key)
+													})}
+												>
+													{companyName(experience.key)}
+												</a>
+											) : (
+												companyName(experience.key)
+											)}
 										</h3>
 									</div>
 

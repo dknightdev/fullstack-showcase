@@ -82,9 +82,10 @@
 		"title": "Experiencia profesional",
 		"highlight": "y trabajo independiente.",
 		"description": "Experiencia desarrollando aplicaciones web y móviles, APIs y soluciones digitales, tanto dentro de equipos de desarrollo como trabajando directamente con clientes.",
+		"visitWebsite": "Visitar sitio web de {{company}}",
 		"items": {
 			"asistenciaMovil": {
-				"company": "Asistencia Móvil S.A.S",
+				"company": "Asistencia Móvil S.A.S.",
 				"role": "Full Stack Developer",
 				"type": "Experiencia profesional",
 				"description": "Desarrollo y mantenimiento de aplicaciones web y móviles, APIs e integraciones, participando en diferentes etapas del ciclo de desarrollo, desde el análisis de requerimientos hasta las pruebas, despliegues, soporte y mantenimiento."

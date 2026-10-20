@@ -75,11 +75,29 @@
 		color var(--transition-normal);
 }
 
-.header h3 {
+.company {
 	margin-top: var(--spacing-sm);
+
 	font-size: clamp(1.75rem, 3vw, 2.5rem);
 	font-weight: var(--font-weight-bold);
 	line-height: 1.1;
+}
+
+.company a {
+	color: inherit;
+	text-decoration: underline;
+	text-decoration-color: transparent;
+	text-underline-offset: 5px;
+
+	transition:
+		color var(--transition-normal),
+		text-decoration-color var(--transition-normal);
+}
+
+.company a:hover,
+.company a:focus-visible {
+	color: var(--color-primary);
+	text-decoration-color: currentColor;
 }
 
 .period {
@@ -93,7 +111,7 @@
 }
 
 .content h4 {
-	margin-top: var(--spacing-md);
+	margin-top: var(--spacing-sm);
 	color: var(--color-text-soft);
 	font-size: var(--font-size-md);
 	font-weight: var(--font-weight-bold);
