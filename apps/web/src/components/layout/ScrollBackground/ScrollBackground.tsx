@@ -13,7 +13,7 @@ type Particle = {
 	radius: number
 }
 
-const MAX_PARTICLES = 85
+const MAX_PARTICLES = 90
 const MAX_PARTICLES_MOBILE = 50
 const CONNECTION_DISTANCE = 130
 const CONNECTION_DISTANCE_MOBILE = 100

@@ -19,6 +19,21 @@ const Preferences = () => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.row}>
+				<span className={styles.label}>{t('preferences.language')}</span>
+				<Button
+					variant='icon'
+					onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
+					aria-label={t(language === 'es' ? 'preferences.switchToEnglish' : 'preferences.switchToSpanish')}
+					aria-pressed={language === 'en'}
+					title={t(language === 'es' ? 'preferences.switchToEnglish' : 'preferences.switchToSpanish')}
+				>
+					<span className={styles.languageFlag} aria-hidden='true'>
+						{language === 'es' ? '🇪🇸' : '🇺🇸'}
+					</span>
+				</Button>
+			</div>
+
+			<div className={styles.row}>
 				<span className={styles.label}>{t('preferences.theme')}</span>
 				<Button
 					variant='icon'
@@ -29,7 +44,7 @@ const Preferences = () => {
 				</Button>
 			</div>
 
-			<div className={styles.row}>
+			<div className={`${styles.row} ${styles.colorRow}`}>
 				<span className={styles.label}>{t('preferences.color')}</span>
 				<div className={styles.accents}>
 					<button
@@ -52,22 +67,14 @@ const Preferences = () => {
 						onClick={() => setAccent('purple')}
 						aria-label={t('preferences.purpleAccent')}
 					/>
-				</div>
-			</div>
 
-			<div className={styles.row}>
-				<span className={styles.label}>{t('preferences.language')}</span>
-				<Button
-					variant='icon'
-					onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
-					aria-label={t(language === 'es' ? 'preferences.switchToEnglish' : 'preferences.switchToSpanish')}
-					aria-pressed={language === 'en'}
-					title={t(language === 'es' ? 'preferences.switchToEnglish' : 'preferences.switchToSpanish')}
-				>
-					<span className={styles.languageFlag} aria-hidden='true'>
-						{language === 'es' ? '🇪🇸' : '🇺🇸'}
-					</span>
-				</Button>
+					<button
+						type='button'
+						className={`${styles.accent} ${styles.orange} ${accent === 'orange' ? styles.active : ''}`}
+						onClick={() => setAccent('orange')}
+						aria-label={t('preferences.orangeAccent')}
+					/>
+				</div>
 			</div>
 		</div>
 	)

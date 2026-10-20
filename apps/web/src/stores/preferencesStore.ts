@@ -3,7 +3,7 @@ import { persist } from 'zustand/middleware'
 
 type Theme = 'dark' | 'light'
 
-type Accent = 'blue' | 'green' | 'purple'
+type Accent = 'blue' | 'green' | 'purple' | 'orange'
 
 type Language = 'es' | 'en'
 

@@ -1,7 +1,7 @@
 .container {
 	display: flex;
 	flex-direction: column;
-	gap: var(--spacing-sm);
+	gap: var(--spacing-xs);
 }
 
 .row {
@@ -9,6 +9,15 @@
 	align-items: center;
 	justify-content: space-between;
 	gap: var(--spacing-md);
+}
+
+.row:not(.colorRow) button,
+.row:not(.colorRow) a {
+	border: 1px solid var(--color-border);
+}
+
+.colorRow {
+	padding-block: var(--spacing-sm);
 }
 
 .label {
@@ -28,6 +37,7 @@
 	display: flex;
 	align-items: center;
 	gap: var(--spacing-sm);
+	padding-inline: var(--spacing-xs);
 }
 
 .accent {
@@ -45,22 +55,26 @@
 }
 
 .accent:hover {
-	transform: scale(1.15);
+	transform: scale(1.2);
 }
 
 .accent.active {
 	border-color: var(--color-text);
-	transform: scale(1.15);
+	transform: scale(1.2);
 }
 
 .blue {
-	background-color: #3b82f6;
+	background-color: var(--blue);
 }
 
 .green {
-	background-color: #22c55e;
+	background-color: var(--green);
 }
 
 .purple {
-	background-color: #a855f7;
+	background-color: var(--purple);
+}
+
+.orange {
+	background-color: var(--orange);
 }

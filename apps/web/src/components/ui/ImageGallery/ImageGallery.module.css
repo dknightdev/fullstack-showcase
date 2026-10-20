@@ -51,8 +51,8 @@
 
 .preview .image {
 	overflow-x: hidden;
-	opacity: var(--gallery-preview-opacity, 0.9);
-	filter: var(--gallery-preview-filter, saturate(0.9) brightness(0.9));
+	opacity: var(--gallery-preview-opacity, 0.85);
+	filter: var(--gallery-preview-filter, saturate(0.85) brightness(0.85));
 
 	transition:
 		opacity var(--transition-normal),

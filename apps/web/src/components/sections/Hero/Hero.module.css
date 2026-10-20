@@ -134,7 +134,7 @@ h1 span {
 	transform: translateX(-50%);
 	opacity: 1;
 
-	color: var(--color-text-soft);
+	color: var(--color-text);
 
 	transition:
 		opacity var(--transition-normal),
