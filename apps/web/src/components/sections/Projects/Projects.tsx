@@ -9,6 +9,7 @@ import SectionHeading from '@/components/ui/SectionHeading/SectionHeading'
 import Chip from '@/components/ui/Chip/Chip'
 import ImageGallery from '@/components/ui/ImageGallery/ImageGallery'
 import styles from './Projects.module.css'
+import Reveal from '@/components/ui/Reveal/Reveal'
 
 type ProjectLink = {
 	labelKey: 'googlePlay' | 'viewDemo'
@@ -241,113 +242,42 @@ const Projects = () => {
 
 				<div className={styles.featured}>
 					{projects.map((project, index) => (
-						<article
-							key={project.key}
-							className={styles.project}
-						>
-							<div className={styles.imageWrapper}>
-								<ImageGallery
-									images={project.images}
-									alt={t(projectTranslationKey(project, 'title'))}
-									mode='preview'
-									onOpen={(imageIndex) =>
-										openGallery(project, imageIndex)
-									}
-								/>
-
-								<span className={styles.projectNumber}>
-									{String(index + 1).padStart(2, '0')}
-								</span>
-							</div>
-
-							<div className={styles.projectContent}>
-								<p className={styles.category}>
-									{t(projectTranslationKey(project, 'category'))}
-								</p>
-
-								<h3>
-									{t(projectTranslationKey(project, 'title'))}
-								</h3>
-
-								<p className={styles.context}>
-									{t(projectTranslationKey(project, 'context'))}
-								</p>
-
-								<p className={styles.description}>
-									{t(projectTranslationKey(project, 'description'))}
-								</p>
-
-								<div className={styles.technologies}>
-									{project.technologies.map(
-										(technology) => (
-											<Chip key={technology}>
-												{technology}
-											</Chip>
-										)
-									)}
-								</div>
-
-								<Button
-									variant='tertiary'
-									onClick={() => openProject(project)}
-								>
-									{t('projects.viewProject')}
-									<AppIcon icon={TbArrowUpRight} size={16} />
-								</Button>
-							</div>
-						</article>
-					))}
-				</div>
-
-				<div className={styles.otherProjects}>
-					<div className={styles.subheading}>
-						<div>
-							<p className={styles.category}>
-								{t('projects.otherProjects.eyebrow')}
-							</p>
-
-							<h3>
-								{t('projects.otherProjects.title')}
-							</h3>
-						</div>
-
-						<p>
-							{t('projects.otherProjects.description')}
-						</p>
-					</div>
-
-					<div className={styles.websiteGrid}>
-						{websites.map((website) => (
-							<article
-								key={website.key}
-								className={styles.website}
-							>
-								<div className={styles.websiteImage}>
+						<Reveal direction={index % 2 === 0 ? 'right' : 'left'} key={project.key}>
+							<article className={styles.project}>
+								<div className={styles.imageWrapper}>
 									<ImageGallery
-										images={website.images}
-										alt={t(projectTranslationKey(website, 'title'))}
+										images={project.images}
+										alt={t(projectTranslationKey(project, 'title'))}
 										mode='preview'
 										onOpen={(imageIndex) =>
-											openGallery(website, imageIndex)
+											openGallery(project, imageIndex)
 										}
 									/>
+
+									<span className={styles.projectNumber}>
+										{String(index + 1).padStart(2, '0')}
+									</span>
 								</div>
 
-								<div className={styles.websiteContent}>
-									<p className={styles.context}>
-										{t(projectTranslationKey(website, 'context'))}
+								<div className={styles.projectContent}>
+									<p className={styles.category}>
+										{t(projectTranslationKey(project, 'category'))}
 									</p>
 
-									<h4>
-										{t(projectTranslationKey(website, 'title'))}
-									</h4>
+									<h3>
+										{t(projectTranslationKey(project, 'title'))}
+									</h3>
 
-									<p>
-										{t(projectTranslationKey(website, 'description'))}
+									<p className={styles.context}>
+										{t(projectTranslationKey(project, 'context'))}
+									</p>
+
+									<p className={styles.description}>
+										{t(projectTranslationKey(project, 'description'))}
 									</p>
 
 									<div className={styles.technologies}>
-										{website.technologies.map(
+										{project.technologies.map(
 											(technology) => (
 												<Chip key={technology}>
 													{technology}
@@ -357,20 +287,92 @@ const Projects = () => {
 									</div>
 
 									<Button
-										className={styles.viewProjectButton}
 										variant='tertiary'
-										onClick={() =>
-											openProject(website)
-										}
+										onClick={() => openProject(project)}
 									>
 										{t('projects.viewProject')}
-										<AppIcon icon={TbArrowUpRight} size={16} />
+										<AppIcon icon={TbArrowUpRight} size={18} />
 									</Button>
 								</div>
 							</article>
-						))}
-					</div>
+						</Reveal>
+					))}
 				</div>
+
+				<Reveal direction='left'>
+					<div className={styles.otherProjects}>
+						<div className={styles.subheading}>
+							<div>
+								<p className={styles.category}>
+									{t('projects.otherProjects.eyebrow')}
+								</p>
+
+								<h3>
+									{t('projects.otherProjects.title')}
+								</h3>
+							</div>
+
+							<p>
+								{t('projects.otherProjects.description')}
+							</p>
+						</div>
+
+						<div className={styles.websiteGrid}>
+							{websites.map((website) => (
+								<article
+									key={website.key}
+									className={styles.website}
+								>
+									<div className={styles.websiteImage}>
+										<ImageGallery
+											images={website.images}
+											alt={t(projectTranslationKey(website, 'title'))}
+											mode='preview'
+											onOpen={(imageIndex) =>
+												openGallery(website, imageIndex)
+											}
+										/>
+									</div>
+
+									<div className={styles.websiteContent}>
+										<p className={styles.context}>
+											{t(projectTranslationKey(website, 'context'))}
+										</p>
+
+										<h4>
+											{t(projectTranslationKey(website, 'title'))}
+										</h4>
+
+										<p>
+											{t(projectTranslationKey(website, 'description'))}
+										</p>
+
+										<div className={styles.technologies}>
+											{website.technologies.map(
+												(technology) => (
+													<Chip key={technology}>
+														{technology}
+													</Chip>
+												)
+											)}
+										</div>
+
+										<Button
+											className={styles.viewProjectButton}
+											variant='tertiary'
+											onClick={() =>
+												openProject(website)
+											}
+										>
+											{t('projects.viewProject')}
+											<AppIcon icon={TbArrowUpRight} size={18} />
+										</Button>
+									</div>
+								</article>
+							))}
+						</div>
+					</div>
+				</Reveal>
 			</Section>
 
 			<Modal
@@ -475,7 +477,7 @@ const Projects = () => {
 										rel='noreferrer'
 									>
 										{t(`projects.links.${link.labelKey}`)}
-										<AppIcon icon={TbArrowUpRight} size={16} />
+										<AppIcon icon={TbArrowUpRight} size={18} />
 									</Button>
 								))}
 							</div>

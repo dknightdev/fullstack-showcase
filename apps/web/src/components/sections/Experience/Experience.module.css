@@ -1,6 +1,6 @@
 .timeline {
 	position: relative;
-	margin-top: clamp(4rem, 8vw, 7rem);
+	margin-top: var(--spacing-section);
 }
 
 .timeline::before {
@@ -84,7 +84,7 @@
 
 .period {
 	flex-shrink: 0;
-	padding-top: 4px;
+	padding-top: var(--spacing-sm);
 	color: var(--color-text-soft);
 	font-size: var(--font-size-sm);
 
@@ -136,9 +136,9 @@
 	}
 }
 
-@media (max-width: 480px) {
+@media (max-width: 425px) {
 	.timeline::before {
-		left: 19px;
+		left: 20px;
 	}
 
 	.experience {
@@ -153,9 +153,5 @@
 
 	.content {
 		min-width: 0;
-	}
-
-	.technologies {
-		gap: 6px;
 	}
 }

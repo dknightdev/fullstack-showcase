@@ -1,14 +1,14 @@
 .container {
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
+	gap: var(--spacing-sm);
 }
 
 .row {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: 16px;
+	gap: var(--spacing-md);
 }
 
 .label {
@@ -20,14 +20,14 @@
 }
 
 .languageFlag {
-	font-size: 1.25rem;
+	font-size: var(--font-size-lg);
 	line-height: 1;
 }
 
 .accents {
 	display: flex;
 	align-items: center;
-	gap: 6px;
+	gap: var(--spacing-sm);
 }
 
 .accent {

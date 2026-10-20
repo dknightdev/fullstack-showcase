@@ -3,8 +3,10 @@ import { useTranslation } from 'react-i18next'
 
 import Home from '@/pages/Home/Home'
 import MainLayout from '@/layouts/MainLayout/MainLayout'
+import ScrollBackground from './components/layout/ScrollBackground/ScrollBackground'
 
 import { usePreferencesStore } from '@/stores/preferencesStore'
+import SmoothScroll from './components/layout/SmoothScroll/SmoothScroll'
 
 function App() {
 	const theme = usePreferencesStore((state) => state.theme)
@@ -24,9 +26,14 @@ function App() {
 	}, [theme, accent, language, i18n])
 
 	return (
-		<MainLayout>
-			<Home />
-		</MainLayout>
+		<>
+			<SmoothScroll />
+			<ScrollBackground />
+
+			<MainLayout>
+				<Home />
+			</MainLayout>
+		</>
 	)
 }
 

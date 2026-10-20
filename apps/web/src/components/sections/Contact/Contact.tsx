@@ -5,6 +5,7 @@ import AppIcon from '@/components/ui/AppIcon/AppIcon'
 import Section from '@/components/ui/Section/Section'
 import SectionHeading from '@/components/ui/SectionHeading/SectionHeading'
 import Button from '@/components/ui/Button/Button'
+import Reveal from '@/components/ui/Reveal/Reveal'
 
 const contactItems = [
 	{
@@ -45,6 +46,7 @@ const Contact = () => {
 				description={t('contact.description')}
 			/>
 
+			<Reveal direction='right'>
 				<div className={styles.contacts}>
 					{contactItems.map((item) => (
 						<article
@@ -111,6 +113,7 @@ const Contact = () => {
 						<AppIcon icon={TbDownload} size={18} />
 					</Button>
 				</div>
+			</Reveal>
 		</Section>
 	)
 }

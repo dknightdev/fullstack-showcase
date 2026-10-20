@@ -3,6 +3,7 @@ import styles from './Skills.module.css'
 import Section from '@/components/ui/Section/Section'
 import SectionHeading from '@/components/ui/SectionHeading/SectionHeading'
 import Chip from '@/components/ui/Chip/Chip'
+import Reveal from '@/components/ui/Reveal/Reveal'
 
 const skillCategories = [
 	{
@@ -70,6 +71,7 @@ const Skills = () => {
 				description={t('skills.description')}
 			/>
 
+			<Reveal direction='right'>
 				<div className={styles.grid}>
 					{skillCategories.map((category, index) => (
 						<article
@@ -98,6 +100,7 @@ const Skills = () => {
 						</article>
 					))}
 				</div>
+			</Reveal>
 		</Section>
 	)
 }

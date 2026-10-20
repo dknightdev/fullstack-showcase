@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next'
 import styles from './About.module.css'
 import Section from '@/components/ui/Section/Section'
 import SectionHeading from '@/components/ui/SectionHeading/SectionHeading'
+import Reveal from '@/components/ui/Reveal/Reveal'
 
 const principles = [
 	{
@@ -33,6 +34,7 @@ const About = () => {
 				highlight={t('about.highlight')}
 			/>
 
+			<Reveal direction='right'>
 				<div className={styles.content}>
 					<div className={styles.description}>
 						<p>
@@ -67,6 +69,7 @@ const About = () => {
 						))}
 					</div>
 				</div>
+			</Reveal>
 		</Section>
 	)
 }

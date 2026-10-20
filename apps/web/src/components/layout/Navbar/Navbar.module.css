@@ -30,7 +30,7 @@
 	justify-content: space-between;
 
 	min-height: var(--navbar-height);
-	padding: 8px 12px 8px 20px;
+	padding: var(--spacing-sm) var(--spacing-md) var(--spacing-sm) var(--spacing-lg);
 }
 
 .logo {
@@ -56,7 +56,7 @@
 	position: relative;
 	display: flex;
 	align-items: center;
-	gap: 4px;
+	gap: var(--spacing-xs);
 	line-height: 1;
 
 	color: var(--color-text-soft);
@@ -163,13 +163,7 @@
 
 @media (max-width: 768px) {
 	.header {
-		top: 16px;
-		right: 16px;
-		left: 16px;
-
-		width: auto;
-
-		transform: none;
+		top: 20px;
 	}
 
 	.navbarMain {
@@ -233,7 +227,7 @@
 	.menu a {
 		display: flex;
 		align-items: center;
-		gap: 6px;
+		gap: var(--spacing-xs);
 		line-height: 1;
 
 		padding: var(--spacing-sm) 0;
@@ -282,5 +276,17 @@
 	.menu a.active::after {
 		opacity: 1;
 		transform: translateY(0px) scale(1);
+	}
+}
+
+@media (max-width: 425px) {
+	.header {
+		top: 16px;
+		right: 16px;
+		left: 16px;
+
+		width: auto;
+
+		transform: none;
 	}
 }

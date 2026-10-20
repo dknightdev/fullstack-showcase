@@ -12,7 +12,7 @@ type ChipProps = {
 const Chip = ({ children, icon }: ChipProps) => {
 	return (
 		<span className={styles.chip}>
-			{icon && <AppIcon icon={icon} size={16} />}
+			{icon && <AppIcon icon={icon} size={18} />}
 			{children}
 		</span>
 	)

@@ -3,7 +3,7 @@
 	grid-template-columns: repeat(2, 1fr);
 	gap: var(--spacing-md);
 
-	margin-top: clamp(3rem, 7vw, 6rem);
+	margin-top: var(--spacing-section);
 }
 
 .card {
@@ -112,12 +112,16 @@
 	}
 }
 
-@media (max-width: 480px) {
+@media (max-width: 425px) {
 	.card {
 		padding: var(--spacing-md);
 	}
 
 	.actions {
-		gap: 4px;
+		gap: var(--spacing-xs);
+	}
+
+	.cv {
+		padding: var(--spacing-lg);
 	}
 }

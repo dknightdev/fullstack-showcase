@@ -2,8 +2,8 @@
 	display: inline-flex;
 	align-items: center;
 
-	gap: 6px;
-	padding: 0.35rem 0.75rem;
+	gap: var(--spacing-sm);
+	padding: 0.4rem 0.8rem;
 
 	border: 1px solid var(--color-border);
 	border-radius: var(--border-radius-full);

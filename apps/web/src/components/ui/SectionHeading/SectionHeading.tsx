@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import styles from './SectionHeading.module.css'
+import Reveal from '../Reveal/Reveal'
 
 type SectionHeadingProps = {
 	eyebrow: string
@@ -17,28 +18,30 @@ const SectionHeading = ({
 	action
 }: SectionHeadingProps) => {
 	return (
-		<div className={styles.heading}>
-			<p className={styles.eyebrow}>
-				{eyebrow}
-			</p>
-
-			<h2>
-				{title}
-				<span>{highlight}</span>
-			</h2>
-
-			{description && (
-				<p className={styles.description}>
-					{description}
+		<Reveal direction='left'>
+			<div className={styles.heading}>
+				<p className={styles.eyebrow}>
+					{eyebrow}
 				</p>
-			)}
 
-			{action && (
-				<div className={styles.action}>
-					{action}
-				</div>
-			)}
-		</div>
+				<h2>
+					{title}
+					<span>{highlight}</span>
+				</h2>
+
+				{description && (
+					<p className={styles.description}>
+						{description}
+					</p>
+				)}
+
+				{action && (
+					<div className={styles.action}>
+						{action}
+					</div>
+				)}
+			</div>
+		</Reveal>
 	)
 }
 

@@ -4,6 +4,7 @@ import { TbX } from 'react-icons/tb'
 import { useTranslation } from 'react-i18next'
 import AppIcon from '@/components/ui/AppIcon/AppIcon'
 import Button from '@/components/ui/Button/Button'
+import { motionConfig } from '@/config/motion'
 import styles from './Modal.module.css'
 
 type ModalProps = {
@@ -51,12 +52,12 @@ const Modal = ({
 				<motion.div
 					className={`${styles.overlay} ${size === 'fullscreen' ? styles.fullscreenOverlay : ''}`}
 					onMouseDown={handleBackdropClick}
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					exit={{ opacity: 0 }}
+					initial={{ opacity: motionConfig.opacity.hidden }}
+					animate={{ opacity: motionConfig.opacity.visible }}
+					exit={{ opacity: motionConfig.opacity.hidden }}
 					transition={{
-						duration: 0.3,
-						ease: 'easeOut'
+						duration: motionConfig.duration.normal,
+						ease: motionConfig.ease
 					}}
 				>
 					<motion.div
@@ -77,23 +78,23 @@ const Modal = ({
 							event.stopPropagation()
 						}}
 						initial={{
-							opacity: 0,
-							y: 20,
-							scale: 0.97
+							opacity: motionConfig.opacity.hidden,
+							y: motionConfig.distance.normal,
+							scale: motionConfig.scale.modal
 						}}
 						animate={{
-							opacity: 1,
+							opacity: motionConfig.opacity.visible,
 							y: 0,
 							scale: 1
 						}}
 						exit={{
-							opacity: 0,
-							y: 20,
-							scale: 0.97
+							opacity: motionConfig.opacity.hidden,
+							y: motionConfig.distance.normal,
+							scale: motionConfig.scale.modal
 						}}
 						transition={{
-							duration: 0.3,
-							ease: [0.22, 1, 0.36, 1]
+							duration: motionConfig.duration.normal,
+							ease: motionConfig.ease
 						}}
 					>
 						<header
@@ -119,6 +120,7 @@ const Modal = ({
 
 						<div
 							className={`${styles.content} ${size === 'fullscreen' ? styles.fullscreenContent : ''}`}
+							data-lenis-prevent
 						>
 							{children}
 						</div>

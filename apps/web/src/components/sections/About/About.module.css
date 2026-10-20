@@ -1,9 +1,9 @@
 .content {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	gap: clamp(3rem, 8vw, 8rem);
+	gap: var(--spacing-section);
 
-	margin-top: clamp(3rem, 7vw, 6rem);
+	margin-top: var(--spacing-section);
 }
 
 .description {
@@ -13,7 +13,7 @@
 .description p {
 	color: var(--color-text-soft);
 
-	font-size: clamp(1rem, 1.5vw, 1.2rem);
+	font-size: var(--font-size-lg);
 	line-height: var(--line-height-relaxed);
 
 	transition:
@@ -44,13 +44,11 @@
 
 	transition:
 		background-color var(--transition-normal),
-		border-color var(--transition-normal),
-		transform var(--transition-fast);
+		border-color var(--transition-normal);
 }
 
 .principle:hover {
 	border-color: var(--color-primary);
-	transform: translateY(-4px);
 }
 
 .number {

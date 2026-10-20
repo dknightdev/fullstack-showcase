@@ -41,7 +41,7 @@ const Footer = () => {
 
 						<Button variant='tertiary' href='#hero'>
 							{t('footer.backToTop')}
-							<AppIcon icon={TbArrowUp} size={16} />
+							<AppIcon icon={TbArrowUp} size={18} />
 						</Button>
 					</nav>
 				</div>

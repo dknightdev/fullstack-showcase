@@ -3,6 +3,7 @@ import styles from './Experience.module.css'
 import Section from '@/components/ui/Section/Section'
 import SectionHeading from '@/components/ui/SectionHeading/SectionHeading'
 import Chip from '@/components/ui/Chip/Chip'
+import Reveal from '@/components/ui/Reveal/Reveal'
 
 const experiences = [
 	{
@@ -53,6 +54,7 @@ const Experience = () => {
 				description={t('experience.description')}
 			/>
 
+			<Reveal direction='right'>
 				<div className={styles.timeline}>
 					{experiences.map((experience) => (
 						<article
@@ -103,6 +105,7 @@ const Experience = () => {
 						</article>
 					))}
 				</div>
+			</Reveal>
 		</Section>
 	)
 }

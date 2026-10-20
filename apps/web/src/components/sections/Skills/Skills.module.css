@@ -3,7 +3,7 @@
 	grid-template-columns: repeat(2, 1fr);
 	gap: var(--spacing-md);
 
-	margin-top: clamp(3rem, 7vw, 6rem);
+	margin-top: var(--spacing-section);
 }
 
 .card {
@@ -76,5 +76,11 @@
 
 	.card:last-child {
 		grid-column: auto;
+	}
+}
+
+@media (max-width: 425px) {
+	.card {
+		padding: var(--spacing-lg);
 	}
 }

@@ -18,6 +18,8 @@ const navigationItems = [
 	'contact'
 ]
 
+const SCROLL_CLOSE_DISTANCE = 120
+
 const Navbar = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
 	const [isPreferencesOpen, setIsPreferencesOpen] = useState(false)
@@ -49,11 +51,19 @@ const Navbar = () => {
 			closeMenus()
 		}
 
-		window.addEventListener('scroll', closeMenus, { passive: true })
+		const startScrollY = window.scrollY
+
+		const handleScroll = () => {
+			if (Math.abs(window.scrollY - startScrollY) >= SCROLL_CLOSE_DISTANCE) {
+				closeMenus()
+			}
+		}
+
+		window.addEventListener('scroll', handleScroll, { passive: true })
 		document.addEventListener('pointerdown', handlePointerDown)
 
 		return () => {
-			window.removeEventListener('scroll', closeMenus)
+			window.removeEventListener('scroll', handleScroll)
 			document.removeEventListener('pointerdown', handlePointerDown)
 		}
 	}, [isMenuOpen, isPreferencesOpen])
@@ -62,7 +72,7 @@ const Navbar = () => {
 		<header ref={headerRef} className={styles.header}>
 			<nav className={styles.navbar}>
 				<div className={styles.navbarMain}>
-					<a href='#' className={styles.logo}>
+					<a href='#hero' className={styles.logo}>
 						DC
 					</a>
 
