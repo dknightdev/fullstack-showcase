@@ -19,6 +19,17 @@ const CONNECTION_DISTANCE = 130
 const CONNECTION_DISTANCE_MOBILE = 100
 const MAX_PIXEL_RATIO = 1.5
 
+const THEME_STYLES = {
+	dark: { dotOpacity: 0.45, lineOpacity: 0.2, radiusBoost: 0 },
+	light: { dotOpacity: 0.75, lineOpacity: 0.32, radiusBoost: 0.3 }
+}
+
+const getThemeStyle = () => {
+	return document.documentElement.dataset.theme === 'light'
+		? THEME_STYLES.light
+		: THEME_STYLES.dark
+}
+
 const getAccentColor = () => {
 	return getComputedStyle(document.documentElement)
 		.getPropertyValue('--color-primary')
@@ -56,6 +67,7 @@ const ScrollBackground = () => {
 		let isPageVisible = !document.hidden
 		let isReducedMotion = reducedMotion.matches
 		let accentColor = getAccentColor()
+		let themeStyle = getThemeStyle()
 		let lastFrameTime = 0
 
 		const resize = () => {
@@ -142,7 +154,7 @@ const ScrollBackground = () => {
 					if (distanceSquared > connectionDistance ** 2) continue
 
 					const distance = Math.sqrt(distanceSquared)
-					const opacity = (1 - distance / connectionDistance) * 0.2
+					const opacity = (1 - distance / connectionDistance) * themeStyle.lineOpacity
 
 					context.globalAlpha = opacity
 					context.beginPath()
@@ -156,9 +168,9 @@ const ScrollBackground = () => {
 			context.fillStyle = accentColor
 
 			for (const point of points) {
-				context.globalAlpha = 0.45
+				context.globalAlpha = themeStyle.dotOpacity
 				context.beginPath()
-				context.arc(point.x, point.y, point.radius, 0, Math.PI * 2)
+				context.arc(point.x, point.y, point.radius + themeStyle.radiusBoost, 0, Math.PI * 2)
 				context.fill()
 			}
 
@@ -244,6 +256,7 @@ const ScrollBackground = () => {
 
 		const themeObserver = new MutationObserver(() => {
 			accentColor = getAccentColor()
+			themeStyle = getThemeStyle()
 			draw()
 		})
 
