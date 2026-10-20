@@ -1,4 +1,4 @@
-import { useEffect, type MouseEvent, type ReactNode } from 'react'
+import { useEffect, useRef, type MouseEvent, type ReactNode } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { TbX } from 'react-icons/tb'
 import { useTranslation } from 'react-i18next'
@@ -23,6 +23,44 @@ const Modal = ({
 	size = 'default'
 }: ModalProps) => {
 	const { t } = useTranslation()
+	const onCloseRef = useRef(onClose)
+	const closedByPopStateRef = useRef(false)
+	const pendingBackRef = useRef<number | null>(null)
+
+	useEffect(() => {
+		onCloseRef.current = onClose
+	}, [onClose])
+
+	useEffect(() => {
+		if (!isOpen) return
+
+		closedByPopStateRef.current = false
+
+		if (pendingBackRef.current !== null) {
+			window.clearTimeout(pendingBackRef.current)
+			pendingBackRef.current = null
+		} else {
+			window.history.pushState({ modal: true }, '')
+		}
+
+		const handlePopState = () => {
+			closedByPopStateRef.current = true
+			onCloseRef.current()
+		}
+
+		window.addEventListener('popstate', handlePopState)
+
+		return () => {
+			window.removeEventListener('popstate', handlePopState)
+
+			if (!closedByPopStateRef.current) {
+				pendingBackRef.current = window.setTimeout(() => {
+					pendingBackRef.current = null
+					window.history.back()
+				}, 0)
+			}
+		}
+	}, [isOpen])
 
 	useEffect(() => {
 		if (!isOpen) return
