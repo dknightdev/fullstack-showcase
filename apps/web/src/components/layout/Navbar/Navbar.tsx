@@ -10,6 +10,9 @@ import Preferences from './Preferences/Preferences'
 
 import styles from './Navbar.module.css'
 
+import logoDark from '@/assets/img/logo-dark.png'
+import logoLight from '@/assets/img/logo-light.png'
+
 const navigationItems = [
 	'about',
 	'experience',
@@ -72,8 +75,21 @@ const Navbar = () => {
 		<header ref={headerRef} className={styles.header}>
 			<nav className={styles.navbar}>
 				<div className={styles.navbarMain}>
-					<a href='#hero' className={styles.logo}>
-						DC
+					<a href='#hero' className={styles.logo} aria-label='Duban Caballero'>
+						<img
+							className={styles.logoForDark}
+							src={logoDark}
+							width={279}
+							height={241}
+							alt=''
+						/>
+						<img
+							className={styles.logoForLight}
+							src={logoLight}
+							width={279}
+							height={241}
+							alt=''
+						/>
 					</a>
 
 					<div className={styles.links}>

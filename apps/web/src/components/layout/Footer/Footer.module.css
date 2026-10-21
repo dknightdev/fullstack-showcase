@@ -25,7 +25,7 @@
 .identity h2 {
 	font-size: clamp(1.75rem, 3vw, 2.5rem);
 	font-weight: var(--font-weight-bold);
-	line-height: var(--line-height-tight);
+	line-height: var(--line-height-tightest);
 	letter-spacing: -0.04em;
 }
 

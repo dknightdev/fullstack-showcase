@@ -17,7 +17,7 @@ import Chip from '@/components/ui/Chip/Chip'
 
 import { motionConfig } from '@/config/motion'
 
-import perfilSilueta from '@/assets/img/perfil_silueta2.png'
+import perfilSilueta from '@/assets/img/perfil_silueta.png'
 
 const contentVariants: Variants = {
 	hidden: {

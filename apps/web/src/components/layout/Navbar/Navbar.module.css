@@ -34,16 +34,26 @@
 }
 
 .logo {
-	font-size: var(--font-size-lg);
-	font-weight: var(--font-weight-bold);
-	color: var(--color-primary);
-
-	transition:
-		color var(--transition-normal);
+	display: flex;
+	align-items: center;
 }
 
-.logo:hover {
-	color: var(--color-primary-hover);
+.logo img {
+	width: auto;
+	height: 20px;
+}
+
+
+.logoForLight {
+	display: none;
+}
+
+:global([data-theme='light']) .logoForDark {
+	display: none;
+}
+
+:global([data-theme='light']) .logoForLight {
+	display: block;
 }
 
 .links {

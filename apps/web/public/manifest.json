@@ -1,11 +1,11 @@
 {
-    "name": "Edinson Duban Caballero | Desarrollador Full Stack",
+    "name": "Duban Caballero | Desarrollador Full Stack",
 	"short_name": "Duban Caballero",
-	"description": "Portafolio de Edinson Duban Caballero, Desarrollador Full Stack.",
+	"description": "Portafolio de Duban Caballero, Desarrollador Full Stack.",
 	"start_url": "/",
 	"display": "standalone",
-	"background_color": "#0f172a",
-	"theme_color": "#0f172a",
+	"background_color": "#111622",
+	"theme_color": "#111622",
 	"orientation": "portrait-primary",
 	"icons": [
         {

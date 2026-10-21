@@ -13,8 +13,8 @@ const Footer = () => {
 				<div className={styles.main}>
 					<div className={styles.identity}>
 						<h2>
-							EDINSON DUBAN
-							<span>CABALLERO RINCÓN</span>
+							DUBAN
+							<span>CABALLERO</span>
 						</h2>
 
 						<p className={styles.role}>
@@ -48,7 +48,7 @@ const Footer = () => {
 
 				<div className={styles.bottom}>
 					<span>
-						© {new Date().getFullYear()} Edinson Duban Caballero Rincón
+						© {new Date().getFullYear()} Duban Caballero
 					</span>
 
 					<span>
