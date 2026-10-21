@@ -28,10 +28,10 @@ const projects: ProjectItem[] = [
 	{
 		key: 'storeOrders',
 		images: [
-			'/project1/preview1.png',
-			'/project1/preview2.png',
-			'/project1/preview3.png',
-			'/project1/preview4.png'
+			'/project1/preview1.webp',
+			'/project1/preview2.webp',
+			'/project1/preview3.webp',
+			'/project1/preview4.webp'
 		],
 		technologies: [
 			'React Native',
@@ -58,11 +58,11 @@ const projects: ProjectItem[] = [
 	{
 		key: 'businessSupport',
 		images: [
-			'/project2/preview1.png',
-			'/project2/preview2.png',
-			'/project2/preview3.png',
-			'/project2/preview4.png',
-			'/project2/preview5.png'
+			'/project2/preview1.webp',
+			'/project2/preview2.webp',
+			'/project2/preview3.webp',
+			'/project2/preview4.webp',
+			'/project2/preview5.webp'
 		],
 		technologies: [
 			'React',
@@ -91,9 +91,9 @@ const projects: ProjectItem[] = [
 	{
 		key: 'rayShark',
 		images: [
-			'/project3/preview1.png',
-			'/project3/preview2.png',
-			'/project3/preview3.png'
+			'/project3/preview1.webp',
+			'/project3/preview2.webp',
+			'/project3/preview3.webp'
 		],
 		technologies: [
 			'React Native',
@@ -121,11 +121,11 @@ const websites: ProjectItem[] = [
 	{
 		key: 'brandingAgency',
 		images: [
-			'/project4/preview1.png',
-			'/project4/preview2.png',
-			'/project4/preview3.png',
-			'/project4/preview4.png',
-			'/project4/preview5.png'
+			'/project4/preview1.webp',
+			'/project4/preview2.webp',
+			'/project4/preview3.webp',
+			'/project4/preview4.webp',
+			'/project4/preview5.webp'
 		],
 		technologies: [
 			'React',
@@ -145,9 +145,9 @@ const websites: ProjectItem[] = [
 	{
 		key: 'beautyBusiness',
 		images: [
-			'/project5/preview1.png',
-			'/project5/preview2.png',
-			'/project5/preview3.png'
+			'/project5/preview1.webp',
+			'/project5/preview2.webp',
+			'/project5/preview3.webp'
 		],
 		technologies: [
 			'HTML',
@@ -166,9 +166,9 @@ const websites: ProjectItem[] = [
 	{
 		key: 'equestrianCenter',
 		images: [
-			'/project6/preview1.png',
-			'/project6/preview2.png',
-			'/project6/preview3.png'
+			'/project6/preview1.webp',
+			'/project6/preview2.webp',
+			'/project6/preview3.webp'
 		],
 		technologies: [
 			'HTML',

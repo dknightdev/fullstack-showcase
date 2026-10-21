@@ -18,6 +18,9 @@ type ImageGalleryProps = {
 	onOpen?: (index: number) => void
 }
 
+const IMAGE_WIDTH = 1920
+const IMAGE_HEIGHT = 1080
+
 const ImageGallery = ({
 	images,
 	alt,
@@ -125,6 +128,10 @@ const ImageGallery = ({
 						>
 							<img
 								src={image}
+								width={IMAGE_WIDTH}
+								height={IMAGE_HEIGHT}
+								loading='lazy'
+								decoding='async'
 								alt={t('ui.imageGallery.imageAlt', {
 									alt,
 									index: index + 1
@@ -146,6 +153,10 @@ const ImageGallery = ({
 						>
 							<img
 								src={image}
+								width={IMAGE_WIDTH}
+								height={IMAGE_HEIGHT}
+								loading='lazy'
+								decoding='async'
 								alt={t('ui.imageGallery.imageAlt', {
 									alt,
 									index: index + 1
