@@ -84,7 +84,7 @@ const projects: ProjectItem[] = [
 		links: [
 			{
 				labelKey: 'viewDemo',
-				href: '#'
+				href: 'https://dubancaballero.dev/demos/Project2_Demo.mp4'
 			}
 		]
 	},

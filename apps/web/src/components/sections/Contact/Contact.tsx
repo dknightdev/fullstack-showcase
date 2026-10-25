@@ -105,8 +105,8 @@ const Contact = () => {
 
 					<Button
 						variant='primary'
-						href='/CV-Duban_Caballero.pdf'
-						download='CV-Duban_Caballero.pdf'
+						href='https://dubancaballero.dev/cv/CV-Duban_Caballero-FullStack.pdf'
+						download='CV-Duban_Caballero-FullStack.pdf'
 						className={styles.cvButton}
 					>
 						{t('contact.cv.download')}
