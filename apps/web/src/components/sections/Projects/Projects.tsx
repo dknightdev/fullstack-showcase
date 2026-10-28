@@ -235,7 +235,7 @@ const Projects = () => {
 							aria-label={t('projects.openPrivacyInfo')}
 						>
 							{t('projects.privacyInfoButton')}
-							<AppIcon icon={TbInfoCircle} size={16} />
+							<AppIcon icon={TbInfoCircle} size={18} />
 						</Button>
 					}
 				/>

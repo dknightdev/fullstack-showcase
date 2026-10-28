@@ -1,4 +1,10 @@
 {
+	"playground": {
+		"open": "Open playground",
+		"backHome": "Back to portfolio",
+		"title": "Backend playground",
+		"description": "A space to showcase the backend technologies I work with."
+	},
 	"navbar": {
 		"about": "About me",
 		"experience": "Experience",

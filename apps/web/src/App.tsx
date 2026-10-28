@@ -1,7 +1,10 @@
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { Navigate, Route, Routes } from 'react-router-dom'
+
 import Home from '@/pages/Home/Home'
+import Playground from '@/pages/Playground/Playground'
 import MainLayout from '@/layouts/MainLayout/MainLayout'
 import ScrollBackground from './components/layout/ScrollBackground/ScrollBackground'
 
@@ -30,9 +33,13 @@ function App() {
 			<SmoothScroll />
 			<ScrollBackground />
 
-			<MainLayout>
-				<Home />
-			</MainLayout>
+			<Routes>
+				<Route element={<MainLayout />}>
+					<Route index element={<Home />} />
+					<Route path='playground' element={<Playground />} />
+					<Route path='*' element={<Navigate to='/' replace />} />
+				</Route>
+			</Routes>
 		</>
 	)
 }

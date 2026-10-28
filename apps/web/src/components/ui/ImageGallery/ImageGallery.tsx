@@ -177,7 +177,7 @@ const ImageGallery = ({
 					>
 						<AppIcon
 							icon={TbChevronLeft}
-							size={22}
+							size={24}
 						/>
 					</button>
 
@@ -189,7 +189,7 @@ const ImageGallery = ({
 					>
 						<AppIcon
 							icon={TbChevronRight}
-							size={22}
+							size={24}
 						/>
 					</button>
 

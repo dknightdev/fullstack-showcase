@@ -39,7 +39,7 @@ const Footer = () => {
 							{t('footer.email')}
 						</Button>
 
-						<Button variant='tertiary' href='#hero'>
+						<Button variant='tertiary' onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
 							{t('footer.backToTop')}
 							<AppIcon icon={TbArrowUp} size={18} />
 						</Button>

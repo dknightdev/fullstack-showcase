@@ -36,6 +36,10 @@
 .logo {
 	display: flex;
 	align-items: center;
+	padding: 0;
+	border: 0;
+	background: none;
+	cursor: pointer;
 }
 
 .logo img {

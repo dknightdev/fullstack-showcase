@@ -13,24 +13,44 @@ import styles from './Navbar.module.css'
 import logoDark from '@/assets/img/logo-dark.png'
 import logoLight from '@/assets/img/logo-light.png'
 
-const navigationItems = [
-	'about',
-	'experience',
-	'projects',
-	'skills',
-	'contact'
-]
+export interface NavbarLink {
+	id: string
+	label: string
+}
+
+interface NavbarProps {
+	links?: NavbarLink[]
+}
 
 const SCROLL_CLOSE_DISTANCE = 120
 
-const Navbar = () => {
+const Navbar = ({ links = [] }: NavbarProps) => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
 	const [isPreferencesOpen, setIsPreferencesOpen] = useState(false)
 	const headerRef = useRef<HTMLElement | null>(null)
 	const { t } = useTranslation()
 
-	const sectionIds = navigationItems
-	const activeSection = useActiveSection(sectionIds)
+	const hasLinks = links.length > 0
+	const activeSection = useActiveSection(links.map((link) => link.id))
+
+	const logoContent = (
+		<>
+			<img
+				className={styles.logoForDark}
+				src={logoDark}
+				width={279}
+				height={241}
+				alt=''
+			/>
+			<img
+				className={styles.logoForLight}
+				src={logoLight}
+				width={279}
+				height={241}
+				alt=''
+			/>
+		</>
+	)
 
 	useEffect(() => {
 		if (!isMenuOpen && !isPreferencesOpen) {
@@ -75,34 +95,28 @@ const Navbar = () => {
 		<header ref={headerRef} className={styles.header}>
 			<nav className={styles.navbar}>
 				<div className={styles.navbarMain}>
-					<a href='#hero' className={styles.logo} aria-label='Duban Caballero'>
-						<img
-							className={styles.logoForDark}
-							src={logoDark}
-							width={279}
-							height={241}
-							alt=''
-						/>
-						<img
-							className={styles.logoForLight}
-							src={logoLight}
-							width={279}
-							height={241}
-							alt=''
-						/>
-					</a>
+					<button
+						type='button'
+						className={styles.logo}
+						aria-label='Duban Caballero'
+						onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+					>
+						{logoContent}
+					</button>
 
-					<div className={styles.links}>
-						{navigationItems.map((sectionId) => (
-							<a
-								key={sectionId}
-								href={`#${sectionId}`}
-								className={activeSection === sectionId ? styles.active : ''}
-							>
-								{t(`navbar.${sectionId}`)}
-							</a>
-						))}
-					</div>
+					{hasLinks && (
+						<div className={styles.links}>
+							{links.map(({ id, label }) => (
+								<a
+									key={id}
+									href={`#${id}`}
+									className={activeSection === id ? styles.active : ''}
+								>
+									{label}
+								</a>
+							))}
+						</div>
+					)}
 
 					<div className={styles.actions}>
 						<Button
@@ -120,39 +134,43 @@ const Navbar = () => {
 								: <AppIcon icon={TbAdjustmentsHorizontal} size={18} />}
 						</Button>
 
-						<Button
-							variant='icon'
-							className={styles.menuButton}
-							onClick={() => {
-								setIsMenuOpen((isOpen) => !isOpen)
-								setIsPreferencesOpen(false)
-							}}
-							aria-label={t(isMenuOpen ? 'navbar.closeMenu' : 'navbar.openMenu')}
-							aria-expanded={isMenuOpen}
-							title={t(isMenuOpen ? 'navbar.closeMenu' : 'navbar.openMenu')}
-						>
-							{isMenuOpen ? <AppIcon icon={TbX} size={18} /> : <AppIcon icon={TbMenu2} size={18} />}
-						</Button>
+						{hasLinks && (
+							<Button
+								variant='icon'
+								className={styles.menuButton}
+								onClick={() => {
+									setIsMenuOpen((isOpen) => !isOpen)
+									setIsPreferencesOpen(false)
+								}}
+								aria-label={t(isMenuOpen ? 'navbar.closeMenu' : 'navbar.openMenu')}
+								aria-expanded={isMenuOpen}
+								title={t(isMenuOpen ? 'navbar.closeMenu' : 'navbar.openMenu')}
+							>
+								{isMenuOpen ? <AppIcon icon={TbX} size={18} /> : <AppIcon icon={TbMenu2} size={18} />}
+							</Button>
+						)}
 					</div>
 				</div>
 
-				<div
-					className={`${styles.menu} ${isMenuOpen ? styles.menuOpen : styles.menuClosed}`}
-					aria-hidden={!isMenuOpen}
-				>
-					<div className={styles.menuContent}>
-						{navigationItems.map((sectionId) => (
-							<a
-								key={sectionId}
-								href={`#${sectionId}`}
-								className={activeSection === sectionId ? styles.active : ''}
-								onClick={() => setIsMenuOpen(false)}
-							>
-								{t(`navbar.${sectionId}`)}
-							</a>
-						))}
+				{hasLinks && (
+					<div
+						className={`${styles.menu} ${isMenuOpen ? styles.menuOpen : styles.menuClosed}`}
+						aria-hidden={!isMenuOpen}
+					>
+						<div className={styles.menuContent}>
+							{links.map(({ id, label }) => (
+								<a
+									key={id}
+									href={`#${id}`}
+									className={activeSection === id ? styles.active : ''}
+									onClick={() => setIsMenuOpen(false)}
+								>
+									{label}
+								</a>
+							))}
+						</div>
 					</div>
-				</div>
+				)}
 			</nav>
 
 			<div
