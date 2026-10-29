@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
+import { motion } from 'motion/react'
+import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { TbAdjustmentsHorizontal, TbMenu2, TbX } from 'react-icons/tb'
 
 import useActiveSection from '@/hooks/useActiveSection'
-import AppIcon from '@/components/ui/AppIcon/AppIcon'
+import { AnimatedIcon } from '@/components/ui/AppIcon/AppIcon'
 import Button from '@/components/ui/Button/Button'
 
 import Preferences from './Preferences/Preferences'
@@ -12,6 +14,7 @@ import styles from './Navbar.module.css'
 
 import logoDark from '@/assets/img/logo-dark.png'
 import logoLight from '@/assets/img/logo-light.png'
+import { motionConfig } from '@/config/motion'
 
 export interface NavbarLink {
 	id: string
@@ -19,16 +22,18 @@ export interface NavbarLink {
 }
 
 interface NavbarProps {
+	isHome: boolean
 	links?: NavbarLink[]
 }
 
 const SCROLL_CLOSE_DISTANCE = 120
 
-const Navbar = ({ links = [] }: NavbarProps) => {
+const Navbar = ({ isHome, links = [] }: NavbarProps) => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
 	const [isPreferencesOpen, setIsPreferencesOpen] = useState(false)
 	const headerRef = useRef<HTMLElement | null>(null)
 	const { t } = useTranslation()
+	const { pathname } = useLocation()
 
 	const hasLinks = links.length > 0
 	const activeSection = useActiveSection(links.map((link) => link.id))
@@ -95,17 +100,23 @@ const Navbar = ({ links = [] }: NavbarProps) => {
 		<header ref={headerRef} className={styles.header}>
 			<nav className={styles.navbar}>
 				<div className={styles.navbarMain}>
-					<button
-						type='button'
+					<Link
+						role='button'
 						className={styles.logo}
 						aria-label='Duban Caballero'
-						onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+						to={isHome ? '#hero' : '/'}
 					>
 						{logoContent}
-					</button>
+					</Link>
 
 					{hasLinks && (
-						<div className={styles.links}>
+						<motion.div
+							key={pathname}
+							className={styles.links}
+							initial={{ opacity: 0, y: -motionConfig.distance.short }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: motionConfig.duration.normal, ease: motionConfig.ease }}
+						>
 							{links.map(({ id, label }) => (
 								<a
 									key={id}
@@ -115,7 +126,7 @@ const Navbar = ({ links = [] }: NavbarProps) => {
 									{label}
 								</a>
 							))}
-						</div>
+						</motion.div>
 					)}
 
 					<div className={styles.actions}>
@@ -129,9 +140,12 @@ const Navbar = ({ links = [] }: NavbarProps) => {
 							aria-expanded={isPreferencesOpen}
 							title={t(isPreferencesOpen ? 'navbar.closePreferences' : 'navbar.openPreferences')}
 						>
-							{isPreferencesOpen
-								? <AppIcon icon={TbX} size={18} />
-								: <AppIcon icon={TbAdjustmentsHorizontal} size={18} />}
+							<AnimatedIcon
+								icon={TbAdjustmentsHorizontal}
+								toggleIcon={TbX}
+								toggle={isPreferencesOpen}
+								size={18}
+							/>
 						</Button>
 
 						{hasLinks && (
@@ -146,7 +160,12 @@ const Navbar = ({ links = [] }: NavbarProps) => {
 								aria-expanded={isMenuOpen}
 								title={t(isMenuOpen ? 'navbar.closeMenu' : 'navbar.openMenu')}
 							>
-								{isMenuOpen ? <AppIcon icon={TbX} size={18} /> : <AppIcon icon={TbMenu2} size={18} />}
+								<AnimatedIcon
+									icon={TbMenu2}
+									toggleIcon={TbX}
+									toggle={isMenuOpen}
+									size={18}
+								/>
 							</Button>
 						)}
 					</div>

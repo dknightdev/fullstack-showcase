@@ -10,6 +10,7 @@ export const motionConfig = {
 		reveal: 0.7
 	},
 	distance: {
+		short: 10,
 		normal: 20
 	},
 	scale: {

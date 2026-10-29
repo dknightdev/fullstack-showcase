@@ -175,10 +175,7 @@ const ImageGallery = ({
 						onClick={previousImage}
 						aria-label={t('ui.imageGallery.previousImage')}
 					>
-						<AppIcon
-							icon={TbChevronLeft}
-							size={24}
-						/>
+						<AppIcon icon={TbChevronLeft} size={24} />
 					</button>
 
 					<button
@@ -187,10 +184,7 @@ const ImageGallery = ({
 						onClick={nextImage}
 						aria-label={t('ui.imageGallery.nextImage')}
 					>
-						<AppIcon
-							icon={TbChevronRight}
-							size={24}
-						/>
+						<AppIcon icon={TbChevronRight} size={24} />
 					</button>
 
 					<span className={styles.counter}>

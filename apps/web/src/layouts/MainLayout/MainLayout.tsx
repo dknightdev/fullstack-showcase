@@ -10,6 +10,7 @@ import PageTransition from '@/components/layout/PageTransition/PageTransition'
 import FloatingPlaygroundButton from '@/components/ui/FloatingPlaygroundButton/FloatingPlaygroundButton'
 
 const homeSections = ['about', 'experience', 'projects', 'skills', 'contact']
+const playgroundSections = ['playground1', 'playground2', 'playground3']
 
 const MainLayout = () => {
 	const { t } = useTranslation()
@@ -20,11 +21,11 @@ const MainLayout = () => {
 
 	const links: NavbarLink[] = isHome
 		? homeSections.map((id) => ({ id, label: t(`navbar.${id}`) }))
-		: []
+		: playgroundSections.map((id) => ({ id, label: t(`navbar.${id}`) }))
 
 	return (
 		<>
-			<Navbar links={links} />
+			<Navbar isHome={isHome} links={links} />
 
 			<main className={styles.container}>
 				<AnimatePresence mode='wait' onExitComplete={() => window.scrollTo(0, 0)}>

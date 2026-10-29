@@ -41,7 +41,7 @@ const itemVariants: Variants = {
 		opacity: motionConfig.opacity.visible,
 		y: 0,
 		transition: {
-			duration: motionConfig.duration.reveal,
+			duration: motionConfig.duration.normal,
 			ease: motionConfig.ease
 		}
 	}
@@ -56,7 +56,7 @@ const imageVariants: Variants = {
 		opacity: motionConfig.opacity.visible,
 		x: 0,
 		transition: {
-			duration: motionConfig.duration.slow,
+			duration: motionConfig.duration.normal,
 			ease: motionConfig.ease
 		}
 	}

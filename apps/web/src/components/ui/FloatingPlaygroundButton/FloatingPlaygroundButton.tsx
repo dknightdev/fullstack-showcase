@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { TbHome2, TbTerminal2 } from 'react-icons/tb'
 
-import AppIcon from '@/components/ui/AppIcon/AppIcon'
+import { AnimatedIcon } from '@/components/ui/AppIcon/AppIcon'
 
 import styles from './FloatingPlaygroundButton.module.css'
 
@@ -21,7 +21,12 @@ const FloatingPlaygroundButton = ({ isHome }: FloatingPlaygroundButtonProps) => 
 			aria-label={label}
 			title={label}
 		>
-			<AppIcon icon={isHome ? TbTerminal2 : TbHome2} size={24} />
+			<AnimatedIcon
+				icon={TbTerminal2}
+				toggleIcon={TbHome2}
+				toggle={!isHome}
+				size={24}
+			/>
 		</Link>
 	)
 }

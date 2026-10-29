@@ -4,15 +4,15 @@ const useActiveSection = (sectionIds: string[]) => {
 	const [activeSection, setActiveSection] = useState<string>('')
 
 	useEffect(() => {
-		const sections = sectionIds
-			.map((id) => document.getElementById(id))
-			.filter((section): section is HTMLElement => section !== null)
-
-		if (!sections.length) {
-			return
-		}
-
 		const handleScroll = () => {
+			const sections = sectionIds
+				.map((id) => document.getElementById(id))
+				.filter((section): section is HTMLElement => section !== null)
+
+			if (!sections.length) {
+				return
+			}
+
 			const offset = window.innerHeight * 0.3
 
 			let currentSectionId = ''

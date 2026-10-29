@@ -1,7 +1,7 @@
 import { usePreferencesStore } from '@/stores/preferencesStore'
 import { useTranslation } from 'react-i18next'
 import { TbMoon, TbSunHigh } from 'react-icons/tb'
-import AppIcon from '@/components/ui/AppIcon/AppIcon'
+import { AnimatedIcon } from '@/components/ui/AppIcon/AppIcon'
 import Button from '@/components/ui/Button/Button'
 
 import styles from './Preferences.module.css'
@@ -39,8 +39,14 @@ const Preferences = () => {
 					variant='icon'
 					onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
 					aria-label={t(theme === 'dark' ? 'preferences.switchToLight' : 'preferences.switchToDark')}
+					title={t(theme === 'dark' ? 'preferences.switchToLight' : 'preferences.switchToDark')}
 				>
-					{theme === 'dark' ? <AppIcon icon={TbSunHigh} size={18} /> : <AppIcon icon={TbMoon} size={18} />}
+					<AnimatedIcon
+						icon={TbMoon}
+						toggleIcon={TbSunHigh}
+						toggle={theme === 'dark'}
+						size={18}
+					/>
 				</Button>
 			</div>
 
@@ -52,6 +58,7 @@ const Preferences = () => {
 						className={`${styles.accent} ${styles.blue} ${accent === 'blue' ? styles.active : ''}`}
 						onClick={() => setAccent('blue')}
 						aria-label={t('preferences.blueAccent')}
+						title={t('preferences.blueAccent')}
 					/>
 
 					<button
@@ -59,6 +66,7 @@ const Preferences = () => {
 						className={`${styles.accent} ${styles.green} ${accent === 'green' ? styles.active : ''}`}
 						onClick={() => setAccent('green')}
 						aria-label={t('preferences.greenAccent')}
+						title={t('preferences.greenAccent')}
 					/>
 
 					<button
@@ -66,6 +74,7 @@ const Preferences = () => {
 						className={`${styles.accent} ${styles.purple} ${accent === 'purple' ? styles.active : ''}`}
 						onClick={() => setAccent('purple')}
 						aria-label={t('preferences.purpleAccent')}
+						title={t('preferences.purpleAccent')}
 					/>
 
 					<button
@@ -73,6 +82,7 @@ const Preferences = () => {
 						className={`${styles.accent} ${styles.orange} ${accent === 'orange' ? styles.active : ''}`}
 						onClick={() => setAccent('orange')}
 						aria-label={t('preferences.orangeAccent')}
+						title={t('preferences.orangeAccent')}
 					/>
 				</div>
 			</div>
