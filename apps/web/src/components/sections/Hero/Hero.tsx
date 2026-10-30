@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { motion, useReducedMotion, type Variants } from 'motion/react'
 import {
-	TbChevronDown,
 	TbCode,
 	TbDeviceMobile,
 	TbFolderOpen,
@@ -18,6 +17,7 @@ import Chip from '@/components/ui/Chip/Chip'
 import { motionConfig } from '@/config/motion'
 
 import perfilSilueta from '@/assets/img/perfil_silueta.png'
+import ScrollIndicator from '@/components/ui/ScrollIndicator/ScrollIndicator'
 
 const contentVariants: Variants = {
 	hidden: {
@@ -63,7 +63,6 @@ const imageVariants: Variants = {
 }
 
 const Hero = () => {
-	const [isScrollIndicatorVisible, setIsScrollIndicatorVisible] = useState(true)
 	const { t } = useTranslation()
 	const shouldReduceMotion = useReducedMotion()
 
@@ -78,20 +77,6 @@ const Hero = () => {
 
 		return () => {
 			window.history.scrollRestoration = previousRestoration
-		}
-	}, [])
-
-	useEffect(() => {
-		const handleScroll = () => {
-			const hideThreshold = window.innerHeight * 0.2
-			setIsScrollIndicatorVisible(window.scrollY < hideThreshold)
-		}
-
-		handleScroll()
-		window.addEventListener('scroll', handleScroll, { passive: true })
-
-		return () => {
-			window.removeEventListener('scroll', handleScroll)
 		}
 	}, [])
 
@@ -173,17 +158,7 @@ const Hero = () => {
 				</motion.div>
 			</div>
 
-			<div
-				className={`${styles.scrollIndicator} ${!isScrollIndicatorVisible ? styles.hidden : ''}`}
-			>
-				<span className={styles.scrollText}>
-					{t('hero.scrollInstruction')}
-				</span>
-
-				<span className={styles.scrollIcon} aria-hidden='true'>
-					<AppIcon icon={TbChevronDown} size={18} />
-				</span>
-			</div>
+			<ScrollIndicator text={t('hero.scrollInstruction')} />
 		</section>
 	)
 }

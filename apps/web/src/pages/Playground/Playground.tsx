@@ -1,15 +1,15 @@
-import { useTranslation } from 'react-i18next'
 
-import styles from './Playground.module.css'
+import PlaygroundHero from '@/components/sectionsPlayground/PlaygroundHero/PlaygroundHero'
+import ApiExplorer from '@/components/sectionsPlayground/ApiExplorer/ApiExplorer'
+import Architecture from '@/components/sectionsPlayground/Architecture/Architecture'
 
 const Playground = () => {
-	const { t } = useTranslation()
-
 	return (
-		<section className={styles.page}>
-			<h1 className={styles.title}>{t('playground.title')}</h1>
-			<p className={styles.description}>{t('playground.description')}</p>
-		</section>
+		<>
+			<PlaygroundHero />
+			<ApiExplorer />
+			<Architecture />
+		</>
 	)
 }
 

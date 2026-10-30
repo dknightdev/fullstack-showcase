@@ -1,0 +1,72 @@
+.scrollIndicator {
+	position: absolute;
+	bottom: 24px;
+	left: 50%;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--spacing-xs);
+
+	transform: translateX(-50%);
+	opacity: 1;
+
+	color: var(--color-text);
+
+	transition:
+		opacity var(--transition-normal),
+		transform var(--transition-normal),
+		color var(--transition-normal);
+}
+
+.scrollText {
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-regular);
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+
+.scrollIcon {
+	color: var(--color-primary);
+	font-size: var(--font-size-md);
+	line-height: 1;
+
+	animation: scrollPulse 2s ease-in-out infinite;
+
+	transition:
+		color var(--transition-normal);
+}
+
+.hidden {
+	opacity: 0;
+	transform: translate(-50%, 12px);
+	pointer-events: none;
+}
+
+
+@keyframes scrollPulse {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+
+	50% {
+		transform: translateY(6px);
+	}
+}
+
+
+@media (max-width: 768px) {
+	.scrollIndicator {
+		width: 100%;
+		position: fixed;
+		z-index: 1;
+		bottom: calc(16px + env(safe-area-inset-bottom));
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.scrollIcon {
+		animation: none;
+	}
+}

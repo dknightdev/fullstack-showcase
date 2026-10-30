@@ -1,16 +1,13 @@
 {
-	"playground": {
-		"open": "Abrir playground",
-		"backHome": "Volver al portafolio",
-		"title": "Playground de backend",
-		"description": "Un espacio para mostrar las tecnologías backend que manejo."
-	},
 	"navbar": {
 		"about": "Sobre mí",
 		"experience": "Experiencia",
 		"projects": "Proyectos",
 		"skills": "Habilidades",
 		"contact": "Contacto",
+		"heroPlayground": "Introducción",
+		"apiExplorer": "Explorador de APIs",
+		"architecture": "Arquitectura",
 		"openPreferences": "Abrir preferencias",
 		"closePreferences": "Cerrar preferencias",
 		"openMenu": "Abrir menú de navegación",
@@ -305,6 +302,26 @@
 			"eyebrow": "¿Quieres conocer más sobre mi experiencia?",
 			"title": "Descarga mi CV",
 			"download": "Descargar CV"
+		}
+	},
+	"floatingButton": {
+		"goToPlayground": "Ir al playground",
+		"backToPortfolio": "Volver al portafolio"
+	},
+	"playground": {
+		"hero": {
+			"eyebrow": "Playground · APIs REST",
+			"title": "Un espacio para experimentar",
+			"highlight": "y aprender.",
+			"description": "Un entorno interactivo para explorar tres APIs construidas con tecnologías diferentes, probar sus funcionalidades y conocer las decisiones de arquitectura detrás de cada una.",
+			"technologiesLabel": "Tecnologías utilizadas",
+			"explore": "Explorar las APIs",
+			"architecture": "Ver arquitectura",
+			"terminalTitle": "api-request",
+			"response": "Respuesta",
+			"apiStatus": "Ejemplo ilustrativo",
+			"httpPreview": "HTTP / JSON",
+			"scrollInstruction": "Descubre el laboratorio"
 		}
 	}
 }

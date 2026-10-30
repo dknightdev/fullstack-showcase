@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { TbHome2, TbTerminal2 } from 'react-icons/tb'
+import { TbHome, TbTerminal2 } from 'react-icons/tb'
 
 import { AnimatedIcon } from '@/components/ui/AppIcon/AppIcon'
 
@@ -12,7 +12,7 @@ interface FloatingPlaygroundButtonProps {
 
 const FloatingPlaygroundButton = ({ isHome }: FloatingPlaygroundButtonProps) => {
 	const { t } = useTranslation()
-	const label = t(isHome ? 'playground.open' : 'playground.backHome')
+	const label = t(isHome ? 'floatingButton.goToPlayground' : 'floatingButton.backToPortfolio')
 
 	return (
 		<Link
@@ -23,7 +23,7 @@ const FloatingPlaygroundButton = ({ isHome }: FloatingPlaygroundButtonProps) => 
 		>
 			<AnimatedIcon
 				icon={TbTerminal2}
-				toggleIcon={TbHome2}
+				toggleIcon={TbHome}
 				toggle={!isHome}
 				size={24}
 			/>
