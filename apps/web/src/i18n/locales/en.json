@@ -322,6 +322,101 @@
 			"apiStatus": "Illustrative example",
 			"httpPreview": "HTTP / JSON",
 			"scrollInstruction": "Explore the playground"
+		},
+		"apiExplorer": {
+			"eyebrow": "API Explorer",
+			"title": "Explore and test",
+			"highlight": "different services.",
+			"description": "Pick an API, choose an endpoint, tweak the request and run it.",
+			"windowTitle": "api-explorer",
+			"selectorLabel": "Select an API",
+			"apis": {
+				"dotnet": {
+					"responsibility": "Products & inventory",
+					"description": "Owns the product catalog and stock levels. The only service allowed to change them."
+				},
+				"nestjs": {
+					"responsibility": "Orders",
+					"description": "Manages the order lifecycle and asks the products service to validate stock availability."
+				},
+				"laravel": {
+					"responsibility": "Reports & analytics",
+					"description": "Read-only queries that aggregate sales, inventory and order data."
+				}
+			},
+			"info": {
+				"technology": "Technology",
+				"responsibility": "Role in the system",
+				"baseUrl": "Base URL",
+				"endpoints": "Available endpoints",
+				"endpointCount": "{{count}} endpoints",
+				"writes": "Can write",
+				"reads": "Can read",
+				"readOnly": "Read-only service"
+			},
+			"entities": {
+				"products": "Products",
+				"inventory": "Inventory",
+				"orders": "Orders"
+			},
+			"endpoints": {
+				"title": "Endpoints",
+				"listLabel": "Endpoints of the selected API",
+				"groups": {
+					"productsRead": "Product queries",
+					"productsWrite": "Product management",
+					"ordersRead": "Order queries",
+					"ordersWrite": "Order creation",
+					"reports": "Analytics reports"
+				},
+				"descriptions": {
+					"listProducts": "List products with optional filters and pagination.",
+					"getProduct": "Get a product and its stock by id.",
+					"createProduct": "Create a new product in the catalog.",
+					"updateProduct": "Replace the data of an existing product.",
+					"deleteProduct": "Delete a product that is not used by any order.",
+					"listOrders": "List orders, optionally filtered by status.",
+					"getOrder": "Get an order with its items and total.",
+					"createOrder": "Create an order after validating stock with the products service.",
+					"getOrderStatus": "Get only the current status of an order.",
+					"salesReport": "Sales totals grouped by day or month.",
+					"inventoryReport": "Stock levels and low-stock alerts.",
+					"ordersReport": "Order counts and revenue by status."
+				}
+			},
+			"request": {
+				"title": "Request",
+				"send": "Send request",
+				"sending": "Sending…",
+				"reset": "Reset values",
+				"url": "Full URL",
+				"pathParams": "Path parameters",
+				"queryParams": "Query parameters",
+				"queryHint": "Empty values are not sent.",
+				"body": "Body (JSON)"
+			},
+			"response": {
+				"title": "Response",
+				"idleTitle": "No request sent yet",
+				"idleDescription": "Choose an endpoint and press “Send request” to see the response.",
+				"runningTitle": "Running request…",
+				"runningDescription": "Waiting for the response.",
+				"validationTitle": "The request could not be sent",
+				"duration": "{{ms}} ms",
+				"noContent": "204 No Content: the response has no body.",
+				"statusText": {
+					"200": "OK",
+					"201": "Created",
+					"204": "No Content",
+					"400": "Bad Request",
+					"404": "Not Found",
+					"409": "Conflict"
+				}
+			},
+			"validation": {
+				"missingPathParam": "The path parameter “{{field}}” is required.",
+				"invalidJson": "The body is not valid JSON."
+			}
 		}
 	}
 }

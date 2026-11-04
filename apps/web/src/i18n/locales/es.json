@@ -322,6 +322,101 @@
 			"apiStatus": "Ejemplo ilustrativo",
 			"httpPreview": "HTTP / JSON",
 			"scrollInstruction": "Descubre el laboratorio"
+		},
+		"apiExplorer": {
+			"eyebrow": "Explorador de APIs",
+			"title": "Explora y prueba",
+			"highlight": "distintos servicios.",
+			"description": "Elige una API, selecciona un endpoint, ajusta la petición y ejecútala.",
+			"windowTitle": "api-explorer",
+			"selectorLabel": "Selecciona una API",
+			"apis": {
+				"dotnet": {
+					"responsibility": "Productos e inventario",
+					"description": "Administra el catálogo de productos y los niveles de stock. Es el único servicio autorizado para modificarlos."
+				},
+				"nestjs": {
+					"responsibility": "Pedidos",
+					"description": "Gestiona el ciclo de vida de los pedidos y consulta al servicio de productos para validar la disponibilidad."
+				},
+				"laravel": {
+					"responsibility": "Reportes y analítica",
+					"description": "Consultas de solo lectura que agregan información de ventas, inventario y pedidos."
+				}
+			},
+			"info": {
+				"technology": "Tecnología",
+				"responsibility": "Rol en el sistema",
+				"baseUrl": "URL base",
+				"endpoints": "Endpoints disponibles",
+				"endpointCount": "{{count}} endpoints",
+				"writes": "Puede escribir",
+				"reads": "Puede leer",
+				"readOnly": "Servicio de solo lectura"
+			},
+			"entities": {
+				"products": "Productos",
+				"inventory": "Inventario",
+				"orders": "Pedidos"
+			},
+			"endpoints": {
+				"title": "Endpoints",
+				"listLabel": "Endpoints de la API seleccionada",
+				"groups": {
+					"productsRead": "Consulta de productos",
+					"productsWrite": "Gestión de productos",
+					"ordersRead": "Consulta de pedidos",
+					"ordersWrite": "Creación de pedidos",
+					"reports": "Reportes analíticos"
+				},
+				"descriptions": {
+					"listProducts": "Lista productos con filtros opcionales y paginación.",
+					"getProduct": "Obtiene un producto y su stock por id.",
+					"createProduct": "Crea un nuevo producto en el catálogo.",
+					"updateProduct": "Reemplaza los datos de un producto existente.",
+					"deleteProduct": "Elimina un producto que no esté en ningún pedido.",
+					"listOrders": "Lista pedidos, opcionalmente filtrados por estado.",
+					"getOrder": "Obtiene un pedido con sus ítems y su total.",
+					"createOrder": "Crea un pedido tras validar el stock con el servicio de productos.",
+					"getOrderStatus": "Obtiene solo el estado actual de un pedido.",
+					"salesReport": "Totales de ventas agrupados por día o mes.",
+					"inventoryReport": "Niveles de stock y alertas de stock bajo.",
+					"ordersReport": "Conteo de pedidos e ingresos por estado."
+				}
+			},
+			"request": {
+				"title": "Petición",
+				"send": "Enviar petición",
+				"sending": "Enviando…",
+				"reset": "Restablecer valores",
+				"url": "URL completa",
+				"pathParams": "Parámetros de ruta",
+				"queryParams": "Parámetros de consulta",
+				"queryHint": "Los valores vacíos no se envían.",
+				"body": "Body (JSON)"
+			},
+			"response": {
+				"title": "Respuesta",
+				"idleTitle": "Aún no hay peticiones",
+				"idleDescription": "Elige un endpoint y pulsa “Enviar petición” para ver la respuesta.",
+				"runningTitle": "Ejecutando petición…",
+				"runningDescription": "Esperando la respuesta.",
+				"validationTitle": "No se pudo enviar la petición",
+				"duration": "{{ms}} ms",
+				"noContent": "204 No Content: la respuesta no tiene body.",
+				"statusText": {
+					"200": "OK",
+					"201": "Creado",
+					"204": "Sin contenido",
+					"400": "Solicitud incorrecta",
+					"404": "No encontrado",
+					"409": "Conflicto"
+				}
+			},
+			"validation": {
+				"missingPathParam": "El parámetro de ruta “{{field}}” es obligatorio.",
+				"invalidJson": "El body no es un JSON válido."
+			}
 		}
 	}
 }

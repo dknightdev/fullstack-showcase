@@ -136,15 +136,15 @@ h1 span {
 }
 
 .windowControls span:first-child {
-	background-color: var(--color-terminal-red);
+	background-color: var(--color-terminal-error);
 }
 
 .windowControls span:nth-child(2) {
-	background-color: var(--color-terminal-yellow);
+	background-color: var(--color-terminal-warning);
 }
 
 .windowControls span:nth-child(3) {
-	background-color: var(--color-terminal-green);
+	background-color: var(--color-terminal-success);
 }
 
 .terminalTitle {
@@ -175,15 +175,6 @@ h1 span {
 		border-color var(--transition-normal);
 }
 
-.method {
-	padding: 5px 10px;
-	border-radius: 5px;
-	background-color: var(--color-terminal-green-transparent);
-	color: var(--color-terminal-green);
-	font-size: var(--font-size-xs);
-	font-weight: var(--font-weight-bold);
-}
-
 .responseHeader {
 	display: flex;
 	align-items: center;
@@ -201,7 +192,7 @@ h1 span {
 	display: inline-flex;
 	align-items: center;
 	gap: 6px;
-	color: var(--color-terminal-green);
+	color: var(--color-success);
 	font-family: monospace;
 	font-size: var(--font-size-xs);
 }
@@ -210,7 +201,7 @@ h1 span {
 	width: 6px;
 	height: 6px;
 	border-radius: 50%;
-	background-color: var(--color-terminal-green);
+	background-color: var(--color-success);
 }
 
 .code {
@@ -228,21 +219,21 @@ h1 span {
 }
 
 .codeKey {
-	color: var(--color-terminal-code-blue);
+	color: var(--color-syntax-property);
 
 	transition:
 		color var(--transition-normal);
 }
 
 .codeString {
-	color: var(--color-terminal-code-green);
+	color: var(--color-syntax-string);
 
 	transition:
 		color var(--transition-normal);
 }
 
 .codeNumber {
-	color: var(--color-terminal-code-purple);
+	color: var(--color-syntax-number);
 
 	transition:
 		color var(--transition-normal);
@@ -273,7 +264,7 @@ h1 span {
 .footerDot {
 	width: 6px;
 	height: 6px;
-	background-color: var(--color-terminal-green);
+	background-color: var(--color-success);
 }
 
 

@@ -14,6 +14,7 @@ import Chip from '@/components/ui/Chip/Chip'
 import { motionConfig } from '@/config/motion'
 import ScrollIndicator from '@/components/ui/ScrollIndicator/ScrollIndicator'
 import Button from '@/components/ui/Button/Button'
+import MethodBadge from '@/components/ui/MethodBadge/MethodBadge'
 
 const contentVariants: Variants = {
 	hidden: {
@@ -139,7 +140,7 @@ const PlaygroundHero = () => {
 						</div>
 
 						<div className={styles.request}>
-							<span className={styles.method}>GET</span>
+							<MethodBadge method='GET' />
 							<span>/api/products</span>
 						</div>
 

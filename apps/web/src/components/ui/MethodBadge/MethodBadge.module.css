@@ -1,0 +1,43 @@
+.badge {
+	--method-color: var(--color-method-get);
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	min-width: 3.75rem;
+	padding: 4px 8px;
+
+	border-radius: var(--border-radius-xs);
+	background-color: color-mix(in srgb, var(--method-color), transparent 88%);
+	color: var(--method-color);
+
+	font-family: monospace;
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-bold);
+	line-height: 1.2;
+
+	transition:
+		background-color var(--transition-normal),
+		color var(--transition-normal);
+}
+
+.get {
+	--method-color: var(--color-method-get);
+}
+
+.post {
+	--method-color: var(--color-method-post);
+}
+
+.put {
+	--method-color: var(--color-method-put-patch);
+}
+
+.patch {
+	--method-color: var(--color-method-put-patch);
+}
+
+.delete {
+	--method-color: var(--color-method-delete);
+}

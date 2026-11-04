@@ -38,6 +38,7 @@
 	--line-height-relaxed: 1.7;
 
 	/** Borders */
+	--border-radius-xs: 5px;
 	--border-radius-sm: 8px;
 	--border-radius-md: 12px;
 	--border-radius-lg: 16px;
@@ -65,6 +66,11 @@
 	--color-primary-transparent: color-mix(
 		in srgb,
 		var(--color-primary),
+		transparent 88%
+	);
+	--color-primary-transparent-foreground: color-mix(
+		in srgb,
+		var(--color-primary),
 		transparent 65%
 	);
 
@@ -74,23 +80,27 @@
 		transparent 95%
 	);
 
-	--color-terminal-green: #4ade80;
-	--color-terminal-green-transparent: color-mix(
-		in srgb,
-		var(--color-terminal-green),
-		transparent 88%
-	);
-	--color-terminal-red: #f87171;
-	--color-terminal-yellow: #fbbf24;
+	--color-terminal-success: #4ade80;
+	--color-terminal-warning: #fbbf24;
+	--color-terminal-error: #f87171;
 
-	--color-terminal-code-blue: #7dd3fc;
-	--color-terminal-code-green: #86efac;
-	--color-terminal-code-purple: #c4b5fd;
+	--color-success: #4ade80;
+	--color-warning: #fbbf24;
+	--color-error: #f87171;
+
+	--color-syntax-property: #7dd3fc;
+	--color-syntax-string: #86efac;
+	--color-syntax-number: #c4b5fd;
+
+	--color-method-get: #60A5FA;
+	--color-method-post: #34D399;
+	--color-method-put-patch: #FBBF24;
+	--color-method-delete: #F87171;
 
 	/** Effects */
 	--shadow-sm: 0 2px 8px rgb(0 0 0 / 10%);
 	--shadow-md: 0 8px 30px rgb(0 0 0 / 15%);
-	--shadow-sm-primary: 0px 0px 6px var(--color-primary-transparent);
+	--shadow-sm-primary: 0px 0px 6px var(--color-primary-transparent-foreground);
 
 	--transition-fast: 0.2s ease;
 	--transition-normal: 0.3s ease;
@@ -103,9 +113,18 @@
 	--color-text: hsl(222, 35%, 15%);
 	--color-text-soft: hsl(222, 35%, 20%);
 
-	--color-terminal-code-blue: #38bdf8;
-	--color-terminal-code-green: #4ade80;
-	--color-terminal-code-purple: #a78bfa;
+	--color-success: #16A34A;
+	--color-warning: #D97706;
+	--color-error: #DC2626;
+
+	--color-syntax-property: #0ea5e9;
+	--color-syntax-string: #22c55e;
+	--color-syntax-number: #8b5cf6;
+
+	--color-method-get: #2563EB;
+	--color-method-post: #16A34A;
+	--color-method-put-patch: #D97706;
+	--color-method-delete: #DC2626;
 }
 
 [data-accent='green'] {
