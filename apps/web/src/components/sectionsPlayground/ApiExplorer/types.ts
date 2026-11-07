@@ -23,10 +23,26 @@ export type Entity = 'products' | 'inventory' | 'orders'
 
 export type ParamKind = 'path' | 'query'
 
+export type ParamOptionLabel =
+	| 'defaultActive'
+	| 'defaultName'
+	| 'defaultAscending'
+	| 'active'
+	| 'inactive'
+	| 'name'
+	| 'sku'
+	| 'price'
+	| 'stockQuantity'
+	| 'createdAt'
+	| 'updatedAt'
+	| 'ascending'
+	| 'descending'
+
 export type EndpointParam = {
 	name: string
 	kind: ParamKind
 	defaultValue: string
+	options?: { value: string, label: ParamOptionLabel }[]
 }
 
 export type Endpoint = {

@@ -11,9 +11,34 @@ export const endpoints: Endpoint[] = [
 			{ name: 'page', kind: 'query', defaultValue: '1' },
 			{ name: 'pageSize', kind: 'query', defaultValue: '10' },
 			{ name: 'search', kind: 'query', defaultValue: '' },
-			{ name: 'isActive', kind: 'query', defaultValue: '' },
-			{ name: 'sortBy', kind: 'query', defaultValue: '' },
-			{ name: 'sortDirection', kind: 'query', defaultValue: '' }
+			{
+				name: 'isActive', kind: 'query', defaultValue: '',
+				options: [
+					{ value: '', label: 'defaultActive' },
+					{ value: 'true', label: 'active' },
+					{ value: 'false', label: 'inactive' }
+				]
+			},
+			{
+				name: 'sortBy', kind: 'query', defaultValue: '',
+				options: [
+					{ value: '', label: 'defaultName' },
+					{ value: 'Name', label: 'name' },
+					{ value: 'Sku', label: 'sku' },
+					{ value: 'Price', label: 'price' },
+					{ value: 'StockQuantity', label: 'stockQuantity' },
+					{ value: 'CreatedAt', label: 'createdAt' },
+					{ value: 'UpdatedAt', label: 'updatedAt' }
+				]
+			},
+			{
+				name: 'sortDirection', kind: 'query', defaultValue: '',
+				options: [
+					{ value: '', label: 'defaultAscending' },
+					{ value: 'Asc', label: 'ascending' },
+					{ value: 'Desc', label: 'descending' }
+				]
+			}
 		]
 	},
 	{

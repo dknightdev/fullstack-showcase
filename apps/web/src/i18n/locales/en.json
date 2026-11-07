@@ -410,7 +410,22 @@
 				"pathParams": "Path parameters",
 				"queryParams": "Query parameters",
 				"queryHint": "Empty values are not sent.",
-				"body": "Body (JSON)"
+				"body": "Body (JSON)",
+				"options": {
+					"defaultActive": "Default (active)",
+					"defaultName": "Default (name)",
+					"defaultAscending": "Default (ascending)",
+					"active": "Active (true)",
+					"inactive": "Inactive (false)",
+					"name": "Name",
+					"sku": "SKU",
+					"price": "Price",
+					"stockQuantity": "Stock",
+					"createdAt": "Created date",
+					"updatedAt": "Updated date",
+					"ascending": "Ascending",
+					"descending": "Descending"
+				}
 			},
 			"response": {
 				"title": "Response",

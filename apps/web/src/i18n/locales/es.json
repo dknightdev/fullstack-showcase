@@ -410,7 +410,22 @@
 				"pathParams": "Parámetros de ruta",
 				"queryParams": "Parámetros de consulta",
 				"queryHint": "Los valores vacíos no se envían.",
-				"body": "Body (JSON)"
+				"body": "Body (JSON)",
+				"options": {
+					"defaultActive": "Por defecto (activos)",
+					"defaultName": "Por defecto (nombre)",
+					"defaultAscending": "Por defecto (ascendente)",
+					"active": "Activos (true)",
+					"inactive": "Inactivos (false)",
+					"name": "Nombre",
+					"sku": "SKU",
+					"price": "Precio",
+					"stockQuantity": "Inventario",
+					"createdAt": "Fecha de creación",
+					"updatedAt": "Fecha de actualización",
+					"ascending": "Ascendente",
+					"descending": "Descendente"
+				}
 			},
 			"response": {
 				"title": "Respuesta",

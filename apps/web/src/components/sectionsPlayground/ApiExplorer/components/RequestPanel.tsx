@@ -5,6 +5,9 @@ import { TbPlayerPlay, TbRestore } from 'react-icons/tb'
 import styles from './RequestPanel.module.css'
 import AppIcon from '@/components/ui/AppIcon/AppIcon'
 import Button from '@/components/ui/Button/Button'
+import Input from '@/components/ui/Input/Input'
+import Select from '@/components/ui/Select/Select'
+import Textarea from '@/components/ui/Textarea/Textarea'
 import MethodBadge from '../../../ui/MethodBadge/MethodBadge'
 import type { Endpoint, RequestInput, ValidationIssue } from '../types'
 import { buildUrl, getInitialInput, hasBody } from '../utils/request'
@@ -27,7 +30,7 @@ const RequestPanel = ({ baseUrl, endpoint, issues, isRunning, onExecute }: Reque
 	const missingFields = issues.flatMap((issue) => issue.code === 'missingPathParam' ? [issue.field] : [])
 
 	const handleParamChange = (kind: 'pathParams' | 'queryParams', name: string) =>
-		(event: ChangeEvent<HTMLInputElement>) => {
+		(event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
 			const value = event.target.value
 
 			setInput((current) => ({
@@ -71,9 +74,9 @@ const RequestPanel = ({ baseUrl, endpoint, issues, isRunning, onExecute }: Reque
 					<legend>{t('pathParams')}</legend>
 
 					{pathParams.map((param) => (
-						<label key={param.name} className={styles.field}>
+						<label key={param.name} className={`${styles.field} ${pathParams.length === 1 ? styles.singleField : ''}`}>
 							<span>{param.name}</span>
-							<input
+							<Input
 								type='text'
 								value={input.pathParams[param.name] ?? ''}
 								aria-invalid={missingFields.includes(param.name)}
@@ -91,15 +94,31 @@ const RequestPanel = ({ baseUrl, endpoint, issues, isRunning, onExecute }: Reque
 					<legend>{t('queryParams')}</legend>
 
 					{queryParams.map((param) => (
-						<label key={param.name} className={styles.field}>
+						<label
+							key={param.name}
+							className={`${styles.field} ${param.options ? styles.selectField : ''} ${queryParams.length === 1 && !param.options ? styles.singleField : ''}`}
+						>
 							<span>{param.name}</span>
-							<input
-								type='text'
-								value={input.queryParams[param.name] ?? ''}
-								onChange={handleParamChange('queryParams', param.name)}
-								autoComplete='off'
-								spellCheck={false}
-							/>
+							{param.options ? (
+								<Select
+									value={input.queryParams[param.name] ?? ''}
+									onChange={handleParamChange('queryParams', param.name)}
+								>
+									{param.options.map((option) => (
+										<option key={option.label} value={option.value}>
+											{t(`options.${option.label}`)}
+										</option>
+									))}
+								</Select>
+							) : (
+								<Input
+									type='text'
+									value={input.queryParams[param.name] ?? ''}
+									onChange={handleParamChange('queryParams', param.name)}
+									autoComplete='off'
+									spellCheck={false}
+								/>
+							)}
 						</label>
 					))}
 
@@ -110,7 +129,7 @@ const RequestPanel = ({ baseUrl, endpoint, issues, isRunning, onExecute }: Reque
 			{hasBody(endpoint) && (
 				<label className={styles.bodyField}>
 					<span>{t('body')}</span>
-					<textarea
+					<Textarea
 						value={input.body}
 						rows={Math.min(Math.max(input.body.split('\n').length, 6), 14)}
 						aria-invalid={hasInvalidBody}
