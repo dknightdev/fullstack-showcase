@@ -12,7 +12,6 @@ type EndpointListProps = {
 
 const EndpointList = ({ endpoints, selectedId, onSelect }: EndpointListProps) => {
 	const { t } = useTranslation(undefined, { keyPrefix: 'playground.apiExplorer' })
-
 	const groups = endpoints.reduce<{ group: EndpointGroup, items: Endpoint[] }[]>((result, endpoint) => {
 		const existing = result.find((entry) => entry.group === endpoint.group)
 
@@ -48,9 +47,7 @@ const EndpointList = ({ endpoints, selectedId, onSelect }: EndpointListProps) =>
 											<code>{endpoint.path}</code>
 										</span>
 
-										<span className={styles.description}>
-											{t(`endpoints.descriptions.${endpoint.id}`)}
-										</span>
+										<span className={styles.description}>{t(`endpoints.descriptions.${endpoint.id}`)}</span>
 									</button>
 								</li>
 							)

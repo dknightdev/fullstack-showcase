@@ -5,6 +5,7 @@ import styles from './ResponsePanel.module.css'
 import AppIcon from '@/components/ui/AppIcon/AppIcon'
 import type { ExecutionState } from '../types'
 import { stringifyJson, tokenizeJson } from '../utils/json'
+import { parseJson } from '../utils/validateRequest'
 
 type ResponsePanelProps = {
 	state: ExecutionState
@@ -59,15 +60,25 @@ const ResponsePanel = ({ state }: ResponsePanelProps) => {
 					</div>
 				)
 
+			case 'networkError':
+				return (
+					<div className={`${styles.placeholder} ${styles.validation}`}>
+						<AppIcon icon={TbAlertTriangle} size={28} />
+						<p className={styles.placeholderTitle}>{t('response.networkErrorTitle')}</p>
+						<p>{t('response.networkErrorDescription')}</p>
+					</div>
+				)
+
 			case 'completed': {
-				const { status, durationMs, body } = state.response
+				const { status, statusText, durationMs, body } = state.response
+				const parsed = parseJson(body)
 
 				return (
 					<>
 						<div className={styles.meta}>
 							<span className={`${styles.status} ${getStatusClass(status)}`}>
 								<span className={styles.dot} />
-								{status} {t(`response.statusText.${status}`)}
+								{status} {statusText}
 							</span>
 
 							<span className={styles.duration}>
@@ -75,12 +86,12 @@ const ResponsePanel = ({ state }: ResponsePanelProps) => {
 							</span>
 						</div>
 
-						{body === null ? (
+						{body === '' ? (
 							<p className={styles.noContent}>{t('response.noContent')}</p>
 						) : (
 							<pre className={styles.code} data-lenis-prevent>
 								<code>
-									{tokenizeJson(stringifyJson(body)).map((token, index) => (
+									{tokenizeJson(parsed.ok ? stringifyJson(parsed.value) : body).map((token, index) => (
 										<span
 											key={index}
 											className={token.type === 'plain' ? undefined : styles[token.type]}

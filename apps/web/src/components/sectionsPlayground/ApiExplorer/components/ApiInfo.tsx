@@ -24,10 +24,12 @@ const ApiInfo = ({ api }: ApiInfoProps) => {
 					<dd>{t(`apis.${api.id}.responsibility`)}</dd>
 				</div>
 
-				<div className={styles.item}>
-					<dt>{t('info.baseUrl')}</dt>
-					<dd><code className={styles.code}>{api.baseUrl}</code></dd>
-				</div>
+				{api.baseUrl && (
+					<div className={styles.item}>
+						<dt>{t('info.baseUrl')}</dt>
+						<dd><code className={styles.code}>{api.baseUrl}</code></dd>
+					</div>
+				)}
 
 				<div className={styles.item}>
 					<dt>{t('info.writes')}</dt>

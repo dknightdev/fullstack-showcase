@@ -33,6 +33,11 @@
 	min-width: 0;
 }
 
+.inDevelopment {
+	padding: var(--spacing-lg);
+	color: var(--color-text-soft);
+}
+
 @media (max-width: 900px) {
 	.explorer {
 		grid-template-columns: 1fr;

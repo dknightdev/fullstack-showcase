@@ -1,16 +1,16 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 import type { ApiDefinition, Endpoint, ExecutionState, RequestInput } from '../types'
-import { buildUrl } from '../utils/request'
-import { simulateResponse } from '../utils/simulateResponse'
+import { buildUrl, hasBody } from '../utils/request'
 import { validateRequest } from '../utils/validateRequest'
 
 const useRequestExecution = () => {
 	const [state, setState] = useState<ExecutionState>({ status: 'idle' })
-	const timeoutRef = useRef<number | undefined>(undefined)
+	const requestRef = useRef<AbortController | null>(null)
 
 	const cancelPending = useCallback(() => {
-		window.clearTimeout(timeoutRef.current)
+		requestRef.current?.abort()
+		requestRef.current = null
 	}, [])
 
 	const reset = useCallback(() => {
@@ -18,23 +18,55 @@ const useRequestExecution = () => {
 		setState({ status: 'idle' })
 	}, [cancelPending])
 
-	const execute = useCallback((api: ApiDefinition, endpoint: Endpoint, input: RequestInput) => {
+	const execute = useCallback(async (api: ApiDefinition, endpoint: Endpoint, input: RequestInput) => {
 		cancelPending()
 
 		const issues = validateRequest(endpoint, input)
-
 		if (issues.length) {
 			setState({ status: 'validationError', issues })
 			return
 		}
 
-		const response = simulateResponse(endpoint, input, buildUrl(api.baseUrl, endpoint, input))
+		if (!api.baseUrl) {
+			setState({ status: 'networkError' })
+			return
+		}
 
+		const controller = new AbortController()
+		requestRef.current = controller
+		const start = performance.now()
 		setState({ status: 'running' })
 
-		timeoutRef.current = window.setTimeout(() => {
-			setState({ status: 'completed', response })
-		}, response.durationMs)
+		try {
+			const response = await fetch(buildUrl(api.baseUrl, endpoint, input), {
+				method: endpoint.method,
+				headers: hasBody(endpoint) ? { 'Content-Type': 'application/json' } : undefined,
+				body: hasBody(endpoint) ? input.body : undefined,
+				signal: controller.signal
+			})
+			const body = await response.text()
+
+			if (!controller.signal.aborted) {
+				setState({
+					status: 'completed',
+					response: {
+						status: response.status,
+						statusText: response.statusText,
+						durationMs: Math.round(performance.now() - start),
+						body
+					}
+				})
+			}
+		} catch (error) {
+			if (!controller.signal.aborted) {
+				console.error('API request failed', error)
+				setState({ status: 'networkError' })
+			}
+		} finally {
+			if (requestRef.current === controller) {
+				requestRef.current = null
+			}
+		}
 	}, [cancelPending])
 
 	useEffect(() => cancelPending, [cancelPending])

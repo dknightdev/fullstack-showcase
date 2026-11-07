@@ -1,11 +1,11 @@
 import type { ApiDefinition } from '../types'
-import { API_BASE_URLS } from './config'
+import { CATALOG_BASE_URL } from './config'
 
 export const apis: ApiDefinition[] = [
 	{
 		id: 'dotnet',
 		technology: '.NET',
-		baseUrl: API_BASE_URLS.dotnet,
+		baseUrl: CATALOG_BASE_URL,
 		reads: ['products', 'inventory'],
 		writes: ['products', 'inventory'],
 		endpointIds: [
@@ -13,33 +13,27 @@ export const apis: ApiDefinition[] = [
 			'getProduct',
 			'createProduct',
 			'updateProduct',
-			'deleteProduct'
+			'deleteProduct',
+			'activateProduct',
+			'deactivateProduct',
+			'setProductStock',
+			'increaseProductStock',
+			'decreaseProductStock'
 		]
 	},
 	{
 		id: 'nestjs',
 		technology: 'NestJS',
-		baseUrl: API_BASE_URLS.nestjs,
 		reads: ['orders', 'inventory'],
 		writes: ['orders'],
-		endpointIds: [
-			'listOrders',
-			'getOrder',
-			'createOrder',
-			'getOrderStatus'
-		]
+		endpointIds: []
 	},
 	{
 		id: 'laravel',
 		technology: 'Laravel',
-		baseUrl: API_BASE_URLS.laravel,
 		reads: ['products', 'inventory', 'orders'],
 		writes: [],
-		endpointIds: [
-			'salesReport',
-			'inventoryReport',
-			'ordersReport'
-		]
+		endpointIds: []
 	}
 ]
 

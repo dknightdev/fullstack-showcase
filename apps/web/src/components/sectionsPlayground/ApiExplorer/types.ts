@@ -8,20 +8,16 @@ export type EndpointId =
 	| 'createProduct'
 	| 'updateProduct'
 	| 'deleteProduct'
-	| 'listOrders'
-	| 'getOrder'
-	| 'createOrder'
-	| 'getOrderStatus'
-	| 'salesReport'
-	| 'inventoryReport'
-	| 'ordersReport'
+	| 'activateProduct'
+	| 'deactivateProduct'
+	| 'setProductStock'
+	| 'increaseProductStock'
+	| 'decreaseProductStock'
 
 export type EndpointGroup =
 	| 'productsRead'
 	| 'productsWrite'
-	| 'ordersRead'
-	| 'ordersWrite'
-	| 'reports'
+	| 'inventory'
 
 export type Entity = 'products' | 'inventory' | 'orders'
 
@@ -46,7 +42,7 @@ export type Endpoint = {
 export type ApiDefinition = {
 	id: ApiId
 	technology: string
-	baseUrl: string
+	baseUrl?: string
 	reads: Entity[]
 	writes: Entity[]
 	endpointIds: EndpointId[]
@@ -62,14 +58,16 @@ export type ValidationIssue =
 	| { code: 'missingPathParam', field: string }
 	| { code: 'invalidJson' }
 
-export type SimulatedResponse = {
+export type ApiResponse = {
 	status: number
+	statusText: string
 	durationMs: number
-	body: unknown
+	body: string
 }
 
 export type ExecutionState =
 	| { status: 'idle' }
 	| { status: 'running' }
-	| { status: 'completed', response: SimulatedResponse }
+	| { status: 'completed', response: ApiResponse }
 	| { status: 'validationError', issues: ValidationIssue[] }
+	| { status: 'networkError' }

@@ -27,7 +27,7 @@ const ApiExplorer = () => {
 
 	const api = getApi(apiId)
 	const endpoints = api.endpointIds.map(getEndpoint)
-	const endpoint = getEndpoint(endpointId)
+	const endpoint = apiId === 'dotnet' ? getEndpoint(endpointId) : undefined
 
 	const handleSelectApi = (id: ApiId) => {
 		if (id === apiId) {
@@ -35,7 +35,9 @@ const ApiExplorer = () => {
 		}
 
 		setApiId(id)
-		setEndpointId(getApi(id).endpointIds[0])
+		if (id === 'dotnet') {
+			setEndpointId(getApi(id).endpointIds[0])
+		}
 		reset()
 	}
 
@@ -49,7 +51,9 @@ const ApiExplorer = () => {
 	}
 
 	const handleExecute = (input: RequestInput) => {
-		execute(api, endpoint, input)
+		if (endpoint && api.baseUrl) {
+			execute(api, endpoint, input)
+		}
 	}
 
 	return (
@@ -78,26 +82,28 @@ const ApiExplorer = () => {
 						>
 							<ApiInfo api={api} />
 
-							<div className={styles.explorer}>
-								<EndpointList
-									endpoints={endpoints}
-									selectedId={endpointId}
-									onSelect={handleSelectEndpoint}
-								/>
-
-								<div className={styles.testing}>
-									<RequestPanel
-										key={endpoint.id}
-										api={api}
-										endpoint={endpoint}
-										issues={state.status === 'validationError' ? state.issues : []}
-										isRunning={state.status === 'running'}
-										onExecute={handleExecute}
+							{endpoint && api.baseUrl ? (
+								<div className={styles.explorer}>
+									<EndpointList
+										endpoints={endpoints}
+										selectedId={endpointId}
+										onSelect={handleSelectEndpoint}
 									/>
 
-									<ResponsePanel state={state} />
+									<div className={styles.testing}>
+										<RequestPanel
+											key={endpoint.id}
+											baseUrl={api.baseUrl}
+											endpoint={endpoint}
+											issues={state.status === 'validationError' ? state.issues : []}
+											isRunning={state.status === 'running'}
+											onExecute={handleExecute}
+										/>
+
+										<ResponsePanel state={state} />
+									</div>
 								</div>
-							</div>
+							) : <p className={styles.inDevelopment}>{t('inDevelopment')}</p>}
 						</motion.div>
 					</div>
 				</div>

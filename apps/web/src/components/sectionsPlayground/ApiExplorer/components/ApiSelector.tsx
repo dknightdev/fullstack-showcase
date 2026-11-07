@@ -54,6 +54,7 @@ const ApiSelector = ({ apis, selectedId, onSelect }: ApiSelectorProps) => {
 						<span className={styles.responsibility}>
 							{t(`apis.${api.id}.responsibility`)}
 						</span>
+						{!api.baseUrl && <span className={styles.responsibility}>{t('developmentLabel')}</span>}
 					</button>
 				)
 			})}

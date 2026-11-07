@@ -330,6 +330,8 @@
 			"description": "Elige una API, selecciona un endpoint, ajusta la petición y ejecútala.",
 			"windowTitle": "api-explorer",
 			"selectorLabel": "Selecciona una API",
+			"inDevelopment": "Este servicio está en desarrollo y todavía no está disponible.",
+			"developmentLabel": "En desarrollo",
 			"apis": {
 				"dotnet": {
 					"responsibility": "Productos e inventario",
@@ -365,6 +367,7 @@
 				"groups": {
 					"productsRead": "Consulta de productos",
 					"productsWrite": "Gestión de productos",
+					"inventory": "Inventario",
 					"ordersRead": "Consulta de pedidos",
 					"ordersWrite": "Creación de pedidos",
 					"reports": "Reportes analíticos"
@@ -374,7 +377,12 @@
 					"getProduct": "Obtiene un producto y su stock por id.",
 					"createProduct": "Crea un nuevo producto en el catálogo.",
 					"updateProduct": "Reemplaza los datos de un producto existente.",
-					"deleteProduct": "Elimina un producto que no esté en ningún pedido.",
+					"deleteProduct": "Elimina un producto sin existencias.",
+					"activateProduct": "Activa un producto.",
+					"deactivateProduct": "Desactiva un producto.",
+					"setProductStock": "Establece las existencias de un producto.",
+					"increaseProductStock": "Incrementa las existencias de un producto.",
+					"decreaseProductStock": "Disminuye las existencias de un producto.",
 					"listOrders": "Lista pedidos, opcionalmente filtrados por estado.",
 					"getOrder": "Obtiene un pedido con sus ítems y su total.",
 					"createOrder": "Crea un pedido tras validar el stock con el servicio de productos.",
@@ -384,8 +392,17 @@
 					"ordersReport": "Conteo de pedidos e ingresos por estado."
 				}
 			},
+			"previewRoutes": {
+				"activateProduct": "Activa un producto.",
+				"deactivateProduct": "Desactiva un producto.",
+				"setProductStock": "Establece las existencias de un producto.",
+				"increaseProductStock": "Incrementa las existencias de un producto.",
+				"decreaseProductStock": "Disminuye las existencias de un producto."
+			},
 			"request": {
 				"title": "Petición",
+				"realWriteWarning": "Esta petición modifica datos reales de la base de datos.",
+				"previewOnly": "La ejecución de este endpoint aún no está disponible.",
 				"send": "Enviar petición",
 				"sending": "Enviando…",
 				"reset": "Restablecer valores",
@@ -402,8 +419,10 @@
 				"runningTitle": "Ejecutando petición…",
 				"runningDescription": "Esperando la respuesta.",
 				"validationTitle": "No se pudo enviar la petición",
+				"networkErrorTitle": "No se pudo conectar con la API",
+				"networkErrorDescription": "Comprueba que la API y el servidor de desarrollo estén funcionando.",
 				"duration": "{{ms}} ms",
-				"noContent": "204 No Content: la respuesta no tiene body.",
+				"noContent": "La respuesta no tiene body.",
 				"statusText": {
 					"200": "OK",
 					"201": "Creado",

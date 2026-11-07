@@ -43,7 +43,7 @@
 		border-color var(--transition-normal);
 }
 
-.endpoint:hover:not(.selected) {
+button.endpoint:hover:not(.selected) {
 	background-color: var(--color-text-transparent);
 }
 

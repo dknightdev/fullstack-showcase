@@ -6,18 +6,18 @@ import styles from './RequestPanel.module.css'
 import AppIcon from '@/components/ui/AppIcon/AppIcon'
 import Button from '@/components/ui/Button/Button'
 import MethodBadge from '../../../ui/MethodBadge/MethodBadge'
-import type { ApiDefinition, Endpoint, RequestInput, ValidationIssue } from '../types'
+import type { Endpoint, RequestInput, ValidationIssue } from '../types'
 import { buildUrl, getInitialInput, hasBody } from '../utils/request'
 
 type RequestPanelProps = {
-	api: ApiDefinition
+	baseUrl: string
 	endpoint: Endpoint
 	issues: ValidationIssue[]
 	isRunning: boolean
 	onExecute: (input: RequestInput) => void
 }
 
-const RequestPanel = ({ api, endpoint, issues, isRunning, onExecute }: RequestPanelProps) => {
+const RequestPanel = ({ baseUrl, endpoint, issues, isRunning, onExecute }: RequestPanelProps) => {
 	const { t } = useTranslation(undefined, { keyPrefix: 'playground.apiExplorer.request' })
 	const [input, setInput] = useState<RequestInput>(() => getInitialInput(endpoint))
 
@@ -56,7 +56,7 @@ const RequestPanel = ({ api, endpoint, issues, isRunning, onExecute }: RequestPa
 				<MethodBadge method={endpoint.method} />
 
 				<code className={styles.url} aria-label={t('url')}>
-					{buildUrl(api.baseUrl, endpoint, input)}
+					{buildUrl(baseUrl, endpoint, input)}
 				</code>
 
 				<Button variant='primary' type='submit' disabled={isRunning}>
@@ -64,6 +64,7 @@ const RequestPanel = ({ api, endpoint, issues, isRunning, onExecute }: RequestPa
 					{isRunning ? t('sending') : t('send')}
 				</Button>
 			</div>
+			{endpoint.method !== 'GET' && <p className={styles.hint}>{t('realWriteWarning')}</p>}
 
 			{pathParams.length > 0 && (
 				<fieldset className={styles.fieldset}>

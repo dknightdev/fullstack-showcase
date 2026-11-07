@@ -330,6 +330,8 @@
 			"description": "Pick an API, choose an endpoint, tweak the request and run it.",
 			"windowTitle": "api-explorer",
 			"selectorLabel": "Select an API",
+			"inDevelopment": "This service is under development and is not available yet.",
+			"developmentLabel": "In development",
 			"apis": {
 				"dotnet": {
 					"responsibility": "Products & inventory",
@@ -365,6 +367,7 @@
 				"groups": {
 					"productsRead": "Product queries",
 					"productsWrite": "Product management",
+					"inventory": "Inventory",
 					"ordersRead": "Order queries",
 					"ordersWrite": "Order creation",
 					"reports": "Analytics reports"
@@ -374,7 +377,12 @@
 					"getProduct": "Get a product and its stock by id.",
 					"createProduct": "Create a new product in the catalog.",
 					"updateProduct": "Replace the data of an existing product.",
-					"deleteProduct": "Delete a product that is not used by any order.",
+					"deleteProduct": "Delete a product with no stock.",
+					"activateProduct": "Activate a product.",
+					"deactivateProduct": "Deactivate a product.",
+					"setProductStock": "Set a product's stock quantity.",
+					"increaseProductStock": "Increase a product's stock.",
+					"decreaseProductStock": "Decrease a product's stock.",
 					"listOrders": "List orders, optionally filtered by status.",
 					"getOrder": "Get an order with its items and total.",
 					"createOrder": "Create an order after validating stock with the products service.",
@@ -384,8 +392,17 @@
 					"ordersReport": "Order counts and revenue by status."
 				}
 			},
+			"previewRoutes": {
+				"activateProduct": "Activate a product.",
+				"deactivateProduct": "Deactivate a product.",
+				"setProductStock": "Set a product's stock quantity.",
+				"increaseProductStock": "Increase a product's stock.",
+				"decreaseProductStock": "Decrease a product's stock."
+			},
 			"request": {
 				"title": "Request",
+				"realWriteWarning": "This request changes real data in the database.",
+				"previewOnly": "Execution is not yet available for this endpoint.",
 				"send": "Send request",
 				"sending": "Sending…",
 				"reset": "Reset values",
@@ -402,8 +419,10 @@
 				"runningTitle": "Running request…",
 				"runningDescription": "Waiting for the response.",
 				"validationTitle": "The request could not be sent",
+				"networkErrorTitle": "Could not connect to the API",
+				"networkErrorDescription": "Check that the API and development server are running.",
 				"duration": "{{ms}} ms",
-				"noContent": "204 No Content: the response has no body.",
+				"noContent": "The response has no body.",
 				"statusText": {
 					"200": "OK",
 					"201": "Created",
