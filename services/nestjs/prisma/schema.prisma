@@ -1,0 +1,79 @@
+generator client {
+	provider = "prisma-client-js"
+}
+
+datasource db {
+	provider = "postgresql"
+	url      = env("DATABASE_URL")
+	schemas  = ["orders"]
+}
+
+enum OrderStatus {
+	Pending
+	Confirmed
+	Rejected
+
+	@@schema("orders")
+}
+
+enum MovementKind {
+	Decrease
+	Restore
+
+	@@schema("orders")
+}
+
+enum MovementStatus {
+	Started
+	Succeeded
+	Failed
+	Uncertain
+
+	@@schema("orders")
+}
+
+model Order {
+	id        String      @id @default(uuid()) @db.Uuid
+	status    OrderStatus @default(Pending)
+	total     Decimal     @db.Decimal(20, 2)
+	createdAt DateTime    @default(now()) @map("created_at") @db.Timestamptz(6)
+	updatedAt DateTime    @updatedAt @map("updated_at") @db.Timestamptz(6)
+	items     OrderItem[]
+	movements InventoryMovement[]
+
+	@@index([status, createdAt])
+	@@map("orders")
+	@@schema("orders")
+}
+
+model OrderItem {
+	id        Int     @id @default(autoincrement())
+	orderId   String  @map("order_id") @db.Uuid
+	productId Int     @map("product_id")
+	name      String  @db.VarChar(200)
+	sku       String  @db.VarChar(64)
+	quantity  Int
+	unitPrice Decimal @map("unit_price") @db.Decimal(12, 2)
+	order     Order   @relation(fields: [orderId], references: [id], onDelete: Restrict)
+
+	@@unique([orderId, productId])
+	@@map("order_items")
+	@@schema("orders")
+}
+
+model InventoryMovement {
+	id        Int            @id @default(autoincrement())
+	orderId   String         @map("order_id") @db.Uuid
+	productId Int            @map("product_id")
+	quantity  Int
+	kind      MovementKind
+	status    MovementStatus @default(Started)
+	detail    String?
+	createdAt DateTime       @default(now()) @map("created_at") @db.Timestamptz(6)
+	updatedAt DateTime       @updatedAt @map("updated_at") @db.Timestamptz(6)
+	order     Order          @relation(fields: [orderId], references: [id], onDelete: Restrict)
+
+	@@index([orderId])
+	@@map("inventory_movements")
+	@@schema("orders")
+}
