@@ -1,0 +1,7 @@
+.env
+database.sql
+tmp/
+logs/
+
+.DS_Store
+.idea/

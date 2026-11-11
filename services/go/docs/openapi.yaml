@@ -1,0 +1,774 @@
+
+openapi: 3.1.0
+
+info:
+  title: Portfolio Analytics API
+  description: API for store analytics and reporting
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080
+    description: Local development server
+
+tags:
+  - name: Health
+    description: Application health checks
+  - name: Analytics
+    description: Store analytics and reporting
+
+paths:
+  /health:
+    get:
+      tags:
+        - Health
+      summary: Check application health
+      operationId: getHealth
+      responses:
+        '200':
+          description: Application is running
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+              examples:
+                success:
+                  value:
+                    status: ok
+
+  /health/ready:
+    get:
+      tags:
+        - Health
+      summary: Check application readiness
+      operationId: getReadiness
+      responses:
+        '200':
+          description: Application and database are available
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReadinessResponse'
+              examples:
+                success:
+                  value:
+                    status: ok
+                    database: connected
+        '503':
+          description: Database is unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReadinessResponse'
+              examples:
+                unavailable:
+                  value:
+                    status: unavailable
+                    database: disconnected
+
+  /api/analytics/summary:
+    get:
+      tags:
+        - Analytics
+      summary: Get general analytics summary
+      description: |
+        Returns general sales, catalog and order indicators.
+
+        The from and to parameters only affect sales metrics.
+        Catalog metrics always represent the current catalog state.
+        Order distribution always represents all orders, regardless of their creation date.
+
+        If neither date is provided, sales metrics include the entire historical record.
+        If only from is provided, the range extends through today.
+        If only to is provided, the range starts from the beginning of the historical record.
+      operationId: getAnalyticsSummary
+      parameters:
+        - name: from
+          in: query
+          required: false
+          description: Inclusive start date. Format YYYY-MM-DD. Cannot be a future date.
+          schema:
+            type: string
+            format: date
+          examples:
+            default:
+              summary: Start date
+              value: '2026-11-01'
+        - name: to
+          in: query
+          required: false
+          description: Inclusive end date. Format YYYY-MM-DD.
+          schema:
+            type: string
+            format: date
+          examples:
+            default:
+              summary: End date
+              value: '2026-11-10'
+      responses:
+        '200':
+          description: Summary retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SummaryResponse'
+              examples:
+                success:
+                  summary: Analytics summary
+                  value:
+                    period:
+                      from: '2026-11-01'
+                      to: '2026-11-10'
+                    sales:
+                      totalRevenue: '1500.00'
+                      confirmedOrders: 4
+                      unitsSold: 12
+                    catalog:
+                      totalProducts: 4
+                      activeProducts: 3
+                      outOfStockProducts: 1
+                    orders:
+                      pending: 1
+                      confirmed: 4
+                      rejected: 1
+                      total: 6
+        '400':
+          description: Invalid date parameters
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                invalidDate:
+                  value:
+                    type: about:blank
+                    title: Solicitud inválida
+                    status: 400
+                    detail: El parámetro from debe tener el formato YYYY-MM-DD.
+                futureDate:
+                  value:
+                    type: about:blank
+                    title: Solicitud inválida
+                    status: 400
+                    detail: El parámetro from no puede ser una fecha futura.
+                invalidRange:
+                  value:
+                    type: about:blank
+                    title: Solicitud inválida
+                    status: 400
+                    detail: La fecha from debe ser anterior o igual a la fecha to.
+        '500':
+          description: Internal server error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+
+  /api/analytics/sales:
+    get:
+      tags:
+        - Analytics
+      summary: Get sales over time
+      description: |
+        Returns confirmed sales grouped by day, week or month.
+
+        Periods without sales are included with zero values.
+        Weeks start on Monday.
+        The date field represents the beginning of each period.
+
+        If neither from nor to is provided, the last 30 days are used.
+        If only from is provided, the range extends through today.
+        If only to is provided, the range covers the 30 days ending on that date.
+      operationId: getAnalyticsSales
+      parameters:
+        - name: from
+          in: query
+          required: false
+          description: Inclusive start date. Format YYYY-MM-DD. Cannot be a future date.
+          schema:
+            type: string
+            format: date
+          examples:
+            default:
+              value: '2026-11-01'
+        - name: to
+          in: query
+          required: false
+          description: Inclusive end date. Format YYYY-MM-DD.
+          schema:
+            type: string
+            format: date
+          examples:
+            default:
+              value: '2026-11-10'
+        - name: interval
+          in: query
+          required: false
+          description: Time grouping interval. Defaults to day.
+          schema:
+            type: string
+            enum:
+              - day
+              - week
+              - month
+            default: day
+          examples:
+            daily:
+              value: day
+            weekly:
+              value: week
+            monthly:
+              value: month
+      responses:
+        '200':
+          description: Sales retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SalesResponse'
+              examples:
+                daily:
+                  summary: Daily sales
+                  value:
+                    period:
+                      from: '2026-11-01'
+                      to: '2026-11-10'
+                      interval: day
+                    data:
+                      - date: '2026-11-01'
+                        revenue: '1150.00'
+                        confirmedOrders: 2
+                        unitsSold: 5
+                      - date: '2026-11-02'
+                        revenue: '0.00'
+                        confirmedOrders: 0
+                        unitsSold: 0
+                      - date: '2026-11-03'
+                        revenue: '250.00'
+                        confirmedOrders: 1
+                        unitsSold: 3
+                      - date: '2026-11-10'
+                        revenue: '100.00'
+                        confirmedOrders: 1
+                        unitsSold: 4
+        '400':
+          description: Invalid query parameters
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                invalidInterval:
+                  value:
+                    type: about:blank
+                    title: Solicitud inválida
+                    status: 400
+                    detail: El parámetro interval debe ser day, week o month.
+                invalidDate:
+                  value:
+                    type: about:blank
+                    title: Solicitud inválida
+                    status: 400
+                    detail: El parámetro from debe tener el formato YYYY-MM-DD.
+                invalidRange:
+                  value:
+                    type: about:blank
+                    title: Solicitud inválida
+                    status: 400
+                    detail: La fecha from debe ser anterior o igual a la fecha to.
+        '500':
+          description: Internal server error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+
+  /api/analytics/top-products:
+    get:
+      tags:
+        - Analytics
+      summary: Get top-selling products
+      description: |
+        Returns the best-selling products based on confirmed orders.
+
+        Products are ordered by units sold in descending order.
+        When units sold are equal, products with higher revenue are prioritized.
+
+        Revenue is calculated using the historical unit price stored in order_items.
+        If no dates are provided, the last 30 days are used.
+      operationId: getAnalyticsTopProducts
+      parameters:
+        - name: from
+          in: query
+          required: false
+          description: Inclusive start date. Format YYYY-MM-DD. Cannot be a future date.
+          schema:
+            type: string
+            format: date
+          examples:
+            default:
+              value: '2026-11-01'
+        - name: to
+          in: query
+          required: false
+          description: Inclusive end date. Format YYYY-MM-DD.
+          schema:
+            type: string
+            format: date
+          examples:
+            default:
+              value: '2026-11-10'
+        - name: limit
+          in: query
+          required: false
+          description: Maximum number of products to return. Must be between 1 and 100.
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 10
+          examples:
+            default:
+              value: 10
+            topFive:
+              value: 5
+      responses:
+        '200':
+          description: Top products retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopProductsResponse'
+              examples:
+                success:
+                  summary: Best-selling products
+                  value:
+                    period:
+                      from: '2026-11-01'
+                      to: '2026-11-10'
+                    data:
+                      - productId: 2
+                        name: Mouse
+                        sku: MS-001
+                        unitsSold: 8
+                        revenue: '200.00'
+                      - productId: 3
+                        name: Keyboard
+                        sku: KB-001
+                        unitsSold: 2
+                        revenue: '100.00'
+                      - productId: 1
+                        name: Laptop
+                        sku: LP-001
+                        unitsSold: 1
+                        revenue: '1000.00'
+                      - productId: 4
+                        name: Monitor
+                        sku: MN-001
+                        unitsSold: 1
+                        revenue: '200.00'
+        '400':
+          description: Invalid query parameters
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                invalidLimit:
+                  value:
+                    type: about:blank
+                    title: Solicitud inválida
+                    status: 400
+                    detail: El parámetro limit debe ser un número entre 1 y 100.
+                invalidDate:
+                  value:
+                    type: about:blank
+                    title: Solicitud inválida
+                    status: 400
+                    detail: El parámetro from debe tener el formato YYYY-MM-DD.
+        '500':
+          description: Internal server error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+
+  /api/analytics/orders:
+    get:
+      tags:
+        - Analytics
+      summary: Get order distribution
+      description: |
+        Returns the distribution of orders by status within the requested period.
+
+        All order statuses are included, even when their count is zero.
+        Percentages are calculated against the total number of orders in the period.
+
+        If no dates are provided, the last 30 days are used.
+      operationId: getAnalyticsOrders
+      parameters:
+        - name: from
+          in: query
+          required: false
+          description: Inclusive start date. Format YYYY-MM-DD. Cannot be a future date.
+          schema:
+            type: string
+            format: date
+          examples:
+            default:
+              value: '2026-11-01'
+        - name: to
+          in: query
+          required: false
+          description: Inclusive end date. Format YYYY-MM-DD.
+          schema:
+            type: string
+            format: date
+          examples:
+            default:
+              value: '2026-11-10'
+      responses:
+        '200':
+          description: Order distribution retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdersResponse'
+              examples:
+                success:
+                  summary: Order distribution
+                  value:
+                    period:
+                      from: '2026-11-01'
+                      to: '2026-11-10'
+                    total: 6
+                    data:
+                      - status: Pending
+                        count: 1
+                        percentage: 16.67
+                      - status: Confirmed
+                        count: 4
+                        percentage: 66.67
+                      - status: Rejected
+                        count: 1
+                        percentage: 16.67
+        '400':
+          description: Invalid date parameters
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                invalidDate:
+                  value:
+                    type: about:blank
+                    title: Solicitud inválida
+                    status: 400
+                    detail: El parámetro from debe tener el formato YYYY-MM-DD.
+        '500':
+          description: Internal server error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+
+components:
+  schemas:
+    HealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          examples:
+            - ok
+      required:
+        - status
+
+    ReadinessResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - ok
+            - unavailable
+        database:
+          type: string
+          enum:
+            - connected
+            - disconnected
+      required:
+        - status
+        - database
+
+    SummaryResponse:
+      type: object
+      properties:
+        period:
+          $ref: '#/components/schemas/SummaryPeriod'
+        sales:
+          $ref: '#/components/schemas/SalesSummary'
+        catalog:
+          $ref: '#/components/schemas/CatalogSummary'
+        orders:
+          $ref: '#/components/schemas/OrdersSummary'
+      required:
+        - period
+        - sales
+        - catalog
+        - orders
+
+    SummaryPeriod:
+      type: object
+      properties:
+        from:
+          type:
+            - string
+            - 'null'
+          format: date
+        to:
+          type:
+            - string
+            - 'null'
+          format: date
+      required:
+        - from
+        - to
+
+    SalesSummary:
+      type: object
+      properties:
+        totalRevenue:
+          type: string
+          examples:
+            - '1500.00'
+        confirmedOrders:
+          type: integer
+          format: int64
+        unitsSold:
+          type: integer
+          format: int64
+      required:
+        - totalRevenue
+        - confirmedOrders
+        - unitsSold
+
+    CatalogSummary:
+      type: object
+      properties:
+        totalProducts:
+          type: integer
+          format: int64
+        activeProducts:
+          type: integer
+          format: int64
+        outOfStockProducts:
+          type: integer
+          format: int64
+      required:
+        - totalProducts
+        - activeProducts
+        - outOfStockProducts
+
+    OrdersSummary:
+      type: object
+      properties:
+        pending:
+          type: integer
+          format: int64
+        confirmed:
+          type: integer
+          format: int64
+        rejected:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+      required:
+        - pending
+        - confirmed
+        - rejected
+        - total
+
+    SalesResponse:
+      type: object
+      properties:
+        period:
+          $ref: '#/components/schemas/SalesPeriod'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/SalesDataPoint'
+      required:
+        - period
+        - data
+
+    SalesPeriod:
+      type: object
+      properties:
+        from:
+          type: string
+          format: date
+        to:
+          type: string
+          format: date
+        interval:
+          type: string
+          enum:
+            - day
+            - week
+            - month
+      required:
+        - from
+        - to
+        - interval
+
+    SalesDataPoint:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+          description: Beginning date of the corresponding interval.
+        revenue:
+          type: string
+          examples:
+            - '1150.00'
+        confirmedOrders:
+          type: integer
+          format: int64
+        unitsSold:
+          type: integer
+          format: int64
+      required:
+        - date
+        - revenue
+        - confirmedOrders
+        - unitsSold
+
+    TopProductsResponse:
+      type: object
+      properties:
+        period:
+          $ref: '#/components/schemas/TopProductsPeriod'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TopProduct'
+      required:
+        - period
+        - data
+
+    TopProductsPeriod:
+      type: object
+      properties:
+        from:
+          type: string
+          format: date
+        to:
+          type: string
+          format: date
+      required:
+        - from
+        - to
+
+    TopProduct:
+      type: object
+      properties:
+        productId:
+          type: integer
+          format: int64
+        name:
+          type: string
+        sku:
+          type: string
+        unitsSold:
+          type: integer
+          format: int64
+        revenue:
+          type: string
+          examples:
+            - '200.00'
+      required:
+        - productId
+        - name
+        - sku
+        - unitsSold
+        - revenue
+
+    OrdersResponse:
+      type: object
+      properties:
+        period:
+          $ref: '#/components/schemas/OrdersPeriod'
+        total:
+          type: integer
+          format: int64
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderStatusData'
+      required:
+        - period
+        - total
+        - data
+
+    OrdersPeriod:
+      type: object
+      properties:
+        from:
+          type: string
+          format: date
+        to:
+          type: string
+          format: date
+      required:
+        - from
+        - to
+
+    OrderStatusData:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - Pending
+            - Confirmed
+            - Rejected
+        count:
+          type: integer
+          format: int64
+        percentage:
+          type: number
+          format: double
+          minimum: 0
+          maximum: 100
+      required:
+        - status
+        - count
+        - percentage
+
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          examples:
+            - about:blank
+        title:
+          type: string
+          examples:
+            - Solicitud inválida
+        status:
+          type: integer
+          examples:
+            - 400
+        detail:
+          type: string
+          examples:
+            - El parámetro from debe tener el formato YYYY-MM-DD.
+      required:
+        - type
+        - title
+        - status
+        - detail
