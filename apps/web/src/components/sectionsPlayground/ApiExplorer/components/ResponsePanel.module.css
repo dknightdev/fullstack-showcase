@@ -154,6 +154,13 @@
 	tab-size: 4;
 }
 
+.visualization {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	padding: var(--spacing-md) var(--spacing-md);
+}
+
 .key {
 	color: var(--color-syntax-property);
 }

@@ -1,14 +1,22 @@
+import { lazy, Suspense, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { useTranslation } from 'react-i18next'
 import { TbAlertTriangle, TbLoader2, TbTerminal2 } from 'react-icons/tb'
 
 import styles from './ResponsePanel.module.css'
 import AppIcon from '@/components/ui/AppIcon/AppIcon'
-import type { ExecutionState } from '../types'
+import Button from '@/components/ui/Button/Button'
+import type { EndpointId, ExecutionState } from '../types'
+import { isAnalyticsEndpoint, parseAnalytics } from '../analytics/response'
+import type { AnalyticsData } from '../analytics/types'
 import { stringifyJson, tokenizeJson } from '../utils/json'
 import { parseJson } from '../utils/validateRequest'
 
+const AnalyticsModal = lazy(() => import('./analytics/AnalyticsModal'))
+
 type ResponsePanelProps = {
 	state: ExecutionState
+	endpointId: EndpointId
 }
 
 const getStatusClass = (status: number): string => {
@@ -19,8 +27,24 @@ const getStatusClass = (status: number): string => {
 	return styles.statusSuccess
 }
 
-const ResponsePanel = ({ state }: ResponsePanelProps) => {
+const ResponsePanel = ({ state, endpointId }: ResponsePanelProps) => {
 	const { t } = useTranslation(undefined, { keyPrefix: 'playground.apiExplorer' })
+	const [visualization, setVisualization] = useState<{ data: AnalyticsData, response: object } | null>(null)
+	const [errorResponse, setErrorResponse] = useState<object | null>(null)
+
+	const handleVisualize = (response: Extract<ExecutionState, { status: 'completed' }>['response']) => {
+		if (!isAnalyticsEndpoint(endpointId)) return
+		const parsed = parseJson(response.body)
+
+		try {
+			if (!parsed.ok) throw new Error('Invalid JSON')
+			setVisualization({ data: parseAnalytics(endpointId, parsed.value), response })
+			setErrorResponse(null)
+		} catch (error) {
+			console.error('Invalid analytics response', error)
+			setErrorResponse(response)
+		}
+	}
 
 	const renderContent = () => {
 		switch (state.status) {
@@ -102,6 +126,17 @@ const ResponsePanel = ({ state }: ResponsePanelProps) => {
 								</code>
 							</pre>
 						)}
+						{isAnalyticsEndpoint(endpointId) && status >= 200 && status < 300 && (
+							<div className={styles.visualization}>
+								<Button
+									variant='secondary'
+									onClick={() => handleVisualize(state.response)}
+								>
+									{t('analytics.visualize')}
+								</Button>
+								{errorResponse === state.response && <p className={styles.validation} role='alert'>{t('analytics.invalidResponse')}</p>}
+							</div>
+						)}
 					</>
 				)
 			}
@@ -115,6 +150,13 @@ const ResponsePanel = ({ state }: ResponsePanelProps) => {
 			<div className={styles.body} aria-live='polite'>
 				{renderContent()}
 			</div>
+
+			{visualization && state.status === 'completed' && visualization.response === state.response && createPortal(
+				<Suspense fallback={<p role='status'>{t('analytics.loading')}</p>}>
+					<AnalyticsModal isOpen onClose={() => setVisualization(null)} data={visualization.data} />
+				</Suspense>,
+				document.body
+			)}
 		</section>
 	)
 }

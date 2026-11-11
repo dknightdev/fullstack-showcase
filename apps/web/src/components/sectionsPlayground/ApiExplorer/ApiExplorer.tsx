@@ -101,7 +101,7 @@ const ApiExplorer = () => {
 											onExecute={handleExecute}
 										/>
 
-										<ResponsePanel state={state} />
+										<ResponsePanel key={`response-${endpoint.id}`} state={state} endpointId={endpoint.id} />
 									</div>
 								</div>
 							) : <p className={styles.inDevelopment}>{t('inDevelopment')}</p>}

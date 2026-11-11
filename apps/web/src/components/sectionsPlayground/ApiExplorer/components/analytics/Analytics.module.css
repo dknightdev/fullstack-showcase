@@ -1,0 +1,239 @@
+.content {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-sm);
+	color: var(--color-text);
+
+	transition:
+		color var(--transition-normal);
+}
+
+.period,
+.note,
+.empty {
+	color: var(--color-text-soft);
+	font-size: var(--font-size-sm);
+
+	transition:
+		color var(--transition-normal);
+}
+
+.note {
+	margin-bottom: var(--spacing-lg);
+}
+
+.period strong {
+	color: var(--color-text);
+	font-weight: var(--font-weight-bold);
+
+	transition:
+		color var(--transition-normal);
+}
+
+.summaryGroup {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-sm);
+	margin-bottom: var(--spacing-md);
+}
+
+.groupTitle {
+	color: var(--color-text);
+	font-family: monospace;
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-regular);
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+
+	transition:
+		color var(--transition-normal);
+}
+
+.cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+	gap: var(--spacing-md);
+}
+
+.card,
+.chartSection {
+	min-width: 0;
+	padding: var(--spacing-md);
+	margin-top: var(--spacing-md);
+	border: 1px solid var(--color-border);
+	border-radius: var(--border-radius-md);
+	background: var(--color-background);
+	box-shadow: var(--shadow-sm);
+
+	transition:
+		background-color var(--transition-normal),
+		border-color var(--transition-normal);
+}
+
+.card:hover {
+	border-color: var(--color-primary);
+}
+
+.card dt {
+	color: var(--color-text);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-bold);
+
+	transition:
+		color var(--transition-normal);
+}
+
+.card dd {
+	color: var(--color-text-soft);
+	margin-top: var(--spacing-xs);
+	font-size: var(--font-size-lg);
+	font-weight: var(--font-weight-bold);
+	overflow-wrap: anywhere;
+
+	transition:
+		color var(--transition-normal);
+}
+
+.tooltip {
+	padding: var(--spacing-md);
+	border: 1px solid var(--color-border);
+	border-radius: var(--border-radius-md);
+	background-color: var(--color-background);
+
+	transition:
+		background-color var(--transition-normal),
+		border-color var(--transition-normal);
+}
+
+.tooltip strong {
+	color: var(--color-text);
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-bold);
+
+	transition:
+		color var(--transition-normal);
+}
+
+.tooltip p {
+	color: var(--color-text-soft);
+	font-size: var(--font-size-xs);
+	font-weight: var(--font-weight-bold);
+	overflow-wrap: anywhere;
+
+	transition:
+		color var(--transition-normal);
+}
+
+.chartSection h3 {
+	margin-bottom: var(--spacing-md);
+	font-size: var(--font-size-md);
+	font-weight: var(--font-weight-bold);
+}
+
+.chart {
+	width: 100%;
+	height: 240px;
+	font-size: var(--font-size-xs);
+}
+
+.chartTall {
+	width: 100%;
+	min-height: 240px;
+	font-size: var(--font-size-xs);
+}
+
+.tableWrap {
+	margin-top: var(--spacing-md);
+	max-height: 320px;
+	overflow: auto;
+}
+
+.table {
+	width: 100%;
+	table-layout: fixed;
+	border-collapse: collapse;
+	font-size: var(--font-size-xs);
+	text-align: start;
+}
+
+.table th,
+.table td {
+	padding: var(--spacing-sm);
+	border-bottom: 1px solid var(--color-border);
+	text-align: start;
+	overflow-wrap: anywhere;
+
+	transition:
+		border-color var(--transition-normal);
+}
+
+.table th {
+	font-weight: var(--font-weight-bold);
+}
+
+.donut {
+	position: relative;
+	height: 240px;
+}
+
+.donutTotal {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+	font-weight: var(--font-weight-bold);
+	font-size: var(--font-size-xs);
+	text-align: center;
+}
+
+.emptyDonut {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 190px;
+	height: 190px;
+	border: 30px solid var(--color-border);
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+
+	transition:
+		border-color var(--transition-normal);
+}
+
+.statusDot {
+	display: inline-block;
+	width: 0.65rem;
+	height: 0.65rem;
+	margin-right: var(--spacing-sm);
+	border-radius: 50%;
+}
+
+.selector {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-xs);
+	margin-top: var(--spacing-md);
+	max-width: 240px;
+	margin-bottom: var(--spacing-md);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-bold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.content,
+	.period,
+	.note,
+	.empty,
+	.period strong,
+	.groupTitle,
+	.card,
+	.card dt,
+	.chartSection,
+	.table th,
+	.table td,
+	.emptyDonut {
+		transition: none;
+	}
+}

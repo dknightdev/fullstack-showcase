@@ -1,4 +1,9 @@
-import type { Endpoint, EndpointId } from '../types'
+import type { Endpoint, EndpointId, EndpointParam } from '../types'
+
+const periodParams: EndpointParam[] = [
+	{ name: 'from', kind: 'query', defaultValue: '', placeholder: 'YYYY-MM-DD' },
+	{ name: 'to', kind: 'query', defaultValue: '', placeholder: 'YYYY-MM-DD' }
+]
 
 export const endpoints: Endpoint[] = [
 	{
@@ -183,6 +188,32 @@ export const endpoints: Endpoint[] = [
 		group: 'ordersWrite',
 		params: [],
 		defaultBody: JSON.stringify({ items: [{ productId: 1, quantity: 1 }] }, null, 2)
+	},
+	{
+		id: 'analyticsSummary', apiId: 'go', method: 'GET', path: '/api/analytics/summary',
+		group: 'analytics', params: [...periodParams]
+	},
+	{
+		id: 'analyticsSales', apiId: 'go', method: 'GET', path: '/api/analytics/sales',
+		group: 'analytics',
+		params: [...periodParams, {
+			name: 'interval', kind: 'query', defaultValue: '',
+			options: [
+				{ value: '', label: 'defaultDay' },
+				{ value: 'day', label: 'day' },
+				{ value: 'week', label: 'week' },
+				{ value: 'month', label: 'month' }
+			]
+		}]
+	},
+	{
+		id: 'analyticsTopProducts', apiId: 'go', method: 'GET', path: '/api/analytics/top-products',
+		group: 'analytics',
+		params: [...periodParams, { name: 'limit', kind: 'query', defaultValue: '' }]
+	},
+	{
+		id: 'analyticsOrders', apiId: 'go', method: 'GET', path: '/api/analytics/orders',
+		group: 'analytics', params: [...periodParams]
 	}
 ]
 

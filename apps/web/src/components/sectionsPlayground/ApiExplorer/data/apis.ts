@@ -1,5 +1,5 @@
 import type { ApiDefinition } from '../types'
-import { CATALOG_BASE_URL, ORDERS_BASE_URL } from './config'
+import { ANALYTICS_BASE_URL, CATALOG_BASE_URL, ORDERS_BASE_URL } from './config'
 
 export const apis: ApiDefinition[] = [
 	{
@@ -32,9 +32,10 @@ export const apis: ApiDefinition[] = [
 	{
 		id: 'go',
 		technology: 'Go',
+		baseUrl: ANALYTICS_BASE_URL,
 		reads: ['products', 'inventory', 'orders'],
 		writes: [],
-		endpointIds: []
+		endpointIds: ['analyticsSummary', 'analyticsSales', 'analyticsTopProducts', 'analyticsOrders']
 	}
 ]
 

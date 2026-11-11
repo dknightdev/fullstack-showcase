@@ -16,6 +16,10 @@ export type EndpointId =
 	| 'listOrders'
 	| 'getOrder'
 	| 'createOrder'
+	| 'analyticsSummary'
+	| 'analyticsSales'
+	| 'analyticsTopProducts'
+	| 'analyticsOrders'
 
 export type EndpointGroup =
 	| 'productsRead'
@@ -23,6 +27,7 @@ export type EndpointGroup =
 	| 'inventory'
 	| 'ordersRead'
 	| 'ordersWrite'
+	| 'analytics'
 
 export type Entity = 'products' | 'inventory' | 'orders'
 
@@ -49,6 +54,10 @@ export type ParamOptionLabel =
 	| 'defaultCreatedAt'
 	| 'defaultDescending'
 	| 'total'
+	| 'defaultDay'
+	| 'day'
+	| 'week'
+	| 'month'
 
 export type EndpointParam = {
 	name: string

@@ -370,6 +370,7 @@
 					"inventory": "Inventory",
 					"ordersRead": "Order queries",
 					"ordersWrite": "Order creation",
+					"analytics": "Reports and analytics",
 					"reports": "Analytics reports"
 				},
 				"descriptions": {
@@ -383,6 +384,10 @@
 					"setProductStock": "Set a product's stock quantity.",
 					"increaseProductStock": "Increase a product's stock.",
 					"decreaseProductStock": "Decrease a product's stock.",
+					"analyticsSummary": "Sales, catalog and order summary.",
+					"analyticsSales": "Sales over time.",
+					"analyticsTopProducts": "Best-selling products by period.",
+					"analyticsOrders": "Orders by status.",
 					"listOrders": "List orders with filters, sorting and pagination.",
 					"getOrder": "Get an order with its items and total.",
 					"createOrder": "Create an order after validating stock with the products service.",
@@ -431,7 +436,44 @@
 					"rejected": "Rejected",
 					"defaultCreatedAt": "Default (created date)",
 					"defaultDescending": "Default (descending)",
-					"total": "Total"
+					"total": "Total",
+					"defaultDay": "Default (day)",
+					"day": "Day",
+					"week": "Week",
+					"month": "Month"
+				}
+			},
+			"analytics": {
+				"visualize": "Visualize",
+				"loading": "Loading visualization...",
+				"invalidResponse": "This response cannot be visualized: its format or values are not supported.",
+				"period": "Period",
+				"summaryScope": "Sales reflect the selected period; catalog and order counts are global.",
+				"groups": { "sales": "Sales", "catalog": "Catalog and inventory", "orders": "Orders" },
+				"revenue": "Revenue",
+				"confirmedOrders": "Confirmed orders",
+				"unitsSold": "Units sold",
+				"totalProducts": "Total products",
+				"activeProducts": "Active products",
+				"outOfStockProducts": "Out-of-stock products",
+				"pending": "Pending",
+				"confirmed": "Confirmed",
+				"rejected": "Rejected",
+				"totalOrders": "Total orders",
+				"empty": "There is no data for this period.",
+				"date": "Date",
+				"metric": "Metric",
+				"product": "Product / SKU",
+				"status": "Status",
+				"count": "Count",
+				"percentage": "Percentage",
+				"intervals": { "day": "Day", "week": "Week", "month": "Month" },
+				"statuses": { "Pending": "Pending", "Confirmed": "Confirmed", "Rejected": "Rejected" },
+				"titles": {
+					"analyticsSummary": "Overview",
+					"analyticsSales": "Sales over time",
+					"analyticsTopProducts": "Best-selling products",
+					"analyticsOrders": "Order distribution"
 				}
 			},
 			"response": {

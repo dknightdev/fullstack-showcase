@@ -370,6 +370,7 @@
 					"inventory": "Inventario",
 					"ordersRead": "Consulta de pedidos",
 					"ordersWrite": "Creación de pedidos",
+					"analytics": "Reportes y analítica",
 					"reports": "Reportes analíticos"
 				},
 				"descriptions": {
@@ -383,6 +384,10 @@
 					"setProductStock": "Establece las existencias de un producto.",
 					"increaseProductStock": "Incrementa las existencias de un producto.",
 					"decreaseProductStock": "Disminuye las existencias de un producto.",
+					"analyticsSummary": "Resumen de ventas, catálogo y pedidos.",
+					"analyticsSales": "Evolución de ventas por período.",
+					"analyticsTopProducts": "Productos más vendidos por período.",
+					"analyticsOrders": "Distribución de pedidos por estado.",
 					"listOrders": "Lista pedidos con filtros, ordenamiento y paginación.",
 					"getOrder": "Obtiene un pedido con sus ítems y su total.",
 					"createOrder": "Crea un pedido tras validar el stock con el servicio de productos.",
@@ -431,7 +436,44 @@
 					"rejected": "Rechazado",
 					"defaultCreatedAt": "Por defecto (fecha de creación)",
 					"defaultDescending": "Por defecto (descendente)",
-					"total": "Total"
+					"total": "Total",
+					"defaultDay": "Por defecto (día)",
+					"day": "Día",
+					"week": "Semana",
+					"month": "Mes"
+				}
+			},
+			"analytics": {
+				"visualize": "Visualizar",
+				"loading": "Cargando visualización...",
+				"invalidResponse": "No se puede visualizar esta respuesta: el formato o los valores no son compatibles.",
+				"period": "Período",
+				"summaryScope": "Las ventas corresponden al período; el catálogo y los pedidos son globales.",
+				"groups": { "sales": "Ventas", "catalog": "Catálogo e inventario", "orders": "Pedidos" },
+				"revenue": "Ingresos",
+				"confirmedOrders": "Pedidos confirmados",
+				"unitsSold": "Unidades vendidas",
+				"totalProducts": "Total de productos",
+				"activeProducts": "Productos activos",
+				"outOfStockProducts": "Productos agotados",
+				"pending": "Pendientes",
+				"confirmed": "Confirmados",
+				"rejected": "Rechazados",
+				"totalOrders": "Total de pedidos",
+				"empty": "No hay datos para este período.",
+				"date": "Fecha",
+				"metric": "Métrica",
+				"product": "Producto / SKU",
+				"status": "Estado",
+				"count": "Cantidad",
+				"percentage": "Porcentaje",
+				"intervals": { "day": "Día", "week": "Semana", "month": "Mes" },
+				"statuses": { "Pending": "Pendiente", "Confirmed": "Confirmado", "Rejected": "Rechazado" },
+				"titles": {
+					"analyticsSummary": "Resumen general",
+					"analyticsSales": "Ventas por período",
+					"analyticsTopProducts": "Productos más vendidos",
+					"analyticsOrders": "Distribución de pedidos"
 				}
 			},
 			"response": {
