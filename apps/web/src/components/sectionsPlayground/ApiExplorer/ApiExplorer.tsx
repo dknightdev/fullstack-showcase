@@ -27,7 +27,7 @@ const ApiExplorer = () => {
 
 	const api = getApi(apiId)
 	const endpoints = api.endpointIds.map(getEndpoint)
-	const endpoint = apiId === 'dotnet' ? getEndpoint(endpointId) : undefined
+	const endpoint = endpoints.find((item) => item.id === endpointId)
 
 	const handleSelectApi = (id: ApiId) => {
 		if (id === apiId) {
@@ -35,8 +35,9 @@ const ApiExplorer = () => {
 		}
 
 		setApiId(id)
-		if (id === 'dotnet') {
-			setEndpointId(getApi(id).endpointIds[0])
+		const firstEndpoint = getApi(id).endpointIds[0]
+		if (firstEndpoint) {
+			setEndpointId(firstEndpoint)
 		}
 		reset()
 	}

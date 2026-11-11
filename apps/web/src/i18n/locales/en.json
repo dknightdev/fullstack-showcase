@@ -341,7 +341,7 @@
 					"responsibility": "Orders",
 					"description": "Manages the order lifecycle and asks the products service to validate stock availability."
 				},
-				"laravel": {
+				"go": {
 					"responsibility": "Reports & analytics",
 					"description": "Read-only queries that aggregate sales, inventory and order data."
 				}
@@ -383,7 +383,7 @@
 					"setProductStock": "Set a product's stock quantity.",
 					"increaseProductStock": "Increase a product's stock.",
 					"decreaseProductStock": "Decrease a product's stock.",
-					"listOrders": "List orders, optionally filtered by status.",
+					"listOrders": "List orders with filters, sorting and pagination.",
 					"getOrder": "Get an order with its items and total.",
 					"createOrder": "Create an order after validating stock with the products service.",
 					"getOrderStatus": "Get only the current status of an order.",
@@ -424,7 +424,14 @@
 					"createdAt": "Created date",
 					"updatedAt": "Updated date",
 					"ascending": "Ascending",
-					"descending": "Descending"
+					"descending": "Descending",
+					"allStatuses": "All statuses",
+					"pending": "Pending",
+					"confirmed": "Confirmed",
+					"rejected": "Rejected",
+					"defaultCreatedAt": "Default (created date)",
+					"defaultDescending": "Default (descending)",
+					"total": "Total"
 				}
 			},
 			"response": {

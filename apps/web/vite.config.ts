@@ -11,6 +11,11 @@ export default defineConfig({
 				target: 'http://localhost:5280',
 				changeOrigin: true,
 				rewrite: (url) => url.replace(/^\/catalog-api(?=\/|$)/, '')
+			},
+			'/orders-api': {
+				target: 'http://localhost:3001',
+				changeOrigin: true,
+				rewrite: (url) => url.replace(/^\/orders-api(?=\/|$)/, '')
 			}
 		}
 	},

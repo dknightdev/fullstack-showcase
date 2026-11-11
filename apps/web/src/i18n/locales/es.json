@@ -341,7 +341,7 @@
 					"responsibility": "Pedidos",
 					"description": "Gestiona el ciclo de vida de los pedidos y consulta al servicio de productos para validar la disponibilidad."
 				},
-				"laravel": {
+				"go": {
 					"responsibility": "Reportes y analítica",
 					"description": "Consultas de solo lectura que agregan información de ventas, inventario y pedidos."
 				}
@@ -383,7 +383,7 @@
 					"setProductStock": "Establece las existencias de un producto.",
 					"increaseProductStock": "Incrementa las existencias de un producto.",
 					"decreaseProductStock": "Disminuye las existencias de un producto.",
-					"listOrders": "Lista pedidos, opcionalmente filtrados por estado.",
+					"listOrders": "Lista pedidos con filtros, ordenamiento y paginación.",
 					"getOrder": "Obtiene un pedido con sus ítems y su total.",
 					"createOrder": "Crea un pedido tras validar el stock con el servicio de productos.",
 					"getOrderStatus": "Obtiene solo el estado actual de un pedido.",
@@ -424,7 +424,14 @@
 					"createdAt": "Fecha de creación",
 					"updatedAt": "Fecha de actualización",
 					"ascending": "Ascendente",
-					"descending": "Descendente"
+					"descending": "Descendente",
+					"allStatuses": "Todos los estados",
+					"pending": "Pendiente",
+					"confirmed": "Confirmado",
+					"rejected": "Rechazado",
+					"defaultCreatedAt": "Por defecto (fecha de creación)",
+					"defaultDescending": "Por defecto (descendente)",
+					"total": "Total"
 				}
 			},
 			"response": {

@@ -99,7 +99,7 @@ const PlaygroundHero = () => {
 					>
 						<Chip icon={TbBraces}>.NET</Chip>
 						<Chip icon={TbBraces}>NestJS</Chip>
-						<Chip icon={TbBraces}>Laravel</Chip>
+						<Chip icon={TbBraces}>Go</Chip>
 						<Chip icon={TbDatabase}>PostgreSQL</Chip>
 					</motion.div>
 

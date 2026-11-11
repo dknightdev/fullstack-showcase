@@ -1,4 +1,4 @@
-export type ApiId = 'dotnet' | 'nestjs' | 'laravel'
+export type ApiId = 'dotnet' | 'nestjs' | 'go'
 
 export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
 
@@ -13,11 +13,16 @@ export type EndpointId =
 	| 'setProductStock'
 	| 'increaseProductStock'
 	| 'decreaseProductStock'
+	| 'listOrders'
+	| 'getOrder'
+	| 'createOrder'
 
 export type EndpointGroup =
 	| 'productsRead'
 	| 'productsWrite'
 	| 'inventory'
+	| 'ordersRead'
+	| 'ordersWrite'
 
 export type Entity = 'products' | 'inventory' | 'orders'
 
@@ -37,11 +42,19 @@ export type ParamOptionLabel =
 	| 'updatedAt'
 	| 'ascending'
 	| 'descending'
+	| 'allStatuses'
+	| 'pending'
+	| 'confirmed'
+	| 'rejected'
+	| 'defaultCreatedAt'
+	| 'defaultDescending'
+	| 'total'
 
 export type EndpointParam = {
 	name: string
 	kind: ParamKind
 	defaultValue: string
+	placeholder?: string
 	options?: { value: string, label: ParamOptionLabel }[]
 }
 

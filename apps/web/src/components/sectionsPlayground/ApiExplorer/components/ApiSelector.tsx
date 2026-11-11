@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import type { IconType } from 'react-icons'
-import { SiDotnet, SiLaravel, SiNestjs } from 'react-icons/si'
+import { SiDotnet, SiNestjs, SiGo } from 'react-icons/si'
 import { TbCircleCheck } from 'react-icons/tb'
 
 import styles from './ApiSelector.module.css'
@@ -16,7 +16,7 @@ type ApiSelectorProps = {
 const apiIcons: Record<ApiId, IconType> = {
 	dotnet: SiDotnet,
 	nestjs: SiNestjs,
-	laravel: SiLaravel
+	go: SiGo
 }
 
 const ApiSelector = ({ apis, selectedId, onSelect }: ApiSelectorProps) => {

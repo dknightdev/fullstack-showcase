@@ -78,6 +78,7 @@ const RequestPanel = ({ baseUrl, endpoint, issues, isRunning, onExecute }: Reque
 							<span>{param.name}</span>
 							<Input
 								type='text'
+								placeholder={param.placeholder}
 								value={input.pathParams[param.name] ?? ''}
 								aria-invalid={missingFields.includes(param.name)}
 								onChange={handleParamChange('pathParams', param.name)}
@@ -113,6 +114,7 @@ const RequestPanel = ({ baseUrl, endpoint, issues, isRunning, onExecute }: Reque
 							) : (
 								<Input
 									type='text'
+									placeholder={param.placeholder}
 									value={input.queryParams[param.name] ?? ''}
 									onChange={handleParamChange('queryParams', param.name)}
 									autoComplete='off'

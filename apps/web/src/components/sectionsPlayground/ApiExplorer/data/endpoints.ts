@@ -128,6 +128,61 @@ export const endpoints: Endpoint[] = [
 		group: 'inventory',
 		params: [{ name: 'id', kind: 'path', defaultValue: '1' }],
 		defaultBody: JSON.stringify({ quantity: 5 }, null, 2)
+	},
+	{
+		id: 'listOrders',
+		apiId: 'nestjs',
+		method: 'GET',
+		path: '/api/orders',
+		group: 'ordersRead',
+		params: [
+			{ name: 'page', kind: 'query', defaultValue: '1' },
+			{ name: 'pageSize', kind: 'query', defaultValue: '10' },
+			{
+				name: 'status', kind: 'query', defaultValue: '',
+				options: [
+					{ value: '', label: 'allStatuses' },
+					{ value: 'Pending', label: 'pending' },
+					{ value: 'Confirmed', label: 'confirmed' },
+					{ value: 'Rejected', label: 'rejected' }
+				]
+			},
+			{
+				name: 'sortBy', kind: 'query', defaultValue: '',
+				options: [
+					{ value: '', label: 'defaultCreatedAt' },
+					{ value: 'createdAt', label: 'createdAt' },
+					{ value: 'total', label: 'total' }
+				]
+			},
+			{
+				name: 'sortDirection', kind: 'query', defaultValue: '',
+				options: [
+					{ value: '', label: 'defaultDescending' },
+					{ value: 'asc', label: 'ascending' },
+					{ value: 'desc', label: 'descending' }
+				]
+			},
+			{ name: 'fromDate', kind: 'query', defaultValue: '', placeholder: '2026-11-01T00:00:00.000Z' },
+			{ name: 'toDate', kind: 'query', defaultValue: '', placeholder: '2026-11-10T23:59:59.999Z' }
+		]
+	},
+	{
+		id: 'getOrder',
+		apiId: 'nestjs',
+		method: 'GET',
+		path: '/api/orders/{id}',
+		group: 'ordersRead',
+		params: [{ name: 'id', kind: 'path', defaultValue: '', placeholder: 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx' }]
+	},
+	{
+		id: 'createOrder',
+		apiId: 'nestjs',
+		method: 'POST',
+		path: '/api/orders',
+		group: 'ordersWrite',
+		params: [],
+		defaultBody: JSON.stringify({ items: [{ productId: 1, quantity: 1 }] }, null, 2)
 	}
 ]
 

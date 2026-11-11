@@ -1,5 +1,5 @@
 import type { ApiDefinition } from '../types'
-import { CATALOG_BASE_URL } from './config'
+import { CATALOG_BASE_URL, ORDERS_BASE_URL } from './config'
 
 export const apis: ApiDefinition[] = [
 	{
@@ -24,13 +24,14 @@ export const apis: ApiDefinition[] = [
 	{
 		id: 'nestjs',
 		technology: 'NestJS',
+		baseUrl: ORDERS_BASE_URL,
 		reads: ['orders', 'inventory'],
 		writes: ['orders'],
-		endpointIds: []
+		endpointIds: ['listOrders', 'getOrder', 'createOrder']
 	},
 	{
-		id: 'laravel',
-		technology: 'Laravel',
+		id: 'go',
+		technology: 'Go',
 		reads: ['products', 'inventory', 'orders'],
 		writes: [],
 		endpointIds: []
