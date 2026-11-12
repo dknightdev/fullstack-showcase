@@ -152,7 +152,7 @@ const PlaygroundHero = () => {
 							</span>
 						</div>
 
-						<pre className={styles.code}>
+						<pre className={`${styles.code} custom-scroll`}>
 							<code>
 								<span>{'{'}</span>
 								{'\n'}

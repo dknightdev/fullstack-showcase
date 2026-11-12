@@ -196,7 +196,7 @@ const Navbar = ({ isHome, links = [] }: NavbarProps) => {
 				className={`${styles.preferencesMenu} ${isPreferencesOpen ? styles.preferencesOpen : styles.preferencesClosed}`}
 				aria-hidden={!isPreferencesOpen}
 			>
-				<div className={styles.preferencesContent}>
+				<div className={`${styles.preferencesContent} custom-scroll`}>
 					<Preferences />
 				</div>
 			</div>

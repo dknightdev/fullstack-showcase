@@ -26,7 +26,7 @@ const TopProductsView = ({ data }: { data: TopProductsData }) => {
 							<option value='revenue'>{t('revenue')}</option>
 						</Select>
 					</label>
-					<div className={styles.tableWrap} data-lenis-prevent>
+					<div className={`${styles.tableWrap} custom-scroll`}>
 						<div className={styles.chartTall} style={{ height: Math.max(240, rows.length * 38) }}>
 							<ResponsiveContainer width='100%' height='100%'>
 								<BarChart data={rows} layout='vertical' margin={{ left: 10 }} accessibilityLayer>
@@ -66,7 +66,7 @@ const TopProductsView = ({ data }: { data: TopProductsData }) => {
 							</ResponsiveContainer>
 						</div>
 					</div>
-					<div className={styles.tableWrap} data-lenis-prevent>
+					<div className={`${styles.tableWrap} custom-scroll`}>
 						<table className={styles.table}>
 							<thead>
 								<tr>

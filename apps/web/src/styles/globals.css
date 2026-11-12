@@ -145,6 +145,21 @@
 	padding: 0;
 }
 
+:where(.custom-scroll) {
+	scrollbar-width: thin;
+	scrollbar-color: var(--color-border) transparent;
+
+	transition:
+		scrollbar-color var(--transition-normal);
+}
+
+@supports (appearance: base-select) {
+	.custom-scroll::picker(select) {
+		scrollbar-width: thin;
+		scrollbar-color: var(--color-border) transparent;
+	}
+}
+
 html {
 	::selection {
 		background-color: var(--color-primary-hover);
@@ -205,5 +220,9 @@ ol {
 @media (prefers-reduced-motion: reduce) {
 	html {
 		scroll-behavior: auto;
+	}
+
+	:where(.custom-scroll) {
+		transition: none;
 	}
 }

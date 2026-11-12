@@ -56,11 +56,6 @@
 .content {
 	overflow-y: auto;
 	padding: var(--spacing-xl);
-	scrollbar-width: thin;
-	scrollbar-color: var(--color-border) transparent;
-
-	transition:
-		scrollbar-color var(--transition-normal);
 }
 
 .fullscreenOverlay {

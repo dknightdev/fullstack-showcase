@@ -113,7 +113,7 @@ const ResponsePanel = ({ state, endpointId }: ResponsePanelProps) => {
 						{body === '' ? (
 							<p className={styles.noContent}>{t('response.noContent')}</p>
 						) : (
-							<pre className={styles.code} data-lenis-prevent>
+							<pre className={`${styles.code} custom-scroll`}>
 								<code>
 									{tokenizeJson(parsed.ok ? stringifyJson(parsed.value) : body).map((token, index) => (
 										<span

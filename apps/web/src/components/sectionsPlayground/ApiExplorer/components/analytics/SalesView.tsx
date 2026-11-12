@@ -97,7 +97,7 @@ const SalesView = ({ data }: { data: SalesData }) => {
 					</div>
 				</div>
 			))}
-			<div className={styles.tableWrap} data-lenis-prevent>
+			<div className={`${styles.tableWrap} custom-scroll`}>
 				<table className={styles.table}>
 					<thead>
 						<tr>

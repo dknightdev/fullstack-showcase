@@ -89,6 +89,7 @@ const Modal = ({
 			{isOpen && (
 				<motion.div
 					className={`${styles.overlay} ${size === 'fullscreen' ? styles.fullscreenOverlay : ''}`}
+					data-lenis-prevent
 					onMouseDown={handleBackdropClick}
 					initial={{ opacity: motionConfig.opacity.hidden }}
 					animate={{ opacity: motionConfig.opacity.visible }}
@@ -157,8 +158,7 @@ const Modal = ({
 						</header>
 
 						<div
-							className={`${styles.content} ${size === 'fullscreen' ? styles.fullscreenContent : ''}`}
-							data-lenis-prevent
+							className={`${styles.content} custom-scroll ${size === 'fullscreen' ? styles.fullscreenContent : ''}`}
 						>
 							{children}
 						</div>

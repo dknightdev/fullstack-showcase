@@ -9,6 +9,7 @@ const SmoothScroll = () => {
 			options={{
 				lerp: 0.1,
 				smoothWheel: true,
+				allowNestedScroll: true,
 				anchors: true
 			}}
 		/>
