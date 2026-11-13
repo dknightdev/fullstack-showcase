@@ -98,17 +98,14 @@ app.UseStatusCodePages();
 app.UseCors("AllowedOrigins");
 app.UseRateLimiter();
 
-if (app.Environment.IsDevelopment())
-{
-	app.MapOpenApi();
+app.MapOpenApi();
 
-	app.UseSwaggerUI(options =>
-	{
-		options.DocumentTitle = "Portfolio Catalog API";
-		options.SwaggerEndpoint($"/openapi/{OpenApiConfiguration.DocumentName}.json", "Portfolio Catalog API v1");
-		options.RoutePrefix = "swagger";
-	});
-}
+app.UseSwaggerUI(options =>
+{
+	options.DocumentTitle = "Portfolio Catalog API";
+	options.SwaggerEndpoint($"/openapi/{OpenApiConfiguration.DocumentName}.json", "Portfolio Catalog API v1");
+	options.RoutePrefix = "swagger";
+});
 
 app.MapControllers();
 app.MapHealthChecks("/health").WithTags("Health");

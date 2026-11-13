@@ -5,9 +5,11 @@ import { BadRequestException, ValidationPipe } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 import type { ValidationError } from 'class-validator'
+import express from 'express'
 
 import { AppModule } from './app.module'
 import { ProblemDetailsFilter } from './common/filters/problem-details.filter'
+import { getSecurityConfig } from './config/security.config'
 
 
 function flattenValidationErrors(validationErrors: ValidationError[], parent = ''): Record<string, string[]> {
@@ -42,6 +44,17 @@ async function bootstrap() {
 	if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error('PORT must be between 1 and 65535')
 
 	const app = await NestFactory.create(AppModule)
+
+	const securityConfig = getSecurityConfig()
+
+	app.enableCors({
+		origin: securityConfig.cors.allowedOrigins,
+		methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+		allowedHeaders: ['Content-Type', 'Accept']
+	})
+
+	app.use(express.json({ limit: securityConfig.requestLimits.maxBodySize }))
+	app.use(express.urlencoded({ limit: securityConfig.requestLimits.maxBodySize, extended: true }))
 
 	app.useGlobalPipes(new ValidationPipe({
 		transform: true,
