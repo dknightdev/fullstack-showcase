@@ -1,10 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
 		<RootNamespace>Portfolio.Catalog.Api</RootNamespace>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<NoWarn>$(NoWarn);1591</NoWarn>
-	</PropertyGroup>
+	  	<UserSecretsId>706e737b-d25c-474e-be87-d8f399bc01ea</UserSecretsId>
+  </PropertyGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\Portfolio.Catalog.Application\Portfolio.Catalog.Application.csproj" />
