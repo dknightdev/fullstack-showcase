@@ -9,6 +9,7 @@ import (
 type Config struct {
 	Port        string
 	DatabaseURL string
+	Environment string
 }
 
 func Load() (*Config, error) {
@@ -23,8 +24,19 @@ func Load() (*Config, error) {
 		return nil, fmt.Errorf("invalid PORT value: %q", port)
 	}
 
+	environment := os.Getenv("APP_ENV")
+
+	if environment == "" {
+		environment = "development"
+	}
+
+	if environment != "development" && environment != "production" {
+		return nil, fmt.Errorf("invalid APP_ENV value: %q", environment)
+	}
+
 	return &Config{
 		Port:        port,
 		DatabaseURL: os.Getenv("DATABASE_URL"),
+		Environment: environment,
 	}, nil
 }

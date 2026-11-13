@@ -17,6 +17,7 @@ import (
 	"portfolio-analytics/internal/config"
 	apihttp "portfolio-analytics/internal/http"
 	"portfolio-analytics/internal/http/handlers"
+	"portfolio-analytics/internal/http/middlewares"
 	"portfolio-analytics/internal/postgres"
 )
 
@@ -59,10 +60,32 @@ func main() {
 	mux.Handle("GET /api/analytics/top-products", apihttp.Adapt(analyticsHandler.GetTopProducts))
 	mux.Handle("GET /api/analytics/orders", apihttp.Adapt(analyticsHandler.GetOrders))
 
+
+	var allowedOrigins []string
+
+	switch cfg.Environment {
+		case "development":
+			allowedOrigins = []string{
+				"http://localhost:5173",
+			}
+		case "production":
+			allowedOrigins = []string{
+				"https://dubancaballero.dev",
+				"https://www.dubancaballero.dev",
+			}
+	}
+
+	rateLimiter := middlewares.NewRateLimiter(1, 60, cfg.Environment)
+
+	handler := middlewares.CORS(allowedOrigins)(
+		rateLimiter.Middleware(mux),
+	)
+
 	server := &http.Server{
 		Addr:              ":" + cfg.Port,
-		Handler:           mux,
+		Handler:           handler,
 		ReadHeaderTimeout: 5 * time.Second,
+		MaxHeaderBytes:    1 << 20,
 	}
 
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
