@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common'
 import { APP_GUARD } from '@nestjs/core'
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler'
 import { OrdersModule } from './orders/orders.module'
+import { HealthModule } from './health/health.module'
 import { getSecurityConfig } from './config/security.config'
 
 const securityConfig = getSecurityConfig()
@@ -9,6 +10,7 @@ const securityConfig = getSecurityConfig()
 @Module({
 	imports: [
 		OrdersModule,
+		HealthModule,
 		ThrottlerModule.forRoot([
 			{
 				ttl: securityConfig.rateLimit.windowMs,
