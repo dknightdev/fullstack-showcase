@@ -1,7 +1,7 @@
 services:
   postgres:
     image: postgres:17
-    container_name: portfolio-catalog-postgres
+    container_name: portfolio-postgres
     environment:
       POSTGRES_DB: catalog
       POSTGRES_USER: catalog
@@ -9,7 +9,7 @@ services:
     ports:
       - "5433:5432"
     volumes:
-      - catalog-pgdata:/var/lib/postgresql/data
+      - postgres-pgdata:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U catalog -d catalog"]
       interval: 5s
@@ -17,4 +17,4 @@ services:
       retries: 10
 
 volumes:
-  catalog-pgdata:
+  postgres-pgdata:
