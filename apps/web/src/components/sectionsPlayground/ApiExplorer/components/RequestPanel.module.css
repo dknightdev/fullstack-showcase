@@ -103,8 +103,8 @@
 	max-width: 240px;
 }
 
-.field span,
-.bodyField span {
+.field > span,
+.bodyField > span {
 	color: var(--color-text-soft);
 
 	font-family: monospace;

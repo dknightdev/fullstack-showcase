@@ -29,15 +29,12 @@ const RequestPanel = ({ baseUrl, endpoint, issues, isRunning, onExecute }: Reque
 	const hasInvalidBody = issues.some((issue) => issue.code === 'invalidJson')
 	const missingFields = issues.flatMap((issue) => issue.code === 'missingPathParam' ? [issue.field] : [])
 
-	const handleParamChange = (kind: 'pathParams' | 'queryParams', name: string) =>
-		(event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-			const value = event.target.value
-
-			setInput((current) => ({
-				...current,
-				[kind]: { ...current[kind], [name]: value }
-			}))
-		}
+	const handleParamChange = (kind: 'pathParams' | 'queryParams', name: string, value: string) => {
+		setInput((current) => ({
+			...current,
+			[kind]: { ...current[kind], [name]: value }
+		}))
+	}
 
 	const handleBodyChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
 		const body = event.target.value
@@ -81,7 +78,7 @@ const RequestPanel = ({ baseUrl, endpoint, issues, isRunning, onExecute }: Reque
 								placeholder={param.placeholder}
 								value={input.pathParams[param.name] ?? ''}
 								aria-invalid={missingFields.includes(param.name)}
-								onChange={handleParamChange('pathParams', param.name)}
+								onChange={(event) => handleParamChange('pathParams', param.name, event.target.value)}
 								autoComplete='off'
 								spellCheck={false}
 							/>
@@ -103,7 +100,7 @@ const RequestPanel = ({ baseUrl, endpoint, issues, isRunning, onExecute }: Reque
 							{param.options ? (
 								<Select
 									value={input.queryParams[param.name] ?? ''}
-									onChange={handleParamChange('queryParams', param.name)}
+									onChange={(value) => handleParamChange('queryParams', param.name, value)}
 								>
 									{param.options.map((option) => (
 										<option key={option.label} value={option.value}>
@@ -116,7 +113,7 @@ const RequestPanel = ({ baseUrl, endpoint, issues, isRunning, onExecute }: Reque
 									type='text'
 									placeholder={param.placeholder}
 									value={input.queryParams[param.name] ?? ''}
-									onChange={handleParamChange('queryParams', param.name)}
+									onChange={(event) => handleParamChange('queryParams', param.name, event.target.value)}
 									autoComplete='off'
 									spellCheck={false}
 								/>

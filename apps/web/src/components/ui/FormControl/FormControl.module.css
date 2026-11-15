@@ -42,77 +42,9 @@
 	cursor: not-allowed;
 }
 
-.select {
-	cursor: pointer;
-}
-
-@supports (appearance: base-select) {
-	.select:not([multiple]):not([size]),
-	.select:not([multiple])[size='1'],
-	.select:not([multiple]):not([size])::picker(select),
-	.select:not([multiple])[size='1']::picker(select) {
-		appearance: base-select;
-	}
-
-	.select::picker-icon {
-		color: var(--color-text-soft);
-
-		transition:
-			color var(--transition-normal);
-	}
-
-	.select::picker(select) {
-		max-height: 300px;
-		position-area: block-end span-inline-end;
-		position-try-fallbacks: none;
-		overflow-y: auto;
-		margin-top: var(--spacing-xs);
-		padding: var(--spacing-xs);
-		border: 1px solid var(--color-border);
-		border-radius: var(--border-radius-md);
-		background-color: var(--color-background);
-		box-shadow: var(--shadow-md);
-	}
-
-	.select option {
-		font-family: monospace;
-		font-size: var(--font-size-xs);
-		color: var(--color-text);
-
-		padding: var(--spacing-sm) var(--spacing-md);
-		border-radius: var(--border-radius-sm);
-
-		transition:
-			background-color var(--transition-normal);
-	}
-
-	.select option:not(:last-child) {
-		margin-bottom: var(--spacing-xs);
-	}
-
-	.select option:hover {
-		background-color: var(--color-primary-transparent);
-	}
-
-	.select option:checked {
-		background-color: var(--color-primary-transparent);
-		color: var(--color-primary);
-	}
-
-	.select option::checkmark {
-		margin-inline-end: var(--spacing-sm);
-	}
-}
-
 .textarea {
 	resize: vertical;
 	tab-size: 4;
-}
-
-@media (forced-colors: active) {
-	.select {
-		appearance: auto;
-	}
 }
 
 @media (prefers-reduced-motion: reduce) {
