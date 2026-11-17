@@ -1,79 +1,81 @@
+import { useTranslation } from 'react-i18next'
 import Chip from '@/components/ui/Chip/Chip'
 import styles from './TechnicalDecisions.module.css'
 import Reveal from '@/components/ui/Reveal/Reveal'
 
-const decisions = [
-	{
-		number: '01',
-		category: 'Tecnologías',
-		title: 'Diversidad tecnológica',
-		description: 'Utilizar diferentes tecnologías para desarrollar servicios independientes y demostrar la capacidad de trabajar con distintos ecosistemas backend.',
-		details: [
-			'.NET para la gestión del catálogo',
-			'NestJS para la gestión de pedidos',
-			'Go para las consultas analíticas'
-		],
-		result: 'Explorar diferentes herramientas y demostrar su integración dentro de una misma solución.'
-	},
-	{
-		number: '02',
-		category: 'Arquitectura',
-		title: 'Arquitectura según las necesidades',
-		description: 'Aplicar diferentes enfoques arquitectónicos según la complejidad y las responsabilidades de cada servicio, evitando agregar complejidad innecesaria.',
-		details: [
-			'Clean Architecture en Catalog API',
-			'Arquitectura modular en Orders API',
-			'Estructura sencilla en Analytics API'
-		],
-		result: 'Mantener una separación clara de responsabilidades sin replicar patrones que no aportan valor a todos los servicios.'
-	},
-	{
-		number: '03',
-		category: 'Persistencia',
-		title: 'Base de datos compartida',
-		description: 'Utilizar una única instancia de PostgreSQL con esquemas independientes para mantener sencilla la infraestructura y conservar la separación de responsabilidades.',
-		details: [
-			'Esquemas catalog y orders',
-			'Credenciales independientes por servicio',
-			'Permisos de lectura y escritura según la responsabilidad de cada API'
-		],
-		result: 'Reducir la complejidad de infraestructura sin perder el aislamiento lógico de los datos.'
-	},
-	{
-		number: '04',
-		category: 'Comunicación',
-		title: 'Acceso directo para analítica',
-		description: 'Permitir que Analytics API consulte directamente los esquemas de PostgreSQL en lugar de depender de endpoints HTTP de los otros servicios.',
-		details: [
-			'Acceso de solo lectura',
-			'Consultas sobre catalog y orders',
-			'Sin modificar información administrada por otras APIs'
-		],
-		result: 'Simplificar la obtención de datos y facilitar consultas eficientes para reportes, considerando un posible crecimiento del volumen de información.'
-	},
-	{
-		number: '05',
-		category: 'Infraestructura',
-		title: 'Despliegue de bajo costo',
-		description: 'Seleccionar servicios de alojamiento que permitan mantener el proyecto publicado sin asumir costos mensuales.',
-		details: [
-			'Render para desplegar las APIs',
-			'Neon para PostgreSQL',
-			'AWS S3 y CloudFront para el frontend'
-		],
-		result: 'Mantener el proyecto disponible con una infraestructura de bajo costo, teniendo en cuenta las limitaciones de los planes gratuitos, como la suspensión por inactividad.'
-	}
-]
-
 function TechnicalDecisions() {
+	const { t } = useTranslation()
+
+	const decisions = [
+		{
+			number: '01',
+			categoryKey: 'playground.architecture.technicalDecisions.decisions.0.category',
+			titleKey: 'playground.architecture.technicalDecisions.decisions.0.title',
+			descriptionKey: 'playground.architecture.technicalDecisions.decisions.0.description',
+			detailsKeys: [
+				'playground.architecture.technicalDecisions.decisions.0.details.0',
+				'playground.architecture.technicalDecisions.decisions.0.details.1',
+				'playground.architecture.technicalDecisions.decisions.0.details.2'
+			],
+			resultKey: 'playground.architecture.technicalDecisions.decisions.0.result'
+		},
+		{
+			number: '02',
+			categoryKey: 'playground.architecture.technicalDecisions.decisions.1.category',
+			titleKey: 'playground.architecture.technicalDecisions.decisions.1.title',
+			descriptionKey: 'playground.architecture.technicalDecisions.decisions.1.description',
+			detailsKeys: [
+				'playground.architecture.technicalDecisions.decisions.1.details.0',
+				'playground.architecture.technicalDecisions.decisions.1.details.1',
+				'playground.architecture.technicalDecisions.decisions.1.details.2'
+			],
+			resultKey: 'playground.architecture.technicalDecisions.decisions.1.result'
+		},
+		{
+			number: '03',
+			categoryKey: 'playground.architecture.technicalDecisions.decisions.2.category',
+			titleKey: 'playground.architecture.technicalDecisions.decisions.2.title',
+			descriptionKey: 'playground.architecture.technicalDecisions.decisions.2.description',
+			detailsKeys: [
+				'playground.architecture.technicalDecisions.decisions.2.details.0',
+				'playground.architecture.technicalDecisions.decisions.2.details.1',
+				'playground.architecture.technicalDecisions.decisions.2.details.2'
+			],
+			resultKey: 'playground.architecture.technicalDecisions.decisions.2.result'
+		},
+		{
+			number: '04',
+			categoryKey: 'playground.architecture.technicalDecisions.decisions.3.category',
+			titleKey: 'playground.architecture.technicalDecisions.decisions.3.title',
+			descriptionKey: 'playground.architecture.technicalDecisions.decisions.3.description',
+			detailsKeys: [
+				'playground.architecture.technicalDecisions.decisions.3.details.0',
+				'playground.architecture.technicalDecisions.decisions.3.details.1',
+				'playground.architecture.technicalDecisions.decisions.3.details.2'
+			],
+			resultKey: 'playground.architecture.technicalDecisions.decisions.3.result'
+		},
+		{
+			number: '05',
+			categoryKey: 'playground.architecture.technicalDecisions.decisions.4.category',
+			titleKey: 'playground.architecture.technicalDecisions.decisions.4.title',
+			descriptionKey: 'playground.architecture.technicalDecisions.decisions.4.description',
+			detailsKeys: [
+				'playground.architecture.technicalDecisions.decisions.4.details.0',
+				'playground.architecture.technicalDecisions.decisions.4.details.1',
+				'playground.architecture.technicalDecisions.decisions.4.details.2'
+			],
+			resultKey: 'playground.architecture.technicalDecisions.decisions.4.result'
+		}
+	]
 	return (
 		<section className={styles.technicalDecisions} id="technical-decisions">
 			<Reveal>
 				<div className={styles.header}>
-					<span className={styles.eyebrow}>Criterios de diseño</span>
-					<h2>Decisiones técnicas</h2>
+					<span className={styles.eyebrow}>{t('playground.architecture.technicalDecisions.eyebrow')}</span>
+					<h2>{t('playground.architecture.technicalDecisions.title')}</h2>
 					<p>
-						Cada decisión responde a una necesidad del proyecto, buscando un equilibrio entre simplicidad, separación de responsabilidades y exploración tecnológica.
+						{t('playground.architecture.technicalDecisions.description')}
 					</p>
 				</div>
 			</Reveal>
@@ -84,23 +86,23 @@ function TechnicalDecisions() {
 						<article className={styles.decision}>
 							<div className={styles.decisionHeader}>
 								<span className={styles.number}>{decision.number}</span>
-								<Chip size='small'>{decision.category}</Chip>
+								<Chip size='small'>{t(decision.categoryKey)}</Chip>
 							</div>
 
 							<div className={styles.decisionContent}>
-								<h3>{decision.title}</h3>
-								<p>{decision.description}</p>
+								<h3>{t(decision.titleKey)}</h3>
+								<p>{t(decision.descriptionKey)}</p>
 
 								<ul>
-									{decision.details.map(detail => (
-										<li key={detail}>{detail}</li>
+									{decision.detailsKeys.map(detailKey => (
+										<li key={detailKey}>{t(detailKey)}</li>
 									))}
 								</ul>
 							</div>
 
 							<div className={styles.result}>
-								<span>Resultado</span>
-								<p>{decision.result}</p>
+								<span>{t('playground.architecture.technicalDecisions.resultLabel')}</span>
+								<p>{t(decision.resultKey)}</p>
 							</div>
 						</article>
 					</Reveal>

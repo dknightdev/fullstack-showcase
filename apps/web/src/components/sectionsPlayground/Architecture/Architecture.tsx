@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import Section from '@/components/ui/Section/Section'
 import SectionHeading from '@/components/ui/SectionHeading/SectionHeading'
 import ArchitectureOverview from './components/ArchitectureOverview/ArchitectureOverview'
@@ -7,12 +8,14 @@ import TechnicalDecisions from './components/TechnicalDecisions/TechnicalDecisio
 import styles from './Architecture.module.css'
 
 const Architecture = () => {
+	const { t } = useTranslation()
+
 	return (
 		<Section id='architecture'>
 			<SectionHeading
-				eyebrow='Diseño del sistema'
-				title='Una arquitectura con'
-				highlight='diferentes enfoques'
+				eyebrow={t('playground.architecture.eyebrow')}
+				title={t('playground.architecture.title')}
+				highlight={t('playground.architecture.highlight')}
 			/>
 
 			<div className={styles.content}>

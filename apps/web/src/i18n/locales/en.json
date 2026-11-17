@@ -500,6 +500,216 @@
 				"missingPathParam": "The path parameter “{{field}}” is required.",
 				"invalidJson": "The body is not valid JSON."
 			}
+		},
+		"architecture": {
+			"eyebrow": "System design",
+			"title": "An architecture with",
+			"highlight": "different approaches",
+			"overview": {
+				"description": {
+					"first": "Fullstack Showcase was born as an experimentation environment to explore different technologies and approaches to backend development within a single ecosystem.",
+					"second": "Instead of concentrating all functionality in a single application, I decided to split the system into independent services. Each has a defined responsibility and uses a different technology.",
+					"third": "The goal is to explore how these solutions can be integrated, maintaining a clear separation of responsibilities and allowing each service to evolve independently."
+				},
+				"highlights": {
+					"0": {
+						"title": "Independent services",
+						"description": "Each API manages a specific domain within the system."
+					},
+					"1": {
+						"title": "Backend technologies",
+						"description": "Each service uses a different language and framework."
+					},
+					"2": {
+						"title": "Integrated ecosystem",
+						"description": "All components are part of a single solution."
+					}
+				}
+			},
+			"serviceArchitecture": {
+				"description": "Explore the components and connections of the system to understand their responsibilities and communication mechanisms.",
+				"legend": {
+					"default": "Communication and operations",
+					"http": "HTTP communication between services",
+					"readOnly": "Read-only access"
+				},
+				"selectedComponent": "Selected component",
+				"selectedConnection": "Selected connection",
+				"nodes": {
+					"frontend": {
+						"description": "Web application responsible for presenting the interface and consuming the functionalities exposed by backend services.",
+						"details": {
+							"0": "Consumes all three APIs directly",
+							"1": "Each service maintains its own endpoints",
+							"2": "Does not require an intermediary backend"
+						}
+					},
+					"catalog": {
+						"description": "Service responsible for managing the product catalog and inventory-related operations.",
+						"details": {
+							"0": "Manages the catalog domain",
+							"1": "Is responsible for write operations on catalog schema",
+							"2": "Exposes endpoints to query products and manage inventory"
+						}
+					},
+					"orders": {
+						"description": "Service in charge of managing orders and inventory movements, coordinating with Catalog API when it needs product information or operations.",
+						"details": {
+							"0": "Manages the orders domain",
+							"1": "Communicates with Catalog API via HTTP",
+							"2": "Manages its own data in the orders schema"
+						}
+					},
+					"analytics": {
+						"description": "Service oriented to query information from different domains to generate reports and metrics.",
+						"details": {
+							"0": "Queries the catalog and orders schemas",
+							"1": "Uses credentials with read-only permissions",
+							"2": "Does not modify information managed by other services"
+						}
+					},
+					"database": {
+						"title": "Database",
+						"description": "Shared PostgreSQL instance containing independent schemas for catalog and orders domains.",
+						"details": {
+							"0": "Catalog schema: owned by Catalog API",
+							"1": "Orders schema: owned by Orders API",
+							"2": "Independent users and permissions for each service",
+							"3": "Analytics has read-only access"
+						}
+					}
+				},
+				"edges": {
+					"frontendCatalog": {
+						"title": "Frontend → Catalog API",
+						"description": "The frontend directly consumes Catalog API endpoints to query the catalog and inventory-related functionalities.",
+						"details": {
+							"0": "Direct communication between frontend and API",
+							"1": "Queries and operations via REST endpoints",
+							"2": "Catalog API manages its own domain"
+						}
+					},
+					"frontendOrders": {
+						"title": "Frontend → Orders API",
+						"description": "The frontend uses Orders API to access functionalities related to order management.",
+						"details": {
+							"0": "Direct communication via HTTP",
+							"1": "Query and order management operations",
+							"2": "Orders API maintains its own business logic"
+						}
+					},
+					"frontendAnalytics": {
+						"title": "Frontend → Analytics API",
+						"description": "The frontend consumes Analytics API to query available reports and metrics.",
+						"details": {
+							"0": "Analytical information queries",
+							"1": "Independent endpoints",
+							"2": "The API performs queries using read-only access"
+						}
+					},
+					"ordersCatalog": {
+						"title": "Orders API → Catalog API",
+						"description": "Orders API communicates with Catalog API to query product information and request inventory-related operations. This way, it maintains domain independence without directly accessing Catalog tables.",
+						"details": {
+							"0": "Query product information",
+							"1": "Request inventory operations via endpoints",
+							"2": "Catalog API retains responsibility over its data",
+							"3": "No direct write operations from Orders to catalog schema"
+						}
+					},
+					"catalogDatabase": {
+						"title": "Catalog API → PostgreSQL",
+						"description": "Catalog API manages product and inventory information in the catalog schema of PostgreSQL.",
+						"details": {
+							"0": "Read and write access to catalog schema",
+							"1": "Uses own credentials",
+							"2": "Is the service responsible for modifying this data"
+						}
+					},
+					"ordersDatabase": {
+						"title": "Orders API → PostgreSQL",
+						"description": "Orders API manages its orders and inventory movements within the orders schema, keeping its data separate from those belonging to the catalog.",
+						"details": {
+							"0": "Read and write access to orders schema",
+							"1": "Uses independent credentials",
+							"2": "Does not directly modify catalog schema"
+						}
+					},
+					"analyticsDatabase": {
+						"title": "Analytics API → PostgreSQL",
+						"description": "Analytics API directly queries catalog and orders schemas to obtain information from different domains and build reports and metrics.",
+						"details": {
+							"0": "Read-only access to both schemas",
+							"1": "Uses independent credentials",
+							"2": "Does not modify Catalog or Orders data",
+							"3": "Allows performing analytical queries on shared information"
+						}
+					}
+				}
+			},
+			"technicalDecisions": {
+				"eyebrow": "Design criteria",
+				"title": "Technical decisions",
+				"description": "Each decision responds to a need of the project, seeking a balance between simplicity, separation of responsibilities and technological exploration.",
+				"resultLabel": "Result",
+				"decisions": {
+					"0": {
+						"category": "Technologies",
+						"title": "Technological diversity",
+						"description": "Using different technologies to develop independent services and demonstrate the ability to work with different backend ecosystems.",
+						"details": {
+							"0": ".NET for catalog management",
+							"1": "NestJS for order management",
+							"2": "Go for analytical queries"
+						},
+						"result": "Explore different tools and demonstrate their integration within a single solution."
+					},
+					"1": {
+						"category": "Architecture",
+						"title": "Architecture according to needs",
+						"description": "Apply different architectural approaches depending on the complexity and responsibilities of each service, avoiding adding unnecessary complexity.",
+						"details": {
+							"0": "Clean Architecture in Catalog API",
+							"1": "Modular architecture in Orders API",
+							"2": "Simple structure in Analytics API"
+						},
+						"result": "Maintain clear separation of responsibilities without replicating patterns that don't add value to all services."
+					},
+					"2": {
+						"category": "Persistence",
+						"title": "Shared database",
+						"description": "Use a single PostgreSQL instance with independent schemas to keep infrastructure simple and preserve separation of responsibilities.",
+						"details": {
+							"0": "Catalog and orders schemas",
+							"1": "Independent credentials per service",
+							"2": "Read and write permissions according to each API's responsibility"
+						},
+						"result": "Reduce infrastructure complexity without losing logical data isolation."
+					},
+					"3": {
+						"category": "Communication",
+						"title": "Direct access for analytics",
+						"description": "Allow Analytics API to query PostgreSQL schemas directly instead of relying on HTTP endpoints from other services.",
+						"details": {
+							"0": "Read-only access",
+							"1": "Queries across catalog and orders schemas",
+							"2": "Without modifying information managed by other APIs"
+						},
+						"result": "Simplify data retrieval and facilitate efficient queries for reports, considering possible growth in data volume."
+					},
+					"4": {
+						"category": "Infrastructure",
+						"title": "Low-cost deployment",
+						"description": "Select hosting services that keep the project published without monthly costs.",
+						"details": {
+							"0": "Render to deploy APIs",
+							"1": "Neon for PostgreSQL",
+							"2": "AWS S3 and CloudFront for the frontend"
+						},
+						"result": "Keep the project available with low-cost infrastructure, considering limitations of free plans such as suspension due to inactivity."
+					}
+				}
+			}
 		}
 	}
 }

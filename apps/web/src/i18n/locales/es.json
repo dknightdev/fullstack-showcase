@@ -500,6 +500,216 @@
 				"missingPathParam": "El parámetro de ruta “{{field}}” es obligatorio.",
 				"invalidJson": "El body no es un JSON válido."
 			}
+		},
+		"architecture": {
+			"eyebrow": "Diseño del sistema",
+			"title": "Una arquitectura con",
+			"highlight": "diferentes enfoques",
+			"overview": {
+				"description": {
+					"first": "Fullstack Showcase nace como un entorno de experimentación para explorar diferentes tecnologías y enfoques de desarrollo backend dentro de un mismo ecosistema.",
+					"second": "En lugar de concentrar todas las funcionalidades en una sola aplicación, decidí dividir el sistema en servicios independientes. Cada uno tiene una responsabilidad definida y utiliza una tecnología diferente.",
+					"third": "El objetivo es explorar cómo estas soluciones pueden integrarse, manteniendo una separación clara de responsabilidades y permitiendo que cada servicio evolucione de manera independiente."
+				},
+				"highlights": {
+					"0": {
+						"title": "Servicios independientes",
+						"description": "Cada API gestiona un dominio específico dentro del sistema."
+					},
+					"1": {
+						"title": "Tecnologías backend",
+						"description": "Cada servicio utiliza un lenguaje y framework diferente."
+					},
+					"2": {
+						"title": "Ecosistema integrado",
+						"description": "Todos los componentes forman parte de una misma solución."
+					}
+				}
+			},
+			"serviceArchitecture": {
+				"description": "Explora los componentes y las conexiones del sistema para conocer sus responsabilidades y mecanismos de comunicación.",
+				"legend": {
+					"default": "Comunicación y operaciones",
+					"http": "Comunicación HTTP entre servicios",
+					"readOnly": "Acceso de solo lectura"
+				},
+				"selectedComponent": "Componente seleccionado",
+				"selectedConnection": "Conexión seleccionada",
+				"nodes": {
+					"frontend": {
+						"description": "Aplicación web encargada de presentar la interfaz y consumir las funcionalidades expuestas por los servicios backend.",
+						"details": {
+							"0": "Consume directamente las tres APIs",
+							"1": "Cada servicio mantiene sus propios endpoints",
+							"2": "No requiere un backend intermediario"
+						}
+					},
+					"catalog": {
+						"description": "Servicio responsable de administrar el catálogo de productos y las operaciones relacionadas con el inventario.",
+						"details": {
+							"0": "Gestiona el dominio del catálogo",
+							"1": "Es responsable de las operaciones de escritura en catalog",
+							"2": "Expone endpoints para consultar productos y gestionar inventario"
+						}
+					},
+					"orders": {
+						"description": "Servicio encargado de gestionar los pedidos y sus movimientos de inventario, coordinándose con Catalog API cuando necesita información u operaciones sobre productos.",
+						"details": {
+							"0": "Gestiona el dominio de pedidos",
+							"1": "Se comunica con Catalog API mediante HTTP",
+							"2": "Administra sus propios datos en el esquema orders"
+						}
+					},
+					"analytics": {
+						"description": "Servicio orientado a consultar información de los distintos dominios para generar reportes y métricas.",
+						"details": {
+							"0": "Consulta los esquemas catalog y orders",
+							"1": "Utiliza credenciales con permisos de solo lectura",
+							"2": "No modifica información administrada por los otros servicios"
+						}
+					},
+					"database": {
+						"title": "Base de datos",
+						"description": "Instancia PostgreSQL compartida que contiene esquemas independientes para los dominios de catálogo y pedidos.",
+						"details": {
+							"0": "Esquema catalog: propiedad de Catalog API",
+							"1": "Esquema orders: propiedad de Orders API",
+							"2": "Usuarios y permisos independientes para cada servicio",
+							"3": "Analytics dispone de acceso de solo lectura"
+						}
+					}
+				},
+				"edges": {
+					"frontendCatalog": {
+						"title": "Frontend → Catalog API",
+						"description": "El frontend consume directamente los endpoints de Catalog API para consultar el catálogo y las funcionalidades relacionadas con el inventario.",
+						"details": {
+							"0": "Comunicación directa entre frontend y API",
+							"1": "Consultas y operaciones mediante endpoints REST",
+							"2": "Catalog API administra su propio dominio"
+						}
+					},
+					"frontendOrders": {
+						"title": "Frontend → Orders API",
+						"description": "El frontend utiliza Orders API para acceder a las funcionalidades relacionadas con la gestión de pedidos.",
+						"details": {
+							"0": "Comunicación directa mediante HTTP",
+							"1": "Operaciones de consulta y gestión de pedidos",
+							"2": "Orders API mantiene su propia lógica de negocio"
+						}
+					},
+					"frontendAnalytics": {
+						"title": "Frontend → Analytics API",
+						"description": "El frontend consume Analytics API para consultar los reportes y métricas disponibles.",
+						"details": {
+							"0": "Consultas de información analítica",
+							"1": "Endpoints independientes",
+							"2": "La API realiza sus consultas utilizando acceso de solo lectura"
+						}
+					},
+					"ordersCatalog": {
+						"title": "Orders API → Catalog API",
+						"description": "Orders API se comunica con Catalog API para consultar información de productos y solicitar operaciones relacionadas con el inventario. De esta manera, mantiene la independencia de los dominios sin acceder directamente a las tablas de Catalog.",
+						"details": {
+							"0": "Consulta información de productos",
+							"1": "Solicita operaciones de inventario mediante endpoints",
+							"2": "Catalog API conserva la responsabilidad sobre sus datos",
+							"3": "No existe escritura directa de Orders sobre el esquema catalog"
+						}
+					},
+					"catalogDatabase": {
+						"title": "Catalog API → PostgreSQL",
+						"description": "Catalog API administra la información de productos e inventario en el esquema catalog de PostgreSQL.",
+						"details": {
+							"0": "Acceso de lectura y escritura al esquema catalog",
+							"1": "Utiliza credenciales propias",
+							"2": "Es el servicio responsable de modificar estos datos"
+						}
+					},
+					"ordersDatabase": {
+						"title": "Orders API → PostgreSQL",
+						"description": "Orders API administra sus pedidos y movimientos de inventario dentro del esquema orders, manteniendo sus datos separados de los pertenecientes al catálogo.",
+						"details": {
+							"0": "Acceso de lectura y escritura al esquema orders",
+							"1": "Utiliza credenciales independientes",
+							"2": "No modifica directamente el esquema catalog"
+						}
+					},
+					"analyticsDatabase": {
+						"title": "Analytics API → PostgreSQL",
+						"description": "Analytics API consulta directamente los esquemas catalog y orders para obtener información de distintos dominios y construir reportes y métricas.",
+						"details": {
+							"0": "Acceso de solo lectura a ambos esquemas",
+							"1": "Utiliza credenciales independientes",
+							"2": "No modifica datos de Catalog ni Orders",
+							"3": "Permite realizar consultas analíticas sobre información compartida"
+						}
+					}
+				}
+			},
+			"technicalDecisions": {
+				"eyebrow": "Criterios de diseño",
+				"title": "Decisiones técnicas",
+				"description": "Cada decisión responde a una necesidad del proyecto, buscando un equilibrio entre simplicidad, separación de responsabilidades y exploración tecnológica.",
+				"resultLabel": "Resultado",
+				"decisions": {
+					"0": {
+						"category": "Tecnologías",
+						"title": "Diversidad tecnológica",
+						"description": "Utilizar diferentes tecnologías para desarrollar servicios independientes y demostrar la capacidad de trabajar con distintos ecosistemas backend.",
+						"details": {
+							"0": ".NET para la gestión del catálogo",
+							"1": "NestJS para la gestión de pedidos",
+							"2": "Go para las consultas analíticas"
+						},
+						"result": "Explorar diferentes herramientas y demostrar su integración dentro de una misma solución."
+					},
+					"1": {
+						"category": "Arquitectura",
+						"title": "Arquitectura según las necesidades",
+						"description": "Aplicar diferentes enfoques arquitectónicos según la complejidad y las responsabilidades de cada servicio, evitando agregar complejidad innecesaria.",
+						"details": {
+							"0": "Clean Architecture en Catalog API",
+							"1": "Arquitectura modular en Orders API",
+							"2": "Estructura sencilla en Analytics API"
+						},
+						"result": "Mantener una separación clara de responsabilidades sin replicar patrones que no aportan valor a todos los servicios."
+					},
+					"2": {
+						"category": "Persistencia",
+						"title": "Base de datos compartida",
+						"description": "Utilizar una única instancia de PostgreSQL con esquemas independientes para mantener sencilla la infraestructura y conservar la separación de responsabilidades.",
+						"details": {
+							"0": "Esquemas catalog y orders",
+							"1": "Credenciales independientes por servicio",
+							"2": "Permisos de lectura y escritura según la responsabilidad de cada API"
+						},
+						"result": "Reducir la complejidad de infraestructura sin perder el aislamiento lógico de los datos."
+					},
+					"3": {
+						"category": "Comunicación",
+						"title": "Acceso directo para analítica",
+						"description": "Permitir que Analytics API consulte directamente los esquemas de PostgreSQL en lugar de depender de endpoints HTTP de los otros servicios.",
+						"details": {
+							"0": "Acceso de solo lectura",
+							"1": "Consultas sobre catalog y orders",
+							"2": "Sin modificar información administrada por otras APIs"
+						},
+						"result": "Simplificar la obtención de datos y facilitar consultas eficientes para reportes, considerando un posible crecimiento del volumen de información."
+					},
+					"4": {
+						"category": "Infraestructura",
+						"title": "Despliegue de bajo costo",
+						"description": "Seleccionar servicios de alojamiento que permitan mantener el proyecto publicado sin asumir costos mensuales.",
+						"details": {
+							"0": "Render para desplegar las APIs",
+							"1": "Neon para PostgreSQL",
+							"2": "AWS S3 y CloudFront para el frontend"
+						},
+						"result": "Mantener el proyecto disponible con una infraestructura de bajo costo, teniendo en cuenta las limitaciones de los planes gratuitos, como la suspensión por inactividad."
+					}
+				}
+			}
 		}
 	}
 }
