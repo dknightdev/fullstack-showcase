@@ -1,15 +1,16 @@
-import { useEffect } from 'react'
+import { useEffect, lazy } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { Navigate, Route, Routes } from 'react-router-dom'
 
-import Home from '@/pages/Home/Home'
-import Playground from '@/pages/Playground/Playground'
 import MainLayout from '@/layouts/MainLayout/MainLayout'
 import ScrollBackground from './components/layout/ScrollBackground/ScrollBackground'
 
 import { usePreferencesStore } from '@/stores/preferencesStore'
 import SmoothScroll from './components/layout/SmoothScroll/SmoothScroll'
+
+const Home = lazy(() => import('@/pages/Home/Home'))
+const Playground = lazy(() => import('@/pages/Playground/Playground'))
 
 function App() {
 	const theme = usePreferencesStore((state) => state.theme)

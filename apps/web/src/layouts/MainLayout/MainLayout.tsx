@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { useTranslation } from 'react-i18next'
 import { AnimatePresence } from 'motion/react'
 import { useLocation, useOutlet } from 'react-router-dom'
@@ -24,13 +25,15 @@ const MainLayout = () => {
 		: playgroundSections.map((id) => ({ id, label: t(`navbar.${id}`) }))
 
 	return (
-		<>
+		<div className={styles.layout}>
 			<Navbar isHome={isHome} links={links} />
 
 			<main className={styles.container}>
 				<AnimatePresence mode='wait' onExitComplete={() => window.scrollTo(0, 0)}>
 					<PageTransition key={pathname}>
-						{outlet}
+						<Suspense fallback={null}>
+							{outlet}
+						</Suspense>
 					</PageTransition>
 				</AnimatePresence>
 			</main>
@@ -38,7 +41,7 @@ const MainLayout = () => {
 			<Footer />
 
 			<FloatingPlaygroundButton isHome={isHome} />
-		</>
+		</div>
 	)
 }
 

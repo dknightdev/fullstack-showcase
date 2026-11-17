@@ -1,4 +1,14 @@
+.layout {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	min-height: 100svh;
+}
+
 .container {
+	flex: 1;
+	min-height: 100vh;
+	min-height: 100svh;
 	width: min(100%, var(--content-width));
 	margin: 0 auto;
 	padding: 0 var(--page-padding);

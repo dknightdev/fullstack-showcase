@@ -107,12 +107,12 @@ const PlaygroundHero = () => {
 						className={styles.actions}
 						variants={itemVariants}
 					>
-						<Button variant='primary' href='#playground2'>
+						<Button variant='primary' href='#apiExplorer'>
 							<AppIcon icon={TbTerminal2} size={18} />
 							{t('playground.hero.explore')}
 						</Button>
 
-						<Button variant='secondary' href='#playground3'>
+						<Button variant='secondary' href='#architecture'>
 							<AppIcon icon={TbServerCog} size={18} />
 							{t('playground.hero.architecture')}
 						</Button>
