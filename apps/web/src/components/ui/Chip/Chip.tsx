@@ -7,11 +7,12 @@ import styles from './Chip.module.css'
 type ChipProps = {
 	children: ReactNode
 	icon?: IconType
+	size?: 'normal' | 'small'
 }
 
-const Chip = ({ children, icon }: ChipProps) => {
+const Chip = ({ children, icon, size = 'normal' }: ChipProps) => {
 	return (
-		<span className={styles.chip}>
+		<span className={`${styles.chip} ${styles[size]}`}>
 			{icon && <AppIcon icon={icon} size={18} />}
 			{children}
 		</span>

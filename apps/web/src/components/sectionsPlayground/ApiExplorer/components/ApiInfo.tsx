@@ -27,7 +27,11 @@ const ApiInfo = ({ api }: ApiInfoProps) => {
 				{api.baseUrl && (
 					<div className={styles.item}>
 						<dt>{t('info.baseUrl')}</dt>
-						<dd><code className={styles.code}>{api.baseUrl}</code></dd>
+						<dd>
+							<a href={`${api.baseUrl}/swagger`} target="_blank" rel="noopener noreferrer">
+								<code className={styles.code}>{api.baseUrl}</code>
+							</a>
+						</dd>
 					</div>
 				)}
 

@@ -18,3 +18,13 @@
 		color var(--transition-normal),
 		border-color var(--transition-normal);
 }
+
+.normal {
+	padding: 0.4rem 0.8rem;
+	font-size: var(--font-size-sm);
+}
+
+.small {
+	padding: 0.2rem 0.4rem;
+	font-size: var(--font-size-xs);
+}

@@ -1,5 +1,6 @@
 import '@/styles/globals.css'
 import '@/i18n'
+import '@xyflow/react/dist/style.css'
 
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'

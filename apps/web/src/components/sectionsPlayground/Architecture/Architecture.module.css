@@ -1,0 +1,6 @@
+.content {
+	display: flex;
+	flex-direction: column;
+	gap: clamp(4rem, 8vw, 7rem);
+	margin-top: var(--spacing-section);
+}
