@@ -19,6 +19,14 @@ public static class OpenApiConfiguration
 					Description = "API de catálogo de productos e inventario del proyecto Full Stack Showcase."
 				};
 
+				document.Servers =
+				[
+					new OpenApiServer
+					{
+						Url = "/"
+					}
+				];
+
 				return Task.CompletedTask;
 			});
 		});
